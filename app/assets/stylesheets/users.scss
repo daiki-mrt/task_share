@@ -141,3 +141,19 @@
     }
   }
 }
+
+
+/* ログイン */
+.login-flash-message {
+  text-align: center;
+  margin: 20px 0;
+  color: red;
+}
+
+.not-login {
+  text-align: center;
+
+  & li {
+    margin: 15px;
+  }
+}
