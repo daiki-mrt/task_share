@@ -1,3 +1,132 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin waku() {
+  border: 1px solid lightgrey;
+}
+
+.wrapper {
+  width: 95%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+
+  .menu-bar {
+    height: 100%;
+    flex-basis: 25%;
+    min-height: 100vh;
+    padding: 20px;
+
+    .menu-bar-box {
+      padding: 15px;
+      @include waku();
+
+      .profile-image {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        margin: 10px auto 20px;
+        @include waku();
+      }
+      
+      .menu-items {
+        @include waku();
+        padding: 10px;
+        width: 80%;
+        margin: 0 auto;
+
+        & li {
+          margin: 20px 0;
+        }
+      }
+    }
+
+  }
+
+  .main {
+    // background-color: lightyellow;
+    height: 100%;
+    flex-basis: 55%;
+    min-height: 100vh;
+    padding: 30px 20px 20px;
+
+    .main-heading {
+      height: 50px;
+      background-color: #eeeeee;
+      width: 95%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    & li {
+      width: 100%;
+      margin: 30px auto;
+      padding: 30px 10px;
+      background-color: lightgrey;
+    }
+  }
+
+  .right-bar {
+    // background-color: lightgrey;
+    height: 100%;
+    flex-basis: 20%;
+    min-height: 100vh;
+    padding: 20px;
+
+    .right-bar-box {
+      @include waku();
+      height: 200px;
+      width: 90%;
+      margin: 0 auto 15px;
+    }
+
+  }
+
+}
+
+/* ユーザー新規登録 */
+.registration-wrapper {
+  height: 80vh;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  @include waku();
+
+  .registration-container {
+    // background-color: lightgrey;
+    height: 100%;
+    padding: 15px;
+    @include waku();
+  }
+
+  .registration-heading {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 15px;
+    height: 10%;
+  }
+
+  .registration-form {
+    height: 80%;
+    padding: 20px;
+    @include waku();
+    
+    & input {
+      display: block;
+      width: 50%;
+      margin: 20px auto;
+      padding: 10px;
+      
+
+      &.btn {
+        background-color: lightseagreen;
+        color: #eeeeee;
+        border: none;
+        font-size: 20px;
+        width: 100px;
+        border-radius: 100px;
+      }
+    }
+  }
+}
