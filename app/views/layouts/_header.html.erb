@@ -3,9 +3,11 @@
 
   <div class="header-right">
     <ul class="header-menu">
-      <li><a href="/communities">コミュニティ</a></li>
-      <li><a href="">ログアウト</a></li>
-      <li><a href="">アカウント</a></li>
+      <% if user_signed_in? %>
+        <li><a href="/communities">コミュニティ</a></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "#{current_user.name}", "/" %></li>
+      <% end %>
     </ul>
   </div>
   
