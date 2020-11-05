@@ -60,7 +60,7 @@
       text-align: center;
     }
 
-    & li {
+    .post {
       width: 100%;
       margin: 30px auto;
       padding: 30px 10px;
@@ -162,4 +162,13 @@
   & li {
     margin: 15px;
   }
+}
+
+/* ユーザー一覧 */
+.user-card {
+  width: 100%;
+  margin: 30px auto;
+  padding: 30px 10px;
+  border-radius: 5px;
+  @include waku();
 }
