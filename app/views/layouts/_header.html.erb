@@ -1,0 +1,14 @@
+<div class="header">
+  <a href="/" class="header-left">ロゴ</a>
+
+  <div class="header-right">
+    <ul class="header-menu">
+      <% if user_signed_in? %>
+        <li><a href="/communities">コミュニティ</a></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
+      <% end %>
+    </ul>
+  </div>
+  
+</div>

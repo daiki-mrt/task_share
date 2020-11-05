@@ -1,0 +1,27 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+    <div class="menu-bar-box">
+      <ul class="menu-items">
+        <li>検索定条件1</li>
+        <li>検索定条件2</li>
+        <li>検索定条件3</li>
+        <li>検索定条件4</li>
+      </ul>
+    </div>
+  </div>
+    
+  <div class="main">
+    <ul class="posts">
+      <% @users.each do |user| %>
+        <li>
+          <div class="user-card">
+            <%= link_to user.name, user_path(user) %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  
+  
+</div>

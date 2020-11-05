@@ -1,0 +1,38 @@
+<div class="registration-wrapper">
+  <div class="registration-container">
+    <div class="registration-heading">編集</div>
+
+
+    <div class="registration-form">
+      <%= form_for(resource, url: user_registration_path) do |f| %>
+
+        <%# エラーメッセージ表示 %>
+        <%= render 'shared/error_messages', model: resource %>
+
+        <div class="registration-item">
+          <%= f.label "なまえ", class:"label" %>
+          <%= f.text_field :name, class:"form-box" %>
+        </div>
+        
+        <%= f.fields_for :profile do |f| %>
+          <div class="registration-item">
+            <%= f.label "職種", class:"label" %>
+            <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {}, {class:"form-box"}) %>
+          </div>
+
+          <div class="registration-item">
+            <%= f.label "自己紹介", class:"label" %>
+            <%= f.text_area :text, class:"form-box" %>
+          </div>
+
+          <div class="registration-item">
+            <%= f.label "プロフィール画像", class:"label" %>
+            <%= f.file_field :image, class:"form-box" %>
+          </div>
+        <% end %>
+
+        <%= f.submit "変更する", class:"submit-btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
