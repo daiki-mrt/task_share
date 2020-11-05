@@ -4,7 +4,7 @@
     <div class="menu-bar-box">
       <div class="profile-image"></div>
       <ul class="menu-items">
-        <li>ユーザー名</li>
+        <li>ユーザー名: <%= current_user.name %> <%= link_to " 編集", edit_user_registration_path %> </li>
         <li>フォロー</li>
         <li>フォロワー</li>
         <li>参加コミュニティ</li>

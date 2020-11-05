@@ -22,7 +22,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  private
+  def edit
+    @user = current_user
+    @profile = @user.profile
+  end
+
+  def update
+    @user = User.find(current_user.id)
+    @profile = @user.profile
+    if @user.update(account_update_params)
+      @user.profile.update(account_update_params[:profile_attributes])
+      sign_in(:user, @user)
+      redirect_to root_path
+    else
+      render action: :edit
+    end    
+  end
 
   # GET /resource/sign_up
   # def new
