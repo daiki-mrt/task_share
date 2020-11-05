@@ -52,14 +52,68 @@
     min-height: 100vh;
     padding: 30px 20px 20px;
 
+    /* マイページ */
     .main-heading {
       height: 50px;
       background-color: #eeeeee;
-      width: 95%;
+      width: 200px;
       margin: 0 auto;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      background-color: lightseagreen;
+
+      .task-post-btn {
+        text-decoration: none;
+        font-size: 20px;
+        color: #eeeeee;
+      }
+    }
+  
+    /* タスク投稿フォーム */
+    .task-post-form {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px 20px 50px;
+      @include waku();
+      border-radius: 5px;
+
+      .task {
+        margin-top: 25px;
+        display: flex;
+        
+        .task-label {
+          display: block;
+          min-width: 70px;
+        }
+        .task-input {
+          width: 80%;
+          padding: 10px 12px 8px;
+          outline: none;
+          font-size: 18px;
+
+          &.content {
+            height: 100px;
+          }
+        }
+      }
+
+      .submit-btn {
+        display: block;
+        width: 100px;
+        padding: 5px 0;
+        margin: 30px auto 0;
+        background-color: lightseagreen;
+        color: #eeeeee;
+        border: none;
+        font-size: 20px;
+        border-radius: 100px;
+      }
     }
 
+    /* タスク */
     .post {
       width: 100%;
       margin: 30px auto;

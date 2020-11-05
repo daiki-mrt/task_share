@@ -19,16 +19,21 @@
   </div>
     
   <div class="main">
-    <div class="main-heading">
-      <%= link_to "投稿する", new_user_task_path(@user), class:"task-post-btn" %> 
+    <div class="task-post-form">
+      <%= form_with model: [@user, @task], local: true do |f|%>
+        <div class="task">
+          <%= f.label "タスク", class:"task-label"%>
+          <%= f.text_field :title, class:"task-input" %>
+        </div>
+        <div class="task">
+          <%= f.label "内容", class:"task-label"%>
+          <%= f.text_area :content, class:"task-input content" %>
+        </div>
+        
+        <%= f.submit "投稿", class:"submit-btn" %>
+
+      <% end %>
     </div>
-    <ul class="posts">
-      <li class="post">投稿1</li>
-      <li class="post">投稿2</li>
-      <li class="post">投稿3</li>
-      <li class="post">投稿4</li>
-      <li class="post">投稿5</li>
-    </ul>
   </div>
   
   <div class="right-bar">
