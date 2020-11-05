@@ -23,6 +23,7 @@
       @include waku();
 
       .profile-image {
+        display: block;
         height: 150px;
         width: 150px;
         border-radius: 50%;
