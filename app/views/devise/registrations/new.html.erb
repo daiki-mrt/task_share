@@ -2,11 +2,12 @@
   <div class="registration-container">
     <div class="registration-heading">新規登録</div>
 
+
     <div class="registration-form">
-      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+      <%= form_for(resource, url: user_registration_path) do |f| %>
 
         <%# エラーメッセージ表示 %>
-        <%= render 'shared/error_messages', model: f.object %>
+        <%= render 'shared/error_messages', model: resource %>
 
         <div class="registration-item">
           <%= f.label "なまえ", class:"label" %>
@@ -27,6 +28,23 @@
           <%= f.label "パスワード（確認）", class:"label" %>
           <%= f.password_field :password_confirmation, class:"form-box" %>
         </div>
+
+        <%= f.fields_for :profile do |f| %>
+          <div class="registration-item">
+            <%= f.label "職種", class:"label" %>
+            <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {}, {class:"form-box"}) %>
+          </div>
+
+          <div class="registration-item">
+            <%= f.label "自己紹介", class:"label" %>
+            <%= f.text_area :text, class:"form-box" %>
+          </div>
+
+          <div class="registration-item">
+            <%= f.label "プロフィール画像", class:"label" %>
+            <%= f.file_field :image, class:"form-box" %>
+          </div>
+        <% end %>
 
         <%= f.submit "登録", class:"submit-btn" %>
       <% end %>

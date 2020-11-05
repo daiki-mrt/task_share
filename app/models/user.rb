@@ -7,5 +7,5 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_one :profile
-  has_one_attached :image
+  accepts_nested_attributes_for :profile
 end

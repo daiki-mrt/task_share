@@ -85,9 +85,14 @@
 
 }
 
+/* エラーメッセージ */
+.error-alert {
+  text-align: center;
+  color: red;
+}
+
 /* ユーザー新規登録 */
 .registration-wrapper {
-  height: 80vh;
   width: 50%;
   margin: 0 auto;
   padding: 20px;
@@ -96,19 +101,18 @@
   .registration-container {
     // background-color: lightgrey;
     height: 100%;
-    padding: 15px;
+    // padding: 15px;
     @include waku();
   }
 
   .registration-heading {
     font-size: 25px;
     text-align: center;
-    margin-top: 15px;
+    margin: 15px 0;
     height: 10%;
   }
 
   .registration-form {
-    height: 80%;
     padding: 20px;
     @include waku();
 
@@ -125,14 +129,15 @@
       }
       .form-box {
         padding: 10px 12px 8px;
-        width: 200px;
+        width: 270px;
         outline: none;
       }
     }
     .submit-btn {
       display: block;
       width: 100px;
-      margin: 50px auto;
+      padding: 5px 0;
+      margin: 30px auto 0;
       background-color: lightseagreen;
       color: #eeeeee;
       border: none;
