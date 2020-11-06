@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.save
       @profile.save
       sign_in(:user, @user)
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       render action: :new
     end
