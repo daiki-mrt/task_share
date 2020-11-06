@@ -30,7 +30,7 @@
           <div class="post-text"><%= task.text %></div>
           <div class="edit-area">
             <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
-            <a href="", class="delete-btn">削除</a>
+            <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
             <a href="" class="complete-btn">完了</a>
           </div>
         </div>

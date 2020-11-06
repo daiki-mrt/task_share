@@ -20,11 +20,11 @@ class TasksController < ApplicationController
   def edit
     set_user
     set_profile
-    @task = Task.find(params[:id])
+    set_task
   end
 
   def update
-    @task = Task.find(params[:id])
+    set_task
     if @task.update(task_params)
       redirect_to user_path(current_user)
     else
@@ -34,6 +34,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    set_task
+    if @task.destroy
+      redirect_to user_path(current_user)
+    else
+      redirect_to user_path(current_user)
+    end
+  end
 
   private
   def set_user
@@ -44,6 +52,9 @@ class TasksController < ApplicationController
     @profile = @user.profile
   end
 
+  def set_task
+    @task = Task.find(params[:id])
+  end
   def task_params
     params.require(:task).permit(:title, :text).merge(user_id: current_user.id)
   end
