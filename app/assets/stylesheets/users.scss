@@ -54,21 +54,21 @@
 
     /* マイページ */
     .main-heading {
-      height: 50px;
-      background-color: #eeeeee;
-      width: 200px;
-      margin: 0 auto;
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      background-color: lightseagreen;
-
+      
       .task-post-btn {
         text-decoration: none;
-        font-size: 20px;
+        background-color: lightseagreen;
         color: #eeeeee;
+        font-size: 20px;
+        padding: 15px;        
+        width: 200px;
+        margin: 0 auto;
+        border-radius: 10px;
       }
     }
   

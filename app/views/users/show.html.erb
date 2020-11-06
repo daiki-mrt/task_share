@@ -20,7 +20,9 @@
     
   <div class="main">
     <div class="main-heading">
-      <%= link_to "投稿する", new_user_task_path(@user), class:"task-post-btn" %> 
+      <% if user_signed_in? && (current_user.id == @user.id) %>
+        <%= link_to "投稿する", new_user_task_path(@user), class:"task-post-btn" %> 
+      <% end %>
     </div>
     <ul class="posts">
       <% @tasks.each do |task| %>
@@ -28,11 +30,13 @@
           <div class="post-user"><%= link_to task.user.name, user_path(task.user), class:"post-user-name" %></div>
           <div class="post-title"><%= task.title %></div>
           <div class="post-text"><%= task.text %></div>
-          <div class="edit-area">
-            <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
-            <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
-            <a href="" class="complete-btn">完了</a>
-          </div>
+          <% if user_signed_in? && (task.user.id == current_user.id) %>
+            <div class="edit-area">
+              <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
+              <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
+              <a href="" class="complete-btn">完了</a>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </ul>

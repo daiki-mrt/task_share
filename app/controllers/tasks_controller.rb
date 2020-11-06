@@ -1,4 +1,7 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_index
+
   def new
     set_user
     set_profile
@@ -57,5 +60,12 @@ class TasksController < ApplicationController
   end
   def task_params
     params.require(:task).permit(:title, :text).merge(user_id: current_user.id)
+  end
+
+  def move_to_index
+    set_user
+    unless user_signed_in? && (current_user.id == @user.id)
+      redirect_to root_path
+    end
   end
 end
