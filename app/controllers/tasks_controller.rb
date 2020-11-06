@@ -17,6 +17,24 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    set_user
+    set_profile
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to user_path(current_user)
+    else
+      set_user
+      set_profile
+      render :edit
+    end
+  end
+
+
   private
   def set_user
     @user = User.find(params[:user_id])

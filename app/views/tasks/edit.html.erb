@@ -19,23 +19,21 @@
   </div>
     
   <div class="main">
-    <div class="main-heading">
-      <%= link_to "投稿する", new_user_task_path(@user), class:"task-post-btn" %> 
-    </div>
-    <ul class="posts">
-      <% @tasks.each do |task| %>
-        <div class="post-card">
-          <div class="post-user"><%= link_to task.user.name, user_path(task.user), class:"post-user-name" %></div>
-          <div class="post-title"><%= task.title %></div>
-          <div class="post-text"><%= task.text %></div>
-          <div class="edit-area">
-            <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
-            <a href="", class="delete-btn">削除</a>
-            <a href="" class="complete-btn">完了</a>
-          </div>
+    <div class="task-post-form">
+      <%= form_with model: [@user, @task], local: true do |f|%>
+        <div class="task">
+          <%= f.label "タスク", class:"task-label"%>
+          <%= f.text_field :title, class:"task-input" %>
         </div>
+        <div class="task">
+          <%= f.label "内容", class:"task-label"%>
+          <%= f.text_area :text, class:"task-input text" %>
+        </div>
+        
+        <%= f.submit "投稿", class:"submit-btn" %>
+
       <% end %>
-    </ul>
+    </div>
   </div>
   
   <div class="right-bar">
