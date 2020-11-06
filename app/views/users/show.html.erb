@@ -23,11 +23,18 @@
       <%= link_to "投稿する", new_user_task_path(@user), class:"task-post-btn" %> 
     </div>
     <ul class="posts">
-      <li class="post">投稿1</li>
-      <li class="post">投稿2</li>
-      <li class="post">投稿3</li>
-      <li class="post">投稿4</li>
-      <li class="post">投稿5</li>
+      <% @tasks.each do |task| %>
+        <div class="post-card">
+          <div class="post-user"><%= link_to task.user.name, user_path(task.user), class:"post-user-name" %></div>
+          <div class="post-title"><%= task.title %></div>
+          <div class="post-text"><%= task.text %></div>
+          <div class="edit-area">
+            <a href="", class="edit-btn">編集</a>
+            <a href="", class="delete-btn">削除</a>          
+            <a href="" class="complete-btn">完了</a>
+          </div>
+        </div>
+      <% end %>
     </ul>
   </div>
   

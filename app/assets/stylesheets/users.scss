@@ -83,6 +83,9 @@
       .task {
         margin-top: 25px;
         display: flex;
+        .field_with_errors {
+          display: contents;
+        }
         
         .task-label {
           display: block;
@@ -92,10 +95,12 @@
           width: 80%;
           padding: 10px 12px 8px;
           outline: none;
-          font-size: 18px;
+          font-size: 15px;
+          border: 1px solid lightgray;
 
-          &.content {
+          &.text {
             height: 100px;
+            color: gray;
           }
         }
       }
@@ -114,11 +119,65 @@
     }
 
     /* タスク */
-    .post {
-      width: 100%;
-      margin: 30px auto;
-      padding: 30px 10px;
-      background-color: lightgrey;
+    .posts {
+      width: 95%;
+      margin: 15px auto 0;
+      padding: 10px;
+      // border: 1px solid grey;
+      
+      .post-card {
+        width: 100%;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 5px;
+        @include waku();
+
+        .post-user {
+          margin-bottom: 15px;
+          .post-user-name {
+            text-decoration: none;
+          }
+        }
+        .post-title {
+          width: 95%;
+          margin: 0 auto;
+          font-size: 18px;
+          padding-bottom: 15px;
+          border-bottom: 1px dotted lightgray;
+        }
+        .post-text {
+          width: 95%;
+          margin: 10px auto 0;
+          padding-bottom: 10px;
+          word-break: break-all;
+          border-bottom: 1px dotted lightgray;
+          color: gray;
+        }
+
+        .edit-area {
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          .complete-btn {
+            text-decoration: none;
+            background-color: lightseagreen;
+            color: #eeeeee;
+            border: none;
+            padding: 7px;
+            font-size: 20px;
+            border-radius: 5px;
+            width: 65px;
+            margin-top: 15px;
+            margin-left: 15px;
+            text-align: center;
+          }
+          .edit-btn, .delete-btn {
+            color: gray;
+            font-size: 14px;
+            margin: 0 4px;
+          }
+        }
+      }
     }
   }
 
