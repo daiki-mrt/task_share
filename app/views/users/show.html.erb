@@ -34,7 +34,11 @@
             <div class="edit-area">
               <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
               <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
-              <a href="" class="complete-btn">完了</a>
+              <% if !task.state %>
+                <%= link_to "完了にする", done_user_task_path(task.user, task.id), method: :patch, class:"complete-btn" %>
+              <% else %>
+                <span class="completed-btn">完了</span>
+              <% end %>
             </div>
           <% end %>
         </div>

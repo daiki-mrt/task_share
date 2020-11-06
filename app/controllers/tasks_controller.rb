@@ -46,6 +46,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def done
+    set_task
+    @task.update(state: 1)
+    redirect_to user_path(current_user)
+  end
+
   private
   def set_user
     @user = User.find(params[:user_id])

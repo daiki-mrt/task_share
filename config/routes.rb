@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:index, :show] do
-    resources :tasks
+    resources :tasks do
+      member do
+        patch 'done'
+      end
+    end
   end
 end
