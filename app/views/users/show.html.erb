@@ -16,8 +16,8 @@
             <li><%= link_to "フォローする", user_relationships_path(@user), method: :post %></li>
           <% end %>
         <% end %>
-        <li>フォロー</li>
-        <li>フォロワー</li>
+        <li>フォロー <%= link_to "#{@following_users.count}", follows_user_path(@user) %></li>
+        <li>フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user) %></li>
         <li>参加コミュニティ</li>
         <li>ユーザーを探す</li>
         <li>コミュニティを探す</li>

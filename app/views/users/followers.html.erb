@@ -1,0 +1,29 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+
+  </div>
+    
+  <div class="main">
+    <div class="main-heading">
+      <%= @user.name %>のフォロワーユーザー
+    </div>
+    <ul class="posts">
+      <% @follower_users.each do |user| %>
+        <li>
+          <div class="user-card">
+            <%= link_to user.name, user_path(user) %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <div class="right-bar">
+    <div class="right-bar-box">
+    </div>
+    <div class="right-bar-box">
+    </div>
+  </div>
+  
+</div>

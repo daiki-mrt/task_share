@@ -13,5 +13,9 @@ Rails.application.routes.draw do
     end
 
     resources :relationships, only: [:create, :destroy]
+    member do
+      get 'follows'
+      get 'followers'
+    end
   end
 end
