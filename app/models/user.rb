@@ -10,6 +10,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile, update_only: true
   has_many :tasks
 
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
+  has_many :messages
+
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
   has_many :followings, through: :active_relationships, source: :follower
