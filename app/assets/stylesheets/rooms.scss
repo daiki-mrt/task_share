@@ -1,0 +1,50 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chats-box {
+  width: 95%;
+  height: 65vh;
+  margin: 15px auto 0;
+  padding: 30px 20px;
+  border: 1px solid gray;
+
+  .message-area {
+    width: 95%;
+    height: 90%;
+    margin: 0 auto;
+    border: 1px solid gray;
+    overflow: scroll;
+
+    .chat-card {
+      width: 95%;
+      margin: 0 auto 15px;
+
+      .chat-user-name {
+        text-decoration: none;
+        font-size: 18px;
+        margin-right: 8px;
+      }
+      .chat-text {
+        line-height: 25px;
+      }
+    }
+  }
+  .message-form-area {
+    width: 85%;
+    margin: 15px auto;
+    padding: 5px;
+    border: 1px solid gray;
+  
+    .message-form {
+      width: 85%;
+      padding: 10px 10px 8px;
+      border: 1px solid gray;
+      outline: none;
+    }
+    .message-submit {
+      padding: 2px 8px;
+    }
+  }
+}
+
