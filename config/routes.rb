@@ -11,5 +11,11 @@ Rails.application.routes.draw do
         patch 'done'
       end
     end
+
+    resources :relationships, only: [:create, :destroy]
+    member do
+      get 'follows'
+      get 'followers'
+    end
   end
 end
