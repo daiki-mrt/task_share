@@ -9,6 +9,13 @@
       </div>
       <ul class="menu-items">
         <li>ユーザー名: <%= @user.name %> <%= link_to " 編集", edit_user_registration_path(@user) %> </li>
+        <% if @user != current_user %>
+          <% if @user.follow?(current_user) %>
+            <li><%= link_to "フォロー済み", user_relationship_path(@user), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "フォローする", user_relationships_path(@user), method: :post %></li>
+          <% end %>
+        <% end %>
         <li>フォロー</li>
         <li>フォロワー</li>
         <li>参加コミュニティ</li>

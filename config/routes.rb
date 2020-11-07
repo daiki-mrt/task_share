@@ -11,5 +11,7 @@ Rails.application.routes.draw do
         patch 'done'
       end
     end
+
+    resources :relationships, only: [:create, :destroy]
   end
 end
