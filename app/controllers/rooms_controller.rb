@@ -20,7 +20,7 @@ class RoomsController < ApplicationController
     end
 
     # roomで表示するmessage
-    @messages = @room.messages
+    @messages = @room.messages.includes(:user)
     # 投稿用にmesssageインスタンス作成
     @message = Message.new
   end
