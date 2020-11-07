@@ -18,4 +18,9 @@ Rails.application.routes.draw do
       get 'followers'
     end
   end
+
+  resources :rooms, only: :show do
+    resources :messages, only: :create
+  end
+
 end

@@ -1,0 +1,70 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+  </div>
+    
+  <div class="main">
+    <div class="main-heading">
+      <%= @user.name %>とのDM
+    </div>
+    <div class="chats-box">
+      <div class="message-area">
+        <div class="chat-card">
+          <%= link_to "投稿者", "", class:"chat-user-name" %>
+          <span class="chat-text">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </span>
+        </div>
+        <div class="chat-card">
+          <%= link_to "投稿者", "", class:"chat-user-name" %>
+          <span class="chat-text">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </span>
+        </div>
+        <div class="chat-card">
+          <%= link_to "投稿者", "", class:"chat-user-name" %>
+          <span class="chat-text">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </span>
+        </div>
+        <div class="chat-card">
+          <%= link_to "投稿者", "", class:"chat-user-name" %>
+          <span class="chat-text">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </span>
+        </div>
+        <div class="chat-card">
+          <%= link_to "投稿者", "", class:"chat-user-name" %>
+          <span class="chat-text">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </span>
+        </div>
+        <div class="chat-card">
+          <%= link_to "投稿者", "", class:"chat-user-name" %>
+          <span class="chat-text">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </span>
+        </div>
+        <div class="chat-card">
+          <%= link_to "投稿者", "", class:"chat-user-name" %>
+          <span class="chat-text">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </span>
+        </div>
+        
+      </div>
+      <%= form_with model: [@room, @message], local: true, class:"message-form-area" do |f| %>
+        <%= f.text_field :message, class:"message-form" %>
+        <%= f.submit "投稿", class:"message-submit"%>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="right-bar">
+    <div class="right-bar-box">
+    </div>
+    <div class="right-bar-box">
+    </div>
+  </div>
+  
+</div>
