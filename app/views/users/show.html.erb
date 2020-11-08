@@ -19,7 +19,11 @@
         <li>フォロー <%= link_to "#{@following_users.count}", follows_user_path(@user) %></li>
         <li>フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user) %></li>
         <% if current_user != @user %>
-          <li><%= link_to "DMする", room_path(@user) %></li>
+          <% if @room.present? %>
+            <li><%= link_to "DMする", room_path(@room.id) %> </li>
+          <% elsif %>
+            <li><%= link_to "DMする", rooms_path(@user.id), method: :post %> </li>
+          <% end %>
         <% end %>
         <li>参加コミュニティ</li>
         <li>ユーザーを探す</li>
