@@ -21,8 +21,9 @@
           </div>     
         <% end %>
       </div>
-      <%= form_with model: [@room, @message], local: true, class:"message-form-area" do |f| %>
+      <%= form_with model: @message, local: true, class:"message-form-area" do |f| %>
         <%= f.text_field :text, class:"message-form" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "投稿", class:"message-submit"%>
       <% end %>
     </div>
