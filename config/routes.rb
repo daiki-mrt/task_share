@@ -19,8 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms, only: :show do
-    resources :messages, only: :create
-  end
-
+  resources :rooms, only: [:create, :show]
+  resources :messages, only: :create
+  
 end
