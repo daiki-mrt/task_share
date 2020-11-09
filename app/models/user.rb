@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :rooms, through: :user_rooms
   has_many :messages
+  has_many :likes
 
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
@@ -24,5 +25,10 @@ class User < ApplicationRecord
   # フォロー済みかどうかの確認
   def follow?(user)
     passive_relationships.find_by(following_id: user.id).present?
+  end
+
+  # taskいいね済みかどうかの確認
+  def already_liked?(task)
+    likes.where(task_id: task.id).exists?
   end
 end
