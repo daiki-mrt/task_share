@@ -1,13 +1,44 @@
 
 # 引用 https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/ja.yml
+# devise用 https://github.com/tigrish/devise-i18n/blob/master/rails/locales/ja.yml
 ja:
   activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: パスワード確認送信時刻
+        confirmation_token: パスワード確認用トークン
+        confirmed_at: パスワード確認時刻
+        created_at: 作成日
+        current_password: 現在のパスワード
+        current_sign_in_at: 現在のログイン時刻
+        current_sign_in_ip: 現在のログインIPアドレス
+        email: Eメール
+        encrypted_password: 暗号化パスワード
+        failed_attempts: 失敗したログイン試行回数
+        last_sign_in_at: 最終ログイン時刻
+        last_sign_in_ip: 最終ログインIPアドレス
+        locked_at: ロック時刻
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        remember_created_at: ログイン記憶時刻
+        remember_me: ログインを記憶する
+        reset_password_sent_at: パスワードリセット送信時刻
+        reset_password_token: パスワードリセット用トークン
+        sign_in_count: ログイン回数
+        unconfirmed_email: 未確認Eメール
+        unlock_token: ロック解除用トークン
+        updated_at: 更新日
+    models:
+      user: ユーザ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  errors:
+    messages:
+      already_confirmed: は既に登録済みです。ログインしてください。      
   date:
     abbr_day_names:
     - 日
@@ -206,3 +237,36 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  devise:
+    confirmations:
+      confirmed: メールアドレスが確認できました。
+      new:
+        resend_confirmation_instructions: アカウント確認メール再送
+      send_instructions: アカウントの有効化について数分以内にメールでご連絡します。
+      send_paranoid_instructions: メールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。
+    failure:
+      already_authenticated: すでにログインしています。
+      inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
+      invalid: "%{authentication_keys}またはパスワードが違います。"
+      last_attempt: もう一回誤るとアカウントがロックされます。
+      locked: アカウントは凍結されています。
+      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+      timeout: セッションがタイムアウトしました。もう一度ログインしてください。
+      unauthenticated: アカウント登録もしくはログインしてください。
+      unconfirmed: メールアドレスの本人確認が必要です。
+    registrations:
+      new:
+        sign_up: アカウント登録
+      signed_up: アカウント登録が完了しました。
+      signed_up_but_inactive: ログインするためには、アカウントを有効化してください。
+      signed_up_but_locked: アカウントが凍結されているためログインできません。
+      signed_up_but_unconfirmed: 本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。
+      update_needs_confirmation: アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。
+      updated: アカウント情報を変更しました。
+      updated_but_not_signed_in: あなたのアカウントは正常に更新されましたが、パスワードが変更されたため、再度ログインしてください。
+    sessions:
+      already_signed_out: 既にログアウト済みです。
+      new:
+        sign_in: ログイン
+      signed_in: ログインしました。
+      signed_out: ログアウトしました。
