@@ -15,16 +15,14 @@
   <div class="main">
     <div class="main-heading">
     </div>
-    <ul class="posts">
-        <div class="post-card">
-          <div class="post-title">コミュニティ名</div>          
-          <div class="post-text">コミュニティ説明</div>
-        </div>
-        <div class="post-card">
-          <div class="post-title">コミュニティ名</div>          
-          <div class="post-text">コミュニティ説明</div>
-        </div>
-    </ul>
+      <ul class="posts">
+        <% @communities.each do |community| %>
+          <div class="post-card">
+            <div class="post-title"><%= community.name %></div>
+            <div class="post-text"><%= community.text %></div>
+          </div>
+        <% end %>
+      </ul>
   </div>
   
   <div class="right-bar">
