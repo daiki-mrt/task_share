@@ -54,6 +54,13 @@
                 <span class="completed-btn">完了</span>
               <% end %>
             </div>
+            <div class="like-area">
+              <% if current_user.already_liked?(task) %>
+                <%= link_to "いいね解除", task_like_path(task.id), method: :delete, class:"like-btn" %>
+              <% else%>
+                <%= link_to "いいね", task_likes_path(task.id), method: :post, class:"like-btn" %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       <% end %>
