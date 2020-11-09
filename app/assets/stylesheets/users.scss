@@ -193,6 +193,18 @@
             text-align: center;
           }
         }
+        
+        .like-area {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 10px;
+          .like-btn {
+            text-decoration: none;
+          }
+          .like-count {
+            margin-left: 7px;
+          }
+        }
       }
     }
   }

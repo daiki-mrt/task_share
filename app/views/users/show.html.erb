@@ -55,6 +55,14 @@
               <% end %>
             </div>
           <% end %>
+          <div class="like-area">
+            <% if current_user.already_liked?(task) %>
+              <div><%= link_to "いいね解除", task_like_path(task.id), method: :delete, class:"like-btn" %></div>
+            <% else%>
+              <div><%= link_to "いいね", task_likes_path(task.id), method: :post, class:"like-btn" %></div>
+            <% end %>
+            <div class="like-count"><%= task.likes.count %></div>
+          </div>
         </div>
       <% end %>
     </ul>
