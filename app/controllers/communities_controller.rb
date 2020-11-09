@@ -1,4 +1,6 @@
 class CommunitiesController < ApplicationController
+  before_action :move_to_index, only: [:edit, :update]
+  
   def index
     @communities = Community.all
   end
@@ -32,5 +34,12 @@ class CommunitiesController < ApplicationController
   private
   def community_params
     params.require(:community).permit(:name, :category_id, :text).merge(user_id: current_user.id)
+  end
+
+  def move_to_index
+    community = Community.find(params[:id])
+    if community.user.id != current_user.id
+      redirect_to communities_path
+    end
   end
 end
