@@ -197,9 +197,12 @@
         .like-area {
           display: flex;
           justify-content: flex-end;
+          margin-top: 10px;
           .like-btn {
-            margin-top: 10px;
             text-decoration: none;
+          }
+          .like-count {
+            margin-left: 7px;
           }
         }
       }
