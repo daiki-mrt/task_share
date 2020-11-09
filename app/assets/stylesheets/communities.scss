@@ -1,6 +1,6 @@
-// Place all the styles related to the communities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin waku() {
+  border: 1px solid lightgrey;
+}
 
 .community-create-btn {
   text-decoration: none;
@@ -13,4 +13,52 @@
   color: #eeeeee;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+
+.community-post-form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 20px 50px;
+  @include waku();
+  border-radius: 5px;
+
+  .community {
+    margin-top: 25px;
+    display: flex;
+    .field_with_errors {
+      display: contents;
+    }
+    
+    .community-label {
+      display: block;
+      min-width: 100px;
+    }
+    .form-box {
+      outline: none;
+    }
+    .community-input {
+      width: 80%;
+      padding: 10px 12px 8px;
+      outline: none;
+      font-size: 15px;
+      border: 1px solid lightgray;
+
+      &.text {
+        height: 100px;
+        color: gray;
+      }
+    }
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100px;
+    padding: 5px 0;
+    margin: 30px auto 0;
+    background-color: lightseagreen;
+    color: #eeeeee;
+    border: none;
+    font-size: 20px;
+    border-radius: 100px;
+  }
 }
