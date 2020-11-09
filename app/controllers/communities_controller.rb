@@ -16,6 +16,19 @@ class CommunitiesController < ApplicationController
     end
   end
 
+  def edit
+    @community = Community.find(params[:id])
+  end
+
+  def update
+    @community = Community.find(params[:id])
+    if @community.update(community_params)
+      redirect_to communities_path
+    else
+      render :edit
+    end
+  end
+
   private
   def community_params
     params.require(:community).permit(:name, :category_id, :text).merge(user_id: current_user.id)

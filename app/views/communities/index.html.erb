@@ -20,6 +20,11 @@
           <div class="post-card">
             <div class="post-title"><%= community.name %></div>
             <div class="post-text"><%= community.text %></div>
+            <% if community.user.id == current_user.id %>
+              <div class="edit-area">
+                <%= link_to "編集", edit_community_path(community), class:"edit-btn" %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </ul>
