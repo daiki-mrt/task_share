@@ -31,8 +31,9 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+    @tasks = Task.includes(:user)
   end
-  
+
   private
   def community_params
     params.require(:community).permit(:name, :category_id, :text).merge(user_id: current_user.id)

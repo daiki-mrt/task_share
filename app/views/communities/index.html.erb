@@ -18,7 +18,7 @@
       <ul class="posts">
         <% @communities.each do |community| %>
           <div class="post-card">
-            <div class="post-title"><%= community.name %></div>
+            <div class="post-title"><%= link_to community.name, community_path(community) %></div>
             <div class="post-text"><%= community.text %></div>
             <% if community.user.id == current_user.id %>
               <div class="edit-area">
