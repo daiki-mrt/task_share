@@ -1,7 +1,6 @@
 class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
-    binding.pry
     if @like.save
       redirect_to request.referer
     else
@@ -10,7 +9,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    binding.pry
     like = Like.find_by(user_id: current_user.id, task_id: params[:task_id])
     like.destroy
     redirect_to request.referer
