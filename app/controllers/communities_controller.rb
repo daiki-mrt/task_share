@@ -15,7 +15,7 @@ class CommunitiesController < ApplicationController
     if @community.save
       user_community = @community.user_communities.new(user_id: current_user.id)
       user_community.save
-      redirect_to communities_path
+      redirect_to community_path(@community)
     else
       render :new
     end
@@ -26,7 +26,7 @@ class CommunitiesController < ApplicationController
 
   def update
     if @community.update(community_params)
-      redirect_to communities_path
+      redirect_to community_path(@community)
     else
       render :edit
     end
