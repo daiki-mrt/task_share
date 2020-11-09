@@ -13,6 +13,8 @@ class CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     if @community.save
+      user_community = @community.user_communities.new(user_id: current_user.id)
+      user_community.save
       redirect_to communities_path
     else
       render :new
