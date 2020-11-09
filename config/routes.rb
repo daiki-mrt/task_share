@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :likes, only: [:create, :destroy]
   end
+
+  resources :communities
 end
