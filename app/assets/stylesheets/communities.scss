@@ -66,6 +66,19 @@
 }
 
 /* コミュニティ詳細ページ */
+.community-edit-btn {
+  text-decoration: none;
+  display: block;
+  width: 180px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: lightgray;
+  color: gray;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
 .community-join-btn {
   text-decoration: none;
   display: block;
