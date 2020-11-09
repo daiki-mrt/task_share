@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   end
 
   resources :communities
+  post 'communities/:id', to: 'communities#join'
+  delete 'communities/:id/exit', to: 'communities#exit', as: 'exit_community'
 end

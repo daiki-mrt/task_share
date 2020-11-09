@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :set_community, only: [:edit, :update, :show]
+  before_action :set_community, only: [:edit, :update, :show, :join]
   before_action :move_to_index, only: [:edit, :update]
   
   def index
@@ -32,6 +32,24 @@ class CommunitiesController < ApplicationController
 
   def show
     @tasks = Task.includes(:user)
+  end
+  
+  def join
+    user_community = @community.user_communities.new(user_id: current_user.id)
+    if user_community.save
+      redirect_to community_path(@community)
+    else
+      render :show
+    end
+  end
+
+  def exit
+    user_community = UserCommunity.find_by(user_id: current_user.id, community_id: params[:id])
+    if user_community.destroy
+      redirect_to community_path(params[:id])
+    else
+      render :show
+    end
   end
 
   private

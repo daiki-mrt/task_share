@@ -3,12 +3,18 @@
   <div class="menu-bar">
     <div class="menu-bar-box">
       <ul class="menu-items">
+        <% if current_user.already_joined?(@community) %>
+          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+        <% else %>
+          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+        <% end %>
       </ul>
     </div>
   </div>
     
   <div class="main">
     <div class="main-heading">
+      <%= @community.name %>
     </div>
     <ul class="posts">
       <% @tasks.each do |task| %>

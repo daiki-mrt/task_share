@@ -2,6 +2,7 @@
   border: 1px solid lightgrey;
 }
 
+/* 一覧ページ */
 .community-create-btn {
   text-decoration: none;
   display: block;
@@ -62,4 +63,31 @@
     font-size: 20px;
     border-radius: 100px;
   }
+}
+
+/* コミュニティ詳細ページ */
+.community-join-btn {
+  text-decoration: none;
+  display: block;
+  width: 180px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: lightseagreen;
+  color: #eeeeee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.community-exit-btn {
+  text-decoration: none;
+  display: block;
+  width: 180px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: lightsalmon;
+  color: #eeeeee;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
