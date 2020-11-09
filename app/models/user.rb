@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   has_many :messages
   has_many :likes
+  has_many :communities
 
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
