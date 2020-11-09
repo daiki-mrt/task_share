@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   has_many :messages
   has_many :likes
+  has_many :own_communities, class_name: "Community"
+  has_many :user_communities
+  has_many :communities, through: :user_communities
 
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
@@ -30,5 +33,10 @@ class User < ApplicationRecord
   # taskいいね済みかどうかの確認
   def already_liked?(task)
     likes.where(task_id: task.id).exists?
+  end
+
+  # communityに参加済みかどうかの確認
+  def already_joined?(community)
+    self.user_communities.where(community_id: community.id).exists?
   end
 end

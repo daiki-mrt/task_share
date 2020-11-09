@@ -1,0 +1,106 @@
+@mixin waku() {
+  border: 1px solid lightgrey;
+}
+
+/* 一覧ページ */
+.community-create-btn {
+  text-decoration: none;
+  display: block;
+  width: 180px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: lightseagreen;
+  color: #eeeeee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* コミュニティ作成フォーム */
+.community-post-form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 20px 50px;
+  @include waku();
+  border-radius: 5px;
+
+  .community {
+    margin-top: 25px;
+    display: flex;
+    .field_with_errors {
+      display: contents;
+    }
+    
+    .community-label {
+      display: block;
+      min-width: 100px;
+    }
+    .form-box {
+      outline: none;
+    }
+    .community-input {
+      width: 80%;
+      padding: 10px 12px 8px;
+      outline: none;
+      font-size: 15px;
+      border: 1px solid lightgray;
+
+      &.text {
+        height: 100px;
+        color: gray;
+      }
+    }
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100px;
+    padding: 5px 0;
+    margin: 30px auto 0;
+    background-color: lightseagreen;
+    color: #eeeeee;
+    border: none;
+    font-size: 20px;
+    border-radius: 100px;
+  }
+}
+
+/* コミュニティ詳細ページ */
+.community-edit-btn {
+  text-decoration: none;
+  display: block;
+  width: 180px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: lightgray;
+  color: gray;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.community-join-btn {
+  text-decoration: none;
+  display: block;
+  width: 180px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: lightseagreen;
+  color: #eeeeee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.community-exit-btn {
+  text-decoration: none;
+  display: block;
+  width: 180px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  background-color: lightsalmon;
+  color: #eeeeee;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}

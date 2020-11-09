@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :likes, only: [:create, :destroy]
   end
+
+  resources :communities
+  post 'communities/:id', to: 'communities#join'
+  delete 'communities/:id/exit', to: 'communities#exit', as: 'exit_community'
 end

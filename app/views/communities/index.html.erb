@@ -1,0 +1,40 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+    <div class="menu-bar-box">
+    <%= link_to "コミュニティ作成", new_community_path, class:"community-create-btn" %>
+      <ul class="menu-items">
+        <li>検索定条件1</li>
+        <li>検索定条件2</li>
+        <li>検索定条件3</li>
+        <li>検索定条件4</li>
+      </ul>
+    </div>
+  </div>
+    
+  <div class="main">
+    <div class="main-heading">
+    </div>
+      <ul class="posts">
+        <% @communities.each do |community| %>
+          <div class="post-card">
+            <div class="post-title"><%= link_to community.name, community_path(community) %></div>
+            <div class="post-text"><%= community.text %></div>
+            <% if community.user.id == current_user.id %>
+              <div class="edit-area">
+                <%= link_to "編集", edit_community_path(community), class:"edit-btn" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </ul>
+  </div>
+  
+  <div class="right-bar">
+    <div class="right-bar-box">
+    </div>
+    <div class="right-bar-box">
+    </div>
+  </div>
+  
+</div>
