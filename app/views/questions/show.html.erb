@@ -32,7 +32,9 @@
         <div class="question-content">
           <%= @question.content %>
         </div>
-        <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
+        <% if @question.image.present? %>
+          <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
+        <% end %>
         <div class="question-response-area">
           <%= link_to "私も知りたい！", "", class:"metoo-btn" %>
           <%= link_to "役に立った！", "", class:"helpful-btn" %>

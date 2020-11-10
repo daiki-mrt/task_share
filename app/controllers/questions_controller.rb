@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to community_questions_path(@community)
+      redirect_to community_question_path(@community, @question)
     else
       render :new
     end
