@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_013446) do
   create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "community_id"
-    t.text "test", null: false
+    t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["community_id"], name: "index_chats_on_community_id"
