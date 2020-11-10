@@ -1,10 +1,9 @@
 class ChatsController < ApplicationController
   before_action :set_community, only: [:index, :create]
   before_action :set_chats, only: [:index, :create]
+  before_action :move_to_index
   
   def index
-    set_community
-    set_chats
     @chat = Chat.new
   end
 
@@ -17,6 +16,7 @@ class ChatsController < ApplicationController
     end
   end
 
+
   private
   def set_community
     @community = Community.find(params[:community_id])
@@ -28,5 +28,12 @@ class ChatsController < ApplicationController
 
   def chat_params
     params.require(:chat).permit(:text).merge(user_id: current_user.id, community_id: params[:community_id])
+  end
+
+  def move_to_index
+    set_community
+    if !current_user.already_joined?(@community)
+      redirect_to community_path(@community)
+    end
   end
 end
