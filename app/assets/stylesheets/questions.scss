@@ -1,3 +1,72 @@
-// Place all the styles related to the questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+ 
+ .question-area {
+   border: 1px solid lightgray;
+   width: 90%;
+   margin: 0 auto;
+   padding: 20px;
+
+   .question-card {
+     border: 1px solid lightgray;
+     border-radius: 5px;
+     height: 75%;
+     padding: 15px;
+
+     .question-user {
+       display: inline-block;
+       margin-bottom: 10px;
+       text-decoration: none;
+     }
+
+     .question-title {
+       border-bottom: 1px solid lightgray;
+       font-size: 20px;
+       padding-bottom: 10px;
+       margin-bottom: 10px;
+     }
+
+     .question-content {
+       border-bottom: 1px solid lightgray;
+       padding-bottom: 5px;
+       margin-bottom: 5px;
+     }
+
+     .question-response-area {
+       margin-top: 10px;
+       display: flex;
+       justify-content: flex-end;
+       align-items: center;
+
+       & a {
+         text-decoration: none;
+        }
+        .metoo-btn, .helpful-btn {
+          margin-left: 5px;
+       }
+       .question-open {
+         padding: 15px;
+         background-color: lightcoral;
+         color: #eeeeee;
+         border-radius: 5px;
+         margin-left: 8px;
+       }
+     }
+   }
+ }
+
+ .answer-area {
+   border: 1px solid lightgray;
+   width: 90%;
+   margin: 15px auto 0;
+   padding: 20px;
+   
+   .answer-card {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    height: 75%;
+    padding: 10px;
+
+    .answer-user {
+      margin-bottom: 10px;
+    }
+  }
+ }
