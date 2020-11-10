@@ -33,6 +33,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :content).merge(user_id: current_user.id, community_id: params[:community_id])
+    params.require(:question).permit(:title, :content, :image).merge(user_id: current_user.id, community_id: params[:community_id])
   end
 end
