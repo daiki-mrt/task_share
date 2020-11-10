@@ -1,0 +1,56 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+    <div class="menu-bar-box">
+      <ul class="menu-items">
+        <% if current_user.id == @community.user.id %>
+          <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+        <% elsif current_user.already_joined?(@community) %>
+          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+        <% else %>
+          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+    
+  <div class="main">
+    <div class="main-heading">
+      <%= @community.name %>
+      <div class="main-menu">
+        <%= link_to "task", community_path(@community) %>
+        <%= link_to "チャット", community_chats_path(@community) %>
+      </div>
+    </div>
+    <div class="chats-box">
+      <div class="message-area">
+        <% @chats.each do |chat| %>
+          <div class="chat-card">
+            <%= link_to chat.user.name, user_path(chat.user), class:"chat-user-name" %>
+            <span class="chat-text">
+              <%= chat.text %>
+            </span>
+            <span class="chat-text">
+              <%= l chat.created_at, format: :long %>
+            </span>
+            <% if chat.user.id == current_user.id %>
+              <%= link_to "削除", community_chat_path(@community, chat.id), method: :delete %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <%= form_with model: [@community, @chat], local: true, class:"message-form-area" do |f| %>
+        <%= f.text_field :text, class:"message-form" %>
+        <%= f.submit "投稿", class:"message-submit"%>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="right-bar">
+    <div class="right-bar-box">
+    </div>
+    <div class="right-bar-box">
+    </div>
+  </div>
+  
+</div>

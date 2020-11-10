@@ -17,6 +17,10 @@
   <div class="main">
     <div class="main-heading">
       <%= @community.name %>
+      <div class="main-menu">
+        <%= link_to "task", community_path(@community) %>
+        <%= link_to "チャット", community_chats_path(@community) %>
+      </div>
     </div>
     <ul class="posts">
       <% @tasks.each do |task| %>
