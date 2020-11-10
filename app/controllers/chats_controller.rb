@@ -1,6 +1,6 @@
 class ChatsController < ApplicationController
-  before_action :set_community, only: [:index, :create]
-  before_action :set_chats, only: [:index, :create]
+  before_action :set_community, only: [:index, :create, :destroy]
+  before_action :set_chats, only: [:index, :create, :destroy]
   before_action :move_to_index
   
   def index
@@ -16,6 +16,11 @@ class ChatsController < ApplicationController
     end
   end
 
+  def destroy
+    @chat = Chat.find(params[:id])
+    @chat.destroy
+    redirect_to community_chats_path(@community)
+  end
 
   private
   def set_community

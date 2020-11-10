@@ -32,13 +32,15 @@
             </span>
             <span class="chat-text">
               <%= l chat.created_at, format: :long %>
-            </span>            
-          </div>     
+            </span>
+            <% if chat.user.id == current_user.id %>
+              <%= link_to "削除", community_chat_path(@community, chat.id), method: :delete %>
+            <% end %>
+          </div>
         <% end %>
       </div>
       <%= form_with model: [@community, @chat], local: true, class:"message-form-area" do |f| %>
         <%= f.text_field :text, class:"message-form" %>
-        <%# <%= f.hidden_field :community_id, value: @community.id %>
         <%= f.submit "投稿", class:"message-submit"%>
       <% end %>
     </div>
