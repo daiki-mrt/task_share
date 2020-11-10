@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :own_communities, class_name: "Community"
   has_many :user_communities
   has_many :communities, through: :user_communities
+  has_many :chats
 
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
