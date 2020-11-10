@@ -1,0 +1,47 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+    <div class="menu-bar-box">
+      <div class="menu-items">
+        <% if current_user.id == @community.user.id %>
+          <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+        <% elsif current_user.already_joined?(@community) %>
+          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+        <% else %>
+          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+    
+  <div class="main">
+    <div class="community-post-form">
+      <%= form_with model: [@community, @question], local: true do |f|%>
+        <%= render 'shared/error_messages', model: f.object %>
+        <div class="community">
+          <%= f.label "タイトル", class:"community-label"%>
+          <%= f.text_field :title, class:"community-input" %>
+        </div>
+        <div class="community">
+          <%= f.label "内容", class:"community-label"%>
+          <%= f.text_area :content, class:"community-input text" %>
+        </div>
+        
+        <div class="community">
+          <%= f.label "画像", class:"community-label"%>
+          <%= f.file_field :image %>
+        </div>
+
+        <%= f.submit "投稿", class:"submit-btn" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="right-bar">
+    <div class="right-bar-box">
+    </div>
+    <div class="right-bar-box">
+    </div>
+  </div>
+  
+</div>
