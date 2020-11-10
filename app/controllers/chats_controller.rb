@@ -23,7 +23,7 @@ class ChatsController < ApplicationController
   end
 
   def set_chats
-    @chats = Chat.includes(:user)
+    @chats = @community.chats.includes(:user)
   end
 
   def chat_params
