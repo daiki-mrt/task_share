@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_013446) do
+ActiveRecord::Schema.define(version: 2020_11_10_084252) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -81,6 +81,18 @@ ActiveRecord::Schema.define(version: 2020_11_10_013446) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "community_id"
+    t.string "title", null: false
+    t.text "content"
+    t.boolean "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["community_id"], name: "index_questions_on_community_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "following_id"
     t.integer "follower_id"
@@ -145,6 +157,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_013446) do
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "questions", "communities"
+  add_foreign_key "questions", "users"
   add_foreign_key "tasks", "users"
   add_foreign_key "user_communities", "communities"
   add_foreign_key "user_communities", "users"
