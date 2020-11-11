@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # root to: 'users#index'
+  devise_scope :users do
+    get '/', to: 'users/sessions#new'
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
