@@ -24,7 +24,11 @@
       </div>
     </div>
     <div class="posts">
-      <%= link_to "質問する", new_community_question_path %>
+      <% if current_user.already_joined?(@community) %>
+        <%= link_to "質問する", new_community_question_path %>
+      <% else %>
+        質問投稿にはコミュニティ参加が必要です
+      <% end %>
       <% @questions.each do |question| %>
         <div class="post-card">
           <div class="post-title"><%= link_to question.title, community_question_path(@community, question) %></div>
