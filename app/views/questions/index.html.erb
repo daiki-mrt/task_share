@@ -35,9 +35,9 @@
           <div class="post-text"><%= question.content %></div>
           <div class="edit-area">
             <% if question.state %>
-              <span class="question-open">解決済み</span>
+              <span class="question-close">解決済み</span>
             <% else %>
-              <span class="question-close">受付中</span>
+              <span class="question-open">受付中</span>
             <% end %>
           </div>
           <div class="like-area">

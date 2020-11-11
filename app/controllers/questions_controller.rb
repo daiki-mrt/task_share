@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_community
   before_action :set_questions, only: [:index, :destroy]
   before_action :move_to_index, except: [:index, :show]
-  before_action :configure_author, only: [:edit, :update]
+  before_action :configure_author, only: [:edit, :update, :resolve]
   
   def index
   end
@@ -82,7 +82,7 @@ class QuestionsController < ApplicationController
   def configure_author
     set_question
     if current_user.id != @question.user.id
-      redirect_to community_questions_path(@community)
+      redirect_to community_question_path(@community, @question)
     end
   end
 end
