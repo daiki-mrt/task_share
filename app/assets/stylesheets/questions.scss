@@ -79,12 +79,33 @@
   width: 90%;
   margin: 15px auto 0;
   padding: 20px;
+
+  .answer-form-area {
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+
+    .answer-form-label {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .answer-form {
+      height: 100px;
+      width: 100%;
+      border: 1px solid lightgray;
+      margin-bottom: 7px;
+      outline: none;
+      padding: 10px;
+    }
+  }
   
   .answer-card {
   border: 1px solid lightgray;
   border-radius: 5px;
   height: 75%;
   padding: 10px;
+  margin-bottom: 15px;
 
     .answer-user {
       margin-bottom: 10px;

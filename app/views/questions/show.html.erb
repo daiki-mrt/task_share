@@ -52,14 +52,21 @@
       </div>
     </div>
     <div class="answer-area">
-      <div class="answer-card">
-        <div class="answer-user">
-          answer user
+      <% @answers.each do |answer| %>
+        <div class="answer-card">
+          <div class="answer-user">
+            <%= link_to answer.user.name, user_path(answer.user) %>
+          </div>
+          <div class="answer-comment">
+            <%= answer.text %>
+          </div>
         </div>
-        <div class="answer-comment">
-          anser comment
-        </div>
-      </div>
+      <% end %>
+      <%= form_with model: [@question, @answer], local: true, class:"answer-form-area" do |f| %>
+       <p class="answer-form-label">コメントする</p>
+        <%= f.text_area :text, class:"answer-form" %>
+        <%= f.submit "投稿" %>
+      <% end %>
     </div>
   </div>
   
