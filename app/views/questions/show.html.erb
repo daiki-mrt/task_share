@@ -41,7 +41,11 @@
         <div class="question-response-area">
           <%= link_to "私も知りたい！", "", class:"metoo-btn" %>
           <%= link_to "役に立った！", "", class:"helpful-btn" %>
-          <%= link_to "受付中", "", class:"question-open" %>
+          <% if @question.state %>
+            <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
+          <% else %>
+            <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open" %>
+          <% end %>
         </div>
       </div>
     </div>
