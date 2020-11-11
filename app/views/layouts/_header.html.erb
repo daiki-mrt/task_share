@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
     <%= link_to "ロゴ", user_path(current_user), class:"header-left" %>
   <% else %>
-    <%= link_to "ロゴ", users_path, class:"header-left" %>
+    <%= link_to "ロゴ", new_user_session_path, class:"header-left" %>
   <% end %>
 
   <div class="header-right">
