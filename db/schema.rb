@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_084252) do
+ActiveRecord::Schema.define(version: 2020_11_11_025323) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_084252) do
     t.bigint "community_id"
     t.string "title", null: false
     t.text "content"
-    t.boolean "state"
+    t.boolean "state", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["community_id"], name: "index_questions_on_community_id"
