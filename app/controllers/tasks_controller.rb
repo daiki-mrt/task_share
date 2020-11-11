@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   def done
     set_task
     @task.update(state: 1)
-    redirect_to user_path(current_user)
+    redirect_to request.referer
   end
 
   private
