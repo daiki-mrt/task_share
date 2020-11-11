@@ -28,6 +28,7 @@
         <%= link_to @question.user.name, user_path(@question.user), class:"question-user" %>
         <div class="question-title">
           <%= @question.title %>
+          <%= link_to "編集する", edit_community_question_path(@community, @question), class:"edit-btn" %>          
         </div>
         <div class="question-content">
           <%= @question.content %>

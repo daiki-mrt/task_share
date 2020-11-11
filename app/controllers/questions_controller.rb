@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_community
   before_action :set_questions
   before_action :move_to_index, only: [:new, :create]
+  before_action :configure_author, only: [:edit, :update]
   
   def index
     set_community
@@ -24,6 +25,26 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(question_params)
+      redirect_to community_question_path(@community, @question)
+    elsif
+      render :edit
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to community_questions_path(@community)
+  end
+
+
   private
   def set_community
     @community = Community.find(params[:community_id])
@@ -40,6 +61,13 @@ class QuestionsController < ApplicationController
   def move_to_index
     set_community
     if !current_user.already_joined?(@community)
+      redirect_to community_questions_path(@community)
+    end
+  end
+
+  def configure_author
+    @question = Question.find(params[:id])
+    if current_user.id != @question.user.id
       redirect_to community_questions_path(@community)
     end
   end

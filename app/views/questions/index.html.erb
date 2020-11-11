@@ -35,8 +35,6 @@
           <div class="post-text"><%= question.content %></div>
           <% if user_signed_in? && (question.user.id == current_user.id) %>
             <div class="edit-area">
-              <%= link_to "編集", "", class:"edit-btn" %>
-              <%= link_to "削除", "", method: :delete, class:"delete-btn" %>
               <% if !question.state %>
                 <%= link_to "完了にする", "", method: :patch, class:"complete-btn" %>
               <% else %>
