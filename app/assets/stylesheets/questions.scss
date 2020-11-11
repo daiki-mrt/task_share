@@ -1,85 +1,96 @@
  
- .question-area {
-   border: 1px solid lightgray;
-   width: 90%;
-   margin: 0 auto;
-   padding: 20px;
+.question-area {
+  border: 1px solid lightgray;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
 
-   .question-card {
-     border: 1px solid lightgray;
-     border-radius: 5px;
-     height: 75%;
-     padding: 15px;
-
-     .question-user {
-       display: inline-block;
-       margin-bottom: 10px;
-       text-decoration: none;
-     }
-
-     .question-title {
-       border-bottom: 1px solid lightgray;
-       font-size: 20px;
-       padding-bottom: 10px;
-       margin-bottom: 10px;
-
-       .edit-btn {
-         text-decoration: none;
-         font-size: 15px;
-         color: gray;
-       }
-     }
-
-     .question-content {
-       border-bottom: 1px solid lightgray;
-       padding-bottom: 5px;
-       margin-bottom: 5px;
-     }
-
-     .question-image {
-       margin: 20px 0;
-     }
-
-     .question-response-area {
-       margin-top: 10px;
-       display: flex;
-       justify-content: flex-end;
-       align-items: center;
-
-       & a {
-         text-decoration: none;
-        }
-        .metoo-btn, .helpful-btn {
-          margin-left: 5px;
-       }
-       .question-open {
-         padding: 15px;
-         background-color: lightcoral;
-         color: #eeeeee;
-         border-radius: 5px;
-         margin-left: 8px;
-       }
-     }
-   }
- }
-
- .answer-area {
-   border: 1px solid lightgray;
-   width: 90%;
-   margin: 15px auto 0;
-   padding: 20px;
-   
-   .answer-card {
+  .question-card {
     border: 1px solid lightgray;
     border-radius: 5px;
     height: 75%;
-    padding: 10px;
+    padding: 15px;
+
+    .question-user {
+      display: inline-block;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+
+    .question-title {
+      border-bottom: 1px solid lightgray;
+      font-size: 20px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+
+      .edit-btn {
+        text-decoration: none;
+        font-size: 15px;
+        color: gray;
+      }
+    }
+
+    .question-content {
+      border-bottom: 1px solid lightgray;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+    }
+
+    .question-image {
+      margin: 20px 0;
+    }
+
+    .question-response-area {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      & a {
+        text-decoration: none;
+      }
+      .metoo-btn, .helpful-btn {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+
+/* 受付 解決済み ボタン */
+.question-open {
+  padding: 15px;
+  color: #eeeeee;
+  border-radius: 5px;
+  margin-left: 8px;
+  background-color: lightcoral;
+}
+.question-close {
+ padding: 15px;
+ color: #eeeeee;
+ border-radius: 5px;
+ margin-left: 8px;
+ background-color: lightskyblue;
+}
+
+
+.answer-area {
+  border: 1px solid lightgray;
+  width: 90%;
+  margin: 15px auto 0;
+  padding: 20px;
+  
+  .answer-card {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 75%;
+  padding: 10px;
 
     .answer-user {
       margin-bottom: 10px;
     }
   }
- }
+}
 
 
 /* 編集画面 */
