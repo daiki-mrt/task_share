@@ -43,17 +43,6 @@ class QuestionsController < ApplicationController
     redirect_to community_questions_path(@community)
   end
 
-  # 受付→解決済みに変更する
-  def resolve
-    set_question
-    if @question.state
-      @question.update(state: 0)
-      redirect_to community_question_path(@community)
-    else
-      @question.update(state: 1)
-      redirect_to community_question_path(@community)
-    end
-  end
 
   private
   def set_community

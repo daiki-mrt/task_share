@@ -33,14 +33,21 @@
         <div class="post-card">
           <div class="post-title"><%= link_to question.title, community_question_path(@community, question) %></div>
           <div class="post-text"><%= question.content %></div>
-          <div class="edit-area">
-            <% if question.state %>
-              <span class="question-open">解決済み</span>
-            <% else %>
-              <span class="question-close">受付中</span>
-            <% end %>
-          </div>
+          <% if user_signed_in? && (question.user.id == current_user.id) %>
+            <div class="edit-area">
+              <% if !question.state %>
+                <%= link_to "完了にする", "", method: :patch, class:"complete-btn" %>
+              <% else %>
+                <span class="completed-btn">完了</span>
+              <% end %>
+            </div>
+          <% end %>
           <div class="like-area">
+            <% if current_user.already_liked?(question) %>
+              <div><%= link_to "いいね解除", "", method: :delete, class:"like-btn" %></div>
+            <% else%>
+              <div><%= link_to "いいね", "", method: :post, class:"like-btn" %></div>
+            <% end %>
           </div>
         </div>
       <% end %>

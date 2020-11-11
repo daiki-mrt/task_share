@@ -28,12 +28,8 @@ Rails.application.routes.draw do
 
   resources :communities do
     resources :chats, only: [:index, :create, :destroy]
-    resources :questions do
-      patch 'resolve', on: :member
-    end
+    resources :questions
   end
-
   post 'communities/:id', to: 'communities#join'
   delete 'communities/:id/exit', to: 'communities#exit', as: 'exit_community'
-
 end
