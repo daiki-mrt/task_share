@@ -1,11 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :set_community
-  before_action :set_questions
-  before_action :move_to_index, only: [:new, :create]
+  before_action :set_questions, only: [:index, :destroy]
+  before_action :move_to_index, except: [:index, :show]
   before_action :configure_author, only: [:edit, :update]
   
   def index
-    set_community
   end
 
   def new
@@ -22,15 +21,15 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
+    set_question
   end
 
   def edit
-    @question = Question.find(params[:id])
+    set_question
   end
 
   def update
-    @question = Question.find(params[:id])
+    set_question
     if @question.update(question_params)
       redirect_to community_question_path(@community, @question)
     elsif
@@ -39,7 +38,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = Question.find(params[:id])
+    set_question
     @question.destroy
     redirect_to community_questions_path(@community)
   end
@@ -50,6 +49,10 @@ class QuestionsController < ApplicationController
     @community = Community.find(params[:community_id])
   end
 
+  def set_question
+    @question = Question.find(params[:id])
+  end
+  
   def set_questions
     @questions = @community.questions.includes(:user)
   end
@@ -66,7 +69,7 @@ class QuestionsController < ApplicationController
   end
 
   def configure_author
-    @question = Question.find(params[:id])
+    set_question
     if current_user.id != @question.user.id
       redirect_to community_questions_path(@community)
     end
