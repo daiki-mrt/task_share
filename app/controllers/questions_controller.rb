@@ -1,10 +1,11 @@
 class QuestionsController < ApplicationController
   before_action :set_community
-  before_action :set_questions, only: [:index, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :resolve]
   before_action :move_to_index, except: [:index, :show]
   before_action :configure_author, only: [:edit, :update, :resolve]
   
   def index
+    set_questions
   end
 
   def new
@@ -21,15 +22,12 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    set_question
   end
 
   def edit
-    set_question
   end
 
   def update
-    set_question
     if @question.update(question_params)
       redirect_to community_question_path(@community, @question)
     elsif
@@ -38,14 +36,12 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    set_question
     @question.destroy
     redirect_to community_questions_path(@community)
   end
 
   # 受付→解決済みに変更する
   def resolve
-    set_question
     if @question.state
       @question.update(state: 0)
       redirect_to community_question_path(@community)
