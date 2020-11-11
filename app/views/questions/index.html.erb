@@ -31,7 +31,9 @@
       <% end %>
       <% @questions.each do |question| %>
         <div class="post-card">
-          <div class="post-title"><%= link_to question.title, community_question_path(@community, question) %></div>
+          <div class="post-title"><%= link_to question.title, community_question_path(@community, question) %>
+          <%= l question.created_at, format: :short %></div>
+          
           <div class="post-text"><%= question.content %></div>
           <div class="edit-area">
             <% if question.state %>

@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   before_action :configure_author, only: [:edit, :update, :resolve]
   
   def index
-    set_questions
+    @questions = @community.questions.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -60,10 +60,6 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
   
-  def set_questions
-    @questions = @community.questions.includes(:user)
-  end
-
   def question_params
     params.require(:question).permit(:title, :content, :image).merge(user_id: current_user.id, community_id: params[:community_id])
   end
