@@ -1,0 +1,59 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+    <div class="menu-bar-box">
+      <ul class="menu-items">
+        <% if current_user.id == @community.user.id %>
+          <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+        <% elsif current_user.already_joined?(@community) %>
+          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+        <% else %>
+          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+    
+  <div class="main">
+    <div class="main-heading">
+      <%= @community.name %>
+      <div class="main-menu">
+        <%= link_to "task", community_path(@community) %>
+        <%= link_to "チャット", community_chats_path(@community) %>
+        <%= link_to "質問", community_questions_path(@community) %>
+      </div>
+    </div>
+    <div class="posts">
+      <% if current_user.already_joined?(@community) %>
+        <%= link_to "質問する", new_community_question_path %>
+      <% else %>
+        質問投稿にはコミュニティ参加が必要です
+      <% end %>
+      <% @questions.each do |question| %>
+        <div class="post-card">
+          <div class="post-title"><%= link_to question.title, community_question_path(@community, question) %>
+          <%= l question.created_at, format: :short %></div>
+          
+          <div class="post-text"><%= question.content %></div>
+          <div class="edit-area">
+            <% if question.state %>
+              <span class="question-close">解決済み</span>
+            <% else %>
+              <span class="question-open">受付中</span>
+            <% end %>
+          </div>
+          <div class="like-area">
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="right-bar">
+    <div class="right-bar-box">
+    </div>
+    <div class="right-bar-box">
+    </div>
+  </div>
+  
+</div>

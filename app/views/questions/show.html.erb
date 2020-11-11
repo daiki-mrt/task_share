@@ -1,0 +1,80 @@
+<div class="wrapper">
+
+  <div class="menu-bar">
+    <div class="menu-bar-box">
+      <div class="menu-items">
+        <% if current_user.id == @community.user.id %>
+          <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+        <% elsif current_user.already_joined?(@community) %>
+          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+        <% else %>
+          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+    
+  <div class="main">
+    <div class="main-heading">
+      <%= @community.name %>
+      <div class="main-menu">
+        <%= link_to "task", community_path(@community) %>
+        <%= link_to "チャット", community_chats_path(@community) %>
+        <%= link_to "質問", community_questions_path(@community) %>
+      </div>
+    </div>
+    <div class="question-area">
+      <div class="question-card">
+        <%= link_to @question.user.name, user_path(@question.user), class:"question-user" %>
+        <div class="question-title">
+          <%= @question.title %>
+          <% if @question.user.id == current_user.id %>
+            <%= link_to "編集する", edit_community_question_path(@community, @question), class:"edit-btn" %>
+          <% end %>
+        </div>
+        <div class="question-content">
+          <%= @question.content %>
+        </div>
+        <% if @question.image.present? %>
+          <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
+        <% end %>
+        <div class="question-response-area">
+          <%= link_to "私も知りたい！", "", class:"metoo-btn" %>
+          <%= link_to "役に立った！", "", class:"helpful-btn" %>
+          
+          <% if @question.state %>
+            <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
+          <% else %>
+            <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open" %>
+          <% end %>
+          
+        </div>
+      </div>
+    </div>
+    <div class="answer-area">
+      <% @answers.each do |answer| %>
+        <div class="answer-card">
+          <div class="answer-user">
+            <%= link_to answer.user.name, user_path(answer.user) %>
+          </div>
+          <div class="answer-comment">
+            <%= answer.text %>
+          </div>
+        </div>
+      <% end %>
+      <%= form_with model: [@question, @answer], local: true, class:"answer-form-area" do |f| %>
+       <p class="answer-form-label">コメントする</p>
+        <%= f.text_area :text, class:"answer-form" %>
+        <%= f.submit "投稿" %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="right-bar">
+    <div class="right-bar-box">
+    </div>
+    <div class="right-bar-box">
+    </div>
+  </div>
+  
+</div>
