@@ -20,6 +20,8 @@ class User < ApplicationRecord
   has_many :chats
   has_many :questions
   has_many :answers
+  has_many :me_toos
+  has_many :goods
 
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
@@ -42,4 +44,14 @@ class User < ApplicationRecord
   def already_joined?(community)
     self.user_communities.where(community_id: community.id).exists?
   end
+
+  # questionに「知りたい！」済みかどうかの確認
+  def already_me_too?(question)
+    self.me_toos.where(question_id: question.id).exists?
+  end
+
+  # questionに「役に立った！」済みかどうかの確認
+  def already_good?(question)
+    self.goods.where(question_id: question.id).exists?
+  end  
 end

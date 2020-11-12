@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_scope :users do
+  devise_scope :user do
     get '/', to: 'users/sessions#new'
   end
   devise_for :users, controllers: {
@@ -40,5 +40,7 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers, only: [:create, :destroy]
+    resources :me_toos, only: [:create, :destroy]
+    resources :goods, only: [:create, :destroy]
   end
 end

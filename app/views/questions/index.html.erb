@@ -36,6 +36,11 @@
           
           <div class="post-text"><%= question.content %></div>
           <div class="edit-area">
+
+            <div class="response-count">
+              知りたい！<%= question.me_toos.count %>
+              役に立った！<%= question.goods.count %>
+            </div>
             <% if question.state %>
               <span class="question-close">解決済み</span>
             <% else %>
