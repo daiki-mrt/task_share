@@ -1,0 +1,2 @@
+class MeToo < ApplicationRecord
+end

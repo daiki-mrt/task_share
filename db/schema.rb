@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_074413) do
+ActiveRecord::Schema.define(version: 2020_11_12_012910) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 2020_11_11_074413) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["task_id"], name: "index_likes_on_task_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "me_toos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "question_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_me_toos_on_question_id"
+    t.index ["user_id", "question_id"], name: "index_me_toos_on_user_id_and_question_id", unique: true
+    t.index ["user_id"], name: "index_me_toos_on_user_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -166,6 +176,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_074413) do
   add_foreign_key "communities", "users"
   add_foreign_key "likes", "tasks"
   add_foreign_key "likes", "users"
+  add_foreign_key "me_toos", "questions"
+  add_foreign_key "me_toos", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "profiles", "users"
