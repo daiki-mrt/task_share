@@ -49,4 +49,9 @@ class User < ApplicationRecord
   def already_me_too?(question)
     self.me_toos.where(question_id: question.id).exists?
   end
+
+  # questionに「役に立った！」済みかどうかの確認
+  def already_good?(question)
+    self.goods.where(question_id: question.id).exists?
+  end  
 end

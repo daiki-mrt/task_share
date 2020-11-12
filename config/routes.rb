@@ -41,5 +41,6 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers, only: [:create, :destroy]
     resources :me_toos, only: [:create, :destroy]
+    resources :goods, only: [:create, :destroy]
   end
 end

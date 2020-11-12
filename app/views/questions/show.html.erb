@@ -25,6 +25,7 @@
     </div>
     <div class="question-area">
       <div class="question-card">
+      
         <%= link_to @question.user.name, user_path(@question.user), class:"question-user" %>
         <div class="question-title">
           <%= @question.title %>
@@ -38,22 +39,29 @@
         <% if @question.image.present? %>
           <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
         <% end %>
+
         <div class="question-response-area">
           <% if current_user.already_me_too?(@question) %>
-            <%= link_to "知りたい！解除", question_me_too_path(@question), method: :delete, class:"metoo-btn" %>            
+            <%= link_to "知りたい！解除", question_me_too_path(@question), method: :delete, class:"metoo-btn" %>
           <% else %>
             <%= link_to "知りたい！", question_me_toos_path(@question), method: :post, class:"metoo-btn" %>
           <% end %>
           <div class="metoo-count"><%= @question.me_toos.count %></div>
-          <%= link_to "役に立った！", "", method: :post, class:"helpful-btn" %>
           
+          <% if current_user.already_good?(@question) %>
+            <%= link_to "役に立った！解除", question_good_path(@question), method: :delete, class:"good-btn" %>
+          <% else %>
+            <%= link_to "役に立った！", question_goods_path(@question), method: :post, class:"good-btn" %>
+          <% end %>
+          <div class="good-count"><%= @question.goods.count %></div>
+
           <% if @question.state %>
             <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
           <% else %>
             <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open" %>
           <% end %>
-          
         </div>
+
       </div>
     </div>
     <div class="answer-area">
