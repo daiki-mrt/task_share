@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :questions
   has_many :answers
   has_many :me_toos
+  has_many :goods
 
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy

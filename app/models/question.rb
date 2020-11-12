@@ -4,6 +4,7 @@ class Question < ApplicationRecord
   has_one_attached :image
   has_many :answers, dependent: :destroy
   has_many :me_toos
+  has_many :goods
 
   validates :title, :content, presence: true
 end
