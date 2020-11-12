@@ -43,4 +43,9 @@ class User < ApplicationRecord
   def already_joined?(community)
     self.user_communities.where(community_id: community.id).exists?
   end
+
+  # questionに「知りたい！」済みかどうかの確認
+  def already_me_too?(question)
+    self.me_toos.where(question_id: question.id).exists?
+  end
 end

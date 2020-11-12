@@ -39,8 +39,13 @@
           <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
         <% end %>
         <div class="question-response-area">
-          <%= link_to "私も知りたい！", "", class:"metoo-btn" %>
-          <%= link_to "役に立った！", "", class:"helpful-btn" %>
+          <% if current_user.already_me_too?(@question) %>
+            <%= link_to "知りたい！解除", question_me_too_path(@question), method: :delete, class:"metoo-btn" %>            
+          <% else %>
+            <%= link_to "知りたい！", question_me_toos_path(@question), method: :post, class:"metoo-btn" %>
+          <% end %>
+          <div class="metoo-count"><%= @question.me_toos.count %></div>
+          <%= link_to "役に立った！", "", method: :post, class:"helpful-btn" %>
           
           <% if @question.state %>
             <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
