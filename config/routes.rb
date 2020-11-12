@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_scope :users do
+  devise_scope :user do
     get '/', to: 'users/sessions#new'
   end
   devise_for :users, controllers: {
