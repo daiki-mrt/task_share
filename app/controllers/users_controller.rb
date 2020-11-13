@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :follows, :followers]
 
   def index
-    @users = User.includes(:profile)
+    @search_params = user_search_params
+    @users = User.search(@search_params).includes(:profile)
   end
 
   def show
@@ -43,4 +44,7 @@ class UsersController < ApplicationController
     @profile = @user.profile
   end
 
+  def user_search_params
+    params.fetch(:search, {}).permit(:occupation_id, :text)
+  end
 end
