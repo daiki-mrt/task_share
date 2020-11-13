@@ -4,4 +4,9 @@ class Profile < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+
+  # User検索用スコープ
+  scope :occupation_is, -> (occupation_id) { where(occupation_id: occupation_id) if occupation_id.present? }
+  scope :text_like, -> (text) { where("text LIKE ?", "%#{text}%") if text.present? }  
+  
 end
