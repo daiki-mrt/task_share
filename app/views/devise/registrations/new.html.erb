@@ -32,7 +32,7 @@
         <%= f.fields_for :profile do |f| %>
           <div class="registration-item">
             <%= f.label "職種", class:"label" %>
-            <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {}, {class:"form-box"}) %>
+            <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {include_blank: "選択して下さい"}, {class:"form-box"}) %>
           </div>
 
           <div class="registration-item">
