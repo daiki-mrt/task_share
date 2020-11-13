@@ -3,7 +3,8 @@ class CommunitiesController < ApplicationController
   before_action :move_to_index, only: [:edit, :update]
   
   def index
-    @communities = Community.all
+    @search_params = community_search_params
+    @communities = Community.search(@search_params)
   end
 
   def new
@@ -68,5 +69,9 @@ class CommunitiesController < ApplicationController
     if @community.user.id != current_user.id
       redirect_to communities_path
     end
+  end
+
+  def community_search_params
+    params.fetch(:search, {}).permit(:text, :category_id)
   end
 end
