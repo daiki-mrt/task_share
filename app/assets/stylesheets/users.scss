@@ -313,3 +313,23 @@
   border-radius: 5px;
   @include waku();
 }
+
+/* 検索ボックス */
+.search-field {
+  margin: 25px 0;
+
+  .search-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .search-text {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+  }
+  .search-occupation {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+  }
+}
