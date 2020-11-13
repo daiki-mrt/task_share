@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.update(account_update_params)
       @user.profile.update(account_update_params[:profile_attributes])
       sign_in(:user, @user)
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       render action: :edit
     end    
