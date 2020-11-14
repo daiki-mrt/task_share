@@ -53,5 +53,18 @@ class User < ApplicationRecord
   # questionに「役に立った！」済みかどうかの確認
   def already_good?(question)
     self.goods.where(question_id: question.id).exists?
-  end  
+  end
+
+  # 検索
+  scope :search, -> (search_params) do
+    # search_paramsが無かったら実行しない
+    return if search_params.blank?
+
+    # 検索条件に合うprofileを取得
+    profiles = Profile.occupation_is(search_params[:occupation_id]).text_like(search_params[:text])
+
+    # 取得したprofileのuser_idからuserを検索
+    self.where(id: profiles.pluck(:user_id))
+  end
+  
 end
