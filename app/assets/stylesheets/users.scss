@@ -44,6 +44,16 @@
       margin: 0 auto;
       color: $main-text-color;
     }
+    .relationships {
+      margin-bottom: 18px;
+      text-align: center;
+      & a {
+        color: $main-text-color;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
     .relationships-user {
       margin-bottom: 18px;
     }
@@ -51,7 +61,7 @@
       margin-bottom: 18px;
     }
     .direct-message {
-
+      margin-bottom: 18px;
     }
     .communities {
       margin-bottom: 18px;
