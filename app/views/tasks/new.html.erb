@@ -1,20 +1,4 @@
-<div class="menu-bar">
-  <div class="menu-bar-box">
-    <div>
-      <% if @profile.image.present? %>
-        <%= image_tag @profile.image.variant(resize: "150x150"), class:"profile-image" %>
-      <% end %>
-    </div>
-    <ul class="menu-items">
-      <li>ユーザー名: <%= @user.name %> <%= link_to " 編集", edit_user_registration_path(@user) %> </li>
-      <li>フォロー</li>
-      <li>フォロワー</li>
-      <li>参加コミュニティ</li>
-      <li>ユーザーを探す</li>
-      <li>コミュニティを探す</li>
-    </ul>
-  </div>
-</div>
+<%= render partial: "users/sidebar", locals: { user: @user, profile: @profile, following_users: @following_users, follower_users: @follower_users, room: @room } %>
   
 <div class="main">
   <div class="task-post-form">
