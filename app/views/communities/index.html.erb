@@ -10,7 +10,7 @@
             <%= f.text_field :text, value: @search_params[:text], class:"search-text" %>
           </div>
           <div class="search-field">
-            <%= f.label :catergory_id, "職種", class:"search-label" %>
+            <%= f.label :catergory_id, "カテゴリー", class:"search-label" %>
             <%= f.collection_select(:category_id, Category.all, :id, :name, {selected: @search_params[:category_id], include_blank: "選択しない"}, {class:"search-category"}) %>
           </div>
           <div class="search-btn">
