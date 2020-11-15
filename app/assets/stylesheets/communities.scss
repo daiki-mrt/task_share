@@ -1,19 +1,17 @@
 @mixin waku() {
   border: 1px solid lightgrey;
 }
+@import "style";
 
 /* 一覧ページ */
 .community-create-btn {
-  text-decoration: none;
-  display: block;
   width: 180px;
   margin: 0 auto;
-  padding: 12px;
+  display: block;
   text-align: center;
-  background-color: lightseagreen;
-  color: #eeeeee;
-  border-radius: 5px;
+  color: $main-text-color;
   margin-bottom: 10px;
+  text-decoration: underline;
 }
 
 /* コミュニティ作成フォーム */
