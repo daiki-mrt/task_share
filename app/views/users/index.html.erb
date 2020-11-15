@@ -25,14 +25,17 @@
   <div class="posts">
     <% @users.each do |user| %>
         <div class="user-card">
-          <div class="user-name">
-            <%= link_to user.name, user_path(user) %>
+          <div class="user-card-head">
+            <% if user.profile.image.present? %>
+              <%= link_to image_tag(user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(user) %>
+            <% end %>
+            <%= link_to user.name, user_path(user), class:"user-name" %>
           </div>
           <div class="user-text">
-            <%= user.profile.text %>
+            自己紹介：<%= user.profile.text %>
           </div>
           <div class="user-occupation">
-            <%= user.profile.occupation_name(user) %>
+            職種：<%= user.profile.occupation_name(user) %>
           </div>
         </div>
     <% end %>

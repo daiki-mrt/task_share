@@ -256,9 +256,36 @@
 .user-card {
   width: 100%;
   margin: 30px auto;
-  padding: 30px 10px;
+  padding: 30px 20px;
   border-radius: 5px;
-  @include waku();
+  background-color: $card-back-color;
+
+  .user-card-head {
+    margin-bottom: 8px;
+    border-bottom: 1px solid $base-color;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .user-image {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+  }
+  .user-name {
+    color: $main-text-color;
+      &:hover {
+        text-decoration: underline;
+      }
+  }
+  .user-text {
+    color: $sub-text-color;
+    margin-bottom: 5px;
+  }
+  .user-occupation {
+    color: $sub-text-color;
+  }
 }
 
 
