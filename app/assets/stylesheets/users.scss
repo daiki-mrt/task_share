@@ -75,6 +75,9 @@
     .edit {
       color: lightgray;
       font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -122,6 +125,9 @@
 
   .post-user {
     margin-bottom: 15px;
+    & a {
+      color: $main-text-color;
+    }
   }
   .post-title {
     width: 95%;
@@ -129,6 +135,7 @@
     font-size: 18px;
     padding-bottom: 15px;
     border-bottom: 1px solid $base-color;
+    font-weight: bolder;
   }
   .post-text {
     width: 95%;
