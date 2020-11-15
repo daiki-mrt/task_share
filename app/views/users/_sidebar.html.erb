@@ -36,7 +36,9 @@
       <div class="communities">
         参加コミュニティ
       </div>
-      <%= link_to " 編集する", edit_user_registration_path(@user), class:"edit" %> 
+      <%if current_user == @user %>
+        <%= link_to " 編集する", edit_user_registration_path(@user), class:"edit" %>
+      <% end %>
     </div>
   </div>
 </div>
