@@ -16,8 +16,8 @@
           <%= f.submit "検索" %>
         </div>
       <% end %>
-      <div class="search-cancel-btn">
-        <%= link_to "検索解除", users_path %>
+      <div class="search-cancel">
+        <%= link_to "検索解除", users_path, class:"search-cancel-btn" %>
       </div> 
     </div>
   </div>
@@ -26,19 +26,24 @@
 <div class="main">
   <div class="main-heading">
   </div>
-    <ul class="posts">
+    <div class="posts">
       <% @communities.each do |community| %>
-        <div class="post-card">
-          <div class="post-title"><%= link_to community.name, community_path(community) %></div>
-          <div class="post-text"><%= community.text %></div>
-          <% if community.user.id == current_user.id %>
-            <div class="edit-area">
-              <%= link_to "編集", edit_community_path(community), class:"edit-btn" %>
-            </div>
-          <% end %>
+        <div class="community-card">
+          <div class="community-card-head">
+            <%= link_to community.name, community_path(community), class:"community-title" %>
+            <% if community.user.id == current_user.id %>
+              <%= link_to "編集する", edit_community_path(community), class:"edit-btn" %>
+            <% end %>
+          </div>
+          <div class="community-text">
+            詳細：<%= community.text %>
+          </div>
+          <div class="community-category">
+            カテゴリー：<%= community.text %>
+          </div>
         </div>
       <% end %>
-    </ul>
+    </div>
 </div>
 
 <div class="right-bar">

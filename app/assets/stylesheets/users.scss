@@ -318,9 +318,15 @@
 .search-btn {
   text-align: center;
 }
-.search-cancel-btn {
+.search-cancel {
   margin-top: 20px;
   text-align: center;
+}
+.search-cancel-btn {
+  color: $sub-text-color;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 
