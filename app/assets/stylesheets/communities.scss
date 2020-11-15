@@ -3,6 +3,60 @@
 }
 @import "style";
 
+/* 詳細ページメニュー */
+.menu-bar-box {
+  .community-name, .community-text {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin: 10px 0 15px;
+  }
+  .community-edit-btn {
+    color: lightgray;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .community-name {
+    color: $main-text-color;
+    font-size: 20px;
+  }
+  .community-text {
+    color: $sub-text-color;
+  }
+  .community-members {
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+  .community-completed-tasks {
+    margin-bottom: 18px;
+  }
+}
+
+.community-join-btn, .community-exit-btn {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 15px;  
+}
+.community-join-btn {
+  background-color: $highlight;
+  color: $with-highlight;
+}
+
+.community-exit-btn {
+  background-color: lightgray;
+  color: $with-highlight;
+}
+
+
 /* 一覧ページ */
 .community-create-btn {
   width: 180px;
@@ -119,44 +173,4 @@
     font-size: 20px;
     border-radius: 100px;
   }
-}
-
-/* コミュニティ詳細ページ */
-.community-edit-btn {
-  text-decoration: none;
-  display: block;
-  width: 180px;
-  margin: 0 auto;
-  padding: 12px;
-  text-align: center;
-  background-color: lightgray;
-  color: gray;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.community-join-btn {
-  text-decoration: none;
-  display: block;
-  width: 180px;
-  margin: 0 auto;
-  padding: 12px;
-  text-align: center;
-  background-color: lightseagreen;
-  color: #eeeeee;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.community-exit-btn {
-  text-decoration: none;
-  display: block;
-  width: 180px;
-  margin: 0 auto;
-  padding: 12px;
-  text-align: center;
-  background-color: lightsalmon;
-  color: #eeeeee;
-  border-radius: 5px;
-  margin-bottom: 10px;
 }

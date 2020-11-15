@@ -19,4 +19,10 @@ class Community < ApplicationRecord
   end
   scope :category_is, -> (category_id) { where(category_id: category_id) if category_id.present? }
   scope :text_like, -> (text) { where("text LIKE ?", "%#{text}%") if text.present? }
+
+  def joined_users
+    user_ids = self.user_communities.pluck(:user_id)
+    users = User.where(id: user_ids)
+  end
+
 end
