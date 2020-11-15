@@ -18,8 +18,8 @@
         <% end %>
       </div>
       <div class="relationships-user">
-        フォロー <%= link_to "#{@following_users.count}", follows_user_path(@user) %>
-        フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user) %>
+        フォロー <%= link_to "#{@following_users.count}", follows_user_path(@user), class:"follow-count" %>
+        フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user), class:"follower-count" %>
       </div>
       <div class="completed-task">
         タスク数 <%= @user.tasks.count %>

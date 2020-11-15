@@ -56,6 +56,12 @@
     }
     .relationships-user {
       margin-bottom: 18px;
+      .follow-count, .follower-count {
+        color: $main-text-color;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
     .completed-task {
       margin-bottom: 18px;
