@@ -1,230 +1,223 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "style";
 @mixin waku() {
   border: 1px solid lightgrey;
 }
 
-.wrapper {
-  width: 95%;
+
+.menu-bar {
+  height: 100%;
+  flex-basis: 25%;
   min-height: 100vh;
-  margin: 0 auto;
-  display: flex;
+  padding: 20px;
 
-  .menu-bar {
-    height: 100%;
-    flex-basis: 25%;
-    min-height: 100vh;
-    padding: 20px;
+  .menu-bar-box {
+    padding: 10px 20px;
+    margin: 0 auto 8px;
+    background-color: $card-back-color;
+    width: 95%;
 
-    .menu-bar-box {
-      padding: 15px;
-      @include waku();
-
-      .profile-image {
-        display: block;
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
-        margin: 10px auto 20px;
-        @include waku();
-      }
-      
-      .menu-items {
-        @include waku();
-        padding: 10px;
-        width: 80%;
-        margin: 0 auto;
-
-        & li {
-          margin: 20px 0;
-        }
-      }
-    }
-
-  }
-
-  .main {
-    // background-color: lightyellow;
-    height: 100%;
-    flex-basis: 55%;
-    min-height: 100vh;
-    padding: 30px 20px 20px;
-
-    /* マイページ */
-    .main-heading {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      
-      .task-post-btn {
-        text-decoration: none;
-        background-color: lightseagreen;
-        color: #eeeeee;
-        font-size: 20px;
-        padding: 15px;        
-        width: 200px;
-        margin: 0 auto;
-        border-radius: 10px;
-      }
-    }
-  
-    /* タスク投稿フォーム */
-    .task-post-form {
-      width: 80%;
-      margin: 0 auto;
-      padding: 20px 20px 50px;
-      @include waku();
-      border-radius: 5px;
-
-      .task {
-        margin-top: 25px;
-        display: flex;
-        .field_with_errors {
-          display: contents;
-        }
-        
-        .task-label {
-          display: block;
-          min-width: 70px;
-        }
-        .task-input {
-          width: 80%;
-          padding: 10px 12px 8px;
-          outline: none;
-          font-size: 15px;
-          border: 1px solid lightgray;
-
-          &.text {
-            height: 100px;
-            color: gray;
-          }
-        }
-      }
-
-      .submit-btn {
-        display: block;
-        width: 100px;
-        padding: 5px 0;
-        margin: 30px auto 0;
-        background-color: lightseagreen;
-        color: #eeeeee;
-        border: none;
-        font-size: 20px;
-        border-radius: 100px;
-      }
-    }
-
-    /* タスク */
-    .posts {
-      width: 95%;
-      margin: 15px auto 0;
-      padding: 10px;
-      // border: 1px solid grey;
-      
-      .post-card {
-        width: 100%;
-        margin: 20px auto;
-        padding: 15px;
-        border-radius: 5px;
-        @include waku();
-
-        .post-user {
-          margin-bottom: 15px;
-          .post-user-name {
-            text-decoration: none;
-          }
-        }
-        .post-title {
-          width: 95%;
-          margin: 0 auto;
-          font-size: 18px;
-          padding-bottom: 15px;
-          border-bottom: 1px dotted lightgray;
-        }
-        .post-text {
-          width: 95%;
-          margin: 10px auto 0;
-          padding-bottom: 10px;
-          word-break: break-all;
-          border-bottom: 1px dotted lightgray;
-          color: gray;
-        }
-
-        .edit-area {
-          display: flex;
-          justify-content: flex-end;
-          align-items: flex-end;
-
-          .complete-btn {
-            text-decoration: none;
-            background-color: lightseagreen;
-            color: #eeeeee;
-            border: none;
-            padding: 7px;
-            font-size: 20px;
-            border-radius: 5px;
-            width: 120px;
-            margin-top: 15px;
-            margin-left: 15px;
-            text-align: center;
-          }
-          .edit-btn, .delete-btn {
-            color: gray;
-            font-size: 14px;
-            margin: 0 4px;
-          }
-
-          /* 完了後(complete-btnと同じサイズ) */
-          .completed-btn {
-            text-decoration: none;
-            background-color: lightsteelblue;
-            color: #eeeeee;
-            border: none;
-            padding: 7px;
-            font-size: 20px;
-            border-radius: 5px;
-            width: 120px;
-            margin-top: 15px;
-            margin-left: 15px;
-            text-align: center;
-          }
-        }
-        
-        .like-area {
-          display: flex;
-          justify-content: flex-end;
-          margin-top: 10px;
-          .like-btn {
-            text-decoration: none;
-          }
-          .like-count {
-            margin-left: 7px;
-          }
-        }
-      }
-    }
-  }
-
-  .right-bar {
-    // background-color: lightgrey;
-    height: 100%;
-    flex-basis: 20%;
-    min-height: 100vh;
-    padding: 20px;
-
-    .right-bar-box {
-      @include waku();
+    .profile-image {
+      display: block;
       height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      margin: 10px auto;
+    }
+    .user-name, .user-text {
       width: 90%;
-      margin: 0 auto 15px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .user-name {
+      color: $main-text-color;
+    }
+    .user-text {
+      color: $sub-text-color;
+      margin: 10px 0 15px;
+      width: 100%;
     }
 
+    .menu-items {
+      border-top: 1px solid $base-color;
+      padding: 15px;
+      width: 90%;
+      margin: 0 auto;
+      color: $main-text-color;
+    }
+    .relationships-user {
+      margin-bottom: 18px;
+    }
+    .completed-task {
+      margin-bottom: 18px;
+    }
+    .direct-message {
+
+    }
+    .communities {
+      margin-bottom: 18px;
+    }
+    .edit {
+      color: lightgray;
+      font-size: 14px;
+    }
+  }
+}
+
+/* 中央エリア */
+.main {
+  height: 100%;
+  flex-basis: 55%;
+  min-height: 100vh;
+  padding: 30px 20px 20px;
+
+  .main-heading {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    
+    .task-post-btn {
+      background-color: $highlight;
+      color: #eff0f3;
+      font-size: 20px;
+      padding: 15px;        
+      width: 200px;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+  }
+}
+
+/* 投稿されたタスクエリア */
+.posts {
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* タスクカード */
+.post-card {
+  width: 100%;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: $card-back-color;
+
+  .post-user {
+    margin-bottom: 15px;
+  }
+  .post-title {
+    width: 95%;
+    margin: 0 auto;
+    font-size: 18px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $base-color;
+  }
+  .post-text {
+    width: 95%;
+    margin: 10px auto 0;
+    padding-bottom: 10px;
+    word-break: break-all;
+    border-bottom: 1px solid $base-color;
+    color: $sub-text-color;
   }
 
+  .edit-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .complete-btn {
+      background-color: $highlight;
+      color: #fffffe;
+      border: none;
+      padding: 7px;
+      font-size: 20px;
+      border-radius: 5px;
+      width: 120px;
+      margin-top: 15px;
+      margin-left: 15px;
+      text-align: center;
+    }
+    .edit-btn, .delete-btn {
+      color: lightgray;
+      font-size: 14px;
+      margin: 0 4px;
+    }
+  }
+  
+  .like-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    .like-count {
+      margin-left: 7px;
+    }
+  }
+}
+
+
+/* 完了済み */
+.completed-btn {
+  text-decoration: none;
+  background-color: lightgray;
+  color: #fffffe;
+  border: none;
+  padding: 7px;
+  font-size: 20px;
+  border-radius: 5px;
+  width: 120px;
+  margin-top: 15px;
+  margin-left: 15px;
+  text-align: center;
+}
+
+
+/* タスク投稿フォーム */
+.task-post-form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 20px 50px;
+  @include waku();
+  border-radius: 5px;
+
+  .task {
+    margin-top: 25px;
+    display: flex;
+    .field_with_errors {
+      display: contents;
+    }
+    
+    .task-label {
+      display: block;
+      min-width: 70px;
+    }
+    .task-input {
+      width: 80%;
+      padding: 10px 12px 8px;
+      outline: none;
+      font-size: 15px;
+      border: 1px solid lightgray;
+
+      &.text {
+        height: 100px;
+        color: gray;
+      }
+    }
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100px;
+    padding: 5px 0;
+    margin: 30px auto 0;
+    background-color: lightseagreen;
+    color: #eeeeee;
+    border: none;
+    font-size: 20px;
+    border-radius: 100px;
+  }
 }
 
 /* エラーメッセージ */
@@ -314,6 +307,7 @@
   @include waku();
 }
 
+
 /* 検索ボックス */
 .search-field {
   margin: 25px 0;
@@ -340,4 +334,21 @@
 .search-cancel-btn {
   margin-top: 20px;
   text-align: center;
+}
+
+
+
+/* right-bar */
+.right-bar {
+  height: 100%;
+  flex-basis: 20%;
+  min-height: 100vh;
+  padding: 20px;
+
+  .right-bar-box {
+    background-color: $base-color;
+    height: 200px;
+    width: 90%;
+    margin: 0 auto 15px;
+  }
 }
