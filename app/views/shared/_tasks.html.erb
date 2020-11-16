@@ -1,34 +1,32 @@
-<% tasks.each do |task| %>
-  <div class="post-card">
-    <div class="post-user">
-      <% if task.user.profile.image.present? %>
-        <%= link_to image_tag(task.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(task.user) %>
-      <% end %>
-      <%= link_to task.user.name, user_path(task.user), class:"user-name" %>
-      <span class="task-date"><%= l task.created_at, format: :short %></span>
-    </div>
-    <div class="post-title">
-      <%= task.title %>
-    </div>
-    <div class="post-text"><%= task.text %></div>
-    <% if user_signed_in? && (task.user.id == current_user.id) %>
-      <div class="edit-area">
-        <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
-        <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
-        <% if !task.state %>
-          <%= link_to "完了にする", done_user_task_path(task.user, task.id), method: :patch, class:"complete-btn" %>
-        <% else %>
-          <span class="completed-btn">完了</span>
-        <% end %>
-      </div>
+<div class="post-card">
+  <div class="post-user">
+    <% if task.user.profile.image.present? %>
+      <%= link_to image_tag(task.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(task.user) %>
     <% end %>
-    <div class="like-area">
-      <% if current_user.already_liked?(task) %>
-        <div><%= link_to "いいね解除", task_like_path(task.id), method: :delete, class:"like-btn" %></div>
-      <% else%>
-        <div><%= link_to "いいね", task_likes_path(task.id), method: :post, class:"like-btn" %></div>
-      <% end %>
-      <div class="like-count"><%= task.likes.count %></div>
-    </div>
+    <%= link_to task.user.name, user_path(task.user), class:"user-name" %>
+    <span class="task-date"><%= l task.created_at, format: :short %></span>
   </div>
-<% end %>
+  <div class="post-title">
+    <%= task.title %>
+  </div>
+  <div class="post-text"><%= task.text %></div>
+  <% if user_signed_in? && (task.user.id == current_user.id) %>
+    <div class="edit-area">
+      <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
+      <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
+      <% if !task.state %>
+        <%= link_to "完了にする", done_user_task_path(task.user, task.id), method: :patch, class:"complete-btn" %>
+      <% else %>
+        <span class="completed-btn">完了</span>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="like-area">
+    <% if current_user.already_liked?(task) %>
+      <div><%= link_to "いいね解除", task_like_path(task.id, task_id: task.id), method: :delete, remote: true, class:"like-btn" %></div>
+    <% else%>
+      <div><%= link_to "いいね", task_likes_path(task_id: task.id), method: :post, remote: true, class:"like-btn" %></div>
+    <% end %>
+    <div class="like-count"><%= task.likes.count %></div>  
+  </div>
+</div>
