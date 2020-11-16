@@ -1,27 +1,39 @@
 <div class="menu-bar">
   <div class="menu-bar-box">
+    <div class="community-name"><%= @community.name %></div>
+    <div class="community-text"><%= @community.text %></div>
+    <% if current_user.id == @community.user.id %>
+      <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+    <% elsif current_user.already_joined?(@community) %>
+      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+    <% else %>
+      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+    <% end %>
     <div class="menu-items">
-      <% if current_user.id == @community.user.id %>
-        <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
-      <% elsif current_user.already_joined?(@community) %>
-        <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
-      <% else %>
-        <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
-      <% end %>
+      <div class="community-members">
+        参加ユーザー <span><%= @joined_users.count %></span>
+      </div>
+      <div class="community-completed-tasks">
+        参加者の完了タスク <%= @tasks.where(state: true).count %>
+      </div>
+      <div class="question-and-answer">
+        質問 <%= @questions.count%>
+        解決 <%= @questions.where(state: true).count %>
+      </div>
     </div>
   </div>
 </div>
   
 <div class="main">
-  <div class="main-heading">
-    <%= @community.name %>
+  <div class="community-main-heading">
     <div class="main-menu">
-      <%= link_to "task", community_path(@community) %>
+      <%= link_to "みんなのタスク", community_path(@community) %>
       <%= link_to "チャット", community_chats_path(@community) %>
       <%= link_to "質問", community_questions_path(@community) %>
     </div>
   </div>
   <div class="question-area">
+    <%= link_to "一覧にもどる", community_questions_path(@community), class:"back-questions-btn" %>
     <div class="question-card">
     
       <%= link_to @question.user.name, user_path(@question.user), class:"question-user" %>
@@ -63,6 +75,7 @@
     </div>
   </div>
   <div class="answer-area">
+    <p class="answer-label">コメント一覧</p>
     <% @answers.each do |answer| %>
       <div class="answer-card">
         <div class="answer-user">
@@ -76,7 +89,7 @@
     <%= form_with model: [@question, @answer], local: true, class:"answer-form-area" do |f| %>
       <p class="answer-form-label">コメントする</p>
       <%= f.text_area :text, class:"answer-form" %>
-      <%= f.submit "投稿" %>
+      <%= f.submit "投稿", class:"answer-submit-btn" %>
     <% end %>
   </div>
 </div>
