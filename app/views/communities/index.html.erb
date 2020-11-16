@@ -31,9 +31,6 @@
         <div class="community-card">
           <div class="community-card-head">
             <%= link_to community.name, community_path(community), class:"community-title" %>
-            <% if community.user.id == current_user.id %>
-              <%= link_to "編集する", edit_community_path(community), class:"edit-btn" %>
-            <% end %>
           </div>
           <div class="community-text">
             詳細：<%= community.text %>
