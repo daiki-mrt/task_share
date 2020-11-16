@@ -72,7 +72,7 @@
         }
       }
     }
-    .communities {
+    .joined-communities {
       margin-bottom: 18px;
     }
     .edit {
@@ -303,6 +303,18 @@
 }
 
 /* ユーザー一覧 */
+.search-heading {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 10px 0;
+}
+.users {
+  border-bottom: 2px solid $highlight;
+}
+.search-navigation {
+  color: $main-text-color;
+  margin-right: 8px;
+}
 .user-card {
   width: 100%;
   margin: 30px auto;

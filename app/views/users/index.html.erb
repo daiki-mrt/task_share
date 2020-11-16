@@ -23,6 +23,12 @@
 </div>
   
 <div class="main">
+  <div class="search-heading">
+    <div class="search-menu">
+      <%= link_to "ユーザー", users_path, class:"search-navigation users" %>
+      <%= link_to "コミュニティ", communities_path, class:"search-navigation" %>
+    </div>
+  </div>
   <div class="posts">
     <%= render partial: "users_index", locals: { users: @users } %>
   </div>
