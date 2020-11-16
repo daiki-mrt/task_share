@@ -11,7 +11,6 @@ class RoomsController < ApplicationController
   end
 
   def create
-    binding.pry
     if @room = Room.create
       # user_roomに「自分id - 作成したroom_id」「相手id - 作成したroom_id」を保存する
       UserRoom.create(user_id: current_user.id, room_id: @room.id)

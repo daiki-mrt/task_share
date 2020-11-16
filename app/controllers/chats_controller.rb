@@ -5,13 +5,21 @@ class ChatsController < ApplicationController
   
   def index
     @chat = Chat.new
+    @joined_users = @community.joined_users
+    joined_user_ids = @joined_users.pluck(:id)
+    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+    @questions = Question.where(community_id: @community.id)
   end
 
   def create
     @chat = Chat.new(chat_params)
     if @chat.save
       redirect_to community_chats_path(@community)
-    else      
+    else
+      @joined_users = @community.joined_users
+      joined_user_ids = @joined_users.pluck(:id)
+      @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+      @questions = Question.where(community_id: @community.id)
       render :index
     end
   end

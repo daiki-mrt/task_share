@@ -1,39 +1,35 @@
-<div class="wrapper">
-
-  <div class="menu-bar">
+<div class="menu-bar">
+</div>
+  
+<div class="main">
+  <div class="main-heading">
+    <%= @user.name %>とのDM
   </div>
-    
-  <div class="main">
-    <div class="main-heading">
-      <%= @user.name %>とのDM
-    </div>
-    <div class="chats-box">
-      <div class="message-area">
-        <% @messages.each do |message| %>
-          <div class="chat-card">
-            <%= link_to message.user.name, user_path(message.user), class:"chat-user-name" %>
-            <span class="chat-text">
-              <%= message.text %>
-            </span>
-            <span class="chat-text">
-              <%= l message.created_at, format: :long %>
-            </span>            
-          </div>     
-        <% end %>
-      </div>
-      <%= form_with model: @message, local: true, class:"message-form-area" do |f| %>
-        <%= f.text_field :text, class:"message-form" %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-        <%= f.submit "投稿", class:"message-submit"%>
+  <div class="chats-box">
+    <div class="message-area">
+      <% @messages.each do |message| %>
+        <div class="chat-card">
+          <%= link_to message.user.name, user_path(message.user), class:"chat-user-name" %>
+          <span class="chat-text">
+            <%= message.text %>
+          </span>
+          <span class="chat-text">
+            <%= l message.created_at, format: :long %>
+          </span>            
+        </div>     
       <% end %>
     </div>
+    <%= form_with model: @message, local: true, class:"message-form-area" do |f| %>
+      <%= f.text_field :text, class:"message-form" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "投稿", class:"message-submit"%>
+    <% end %>
   </div>
-  
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
-    </div>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
   </div>
-  
+  <div class="right-bar-box">
+  </div>
 </div>

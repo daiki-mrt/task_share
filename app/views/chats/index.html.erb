@@ -1,56 +1,68 @@
-<div class="wrapper">
-
-  <div class="menu-bar">
-    <div class="menu-bar-box">
-      <ul class="menu-items">
-        <% if current_user.id == @community.user.id %>
-          <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
-        <% elsif current_user.already_joined?(@community) %>
-          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
-        <% else %>
-          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
-        <% end %>
-      </ul>
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <div class="community-name"><%= @community.name %></div>
+    <div class="community-text"><%= @community.text %></div>
+    <% if current_user.id == @community.user.id %>
+      <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+    <% elsif current_user.already_joined?(@community) %>
+      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+    <% else %>
+      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+    <% end %>
+    <div class="menu-items">
+      <div class="community-members">
+        参加ユーザー <span><%= @joined_users.count %></span>
+      </div>
+      <div class="community-completed-tasks">
+        参加者の完了タスク <%= @tasks.where(state: true).count %>
+      </div>
+      <div class="question-and-answer">
+        質問 <%= @questions.count%>
+        解決 <%= @questions.where(state: true).count %>
+      </div>
     </div>
   </div>
-    
-  <div class="main">
-    <div class="main-heading">
-      <%= @community.name %>
-      <div class="main-menu">
-        <%= link_to "task", community_path(@community) %>
-        <%= link_to "チャット", community_chats_path(@community) %>
-      </div>
+</div>
+
+  
+<div class="main">
+  <div class="community-main-heading">
+    <div class="main-menu">
+      <%= link_to "みんなのタスク", community_path(@community) %>
+      <%= link_to "チャット", community_chats_path(@community) %>
+      <%= link_to "質問", community_questions_path(@community) %>
     </div>
-    <div class="chats-box">
-      <div class="message-area">
-        <% @chats.each do |chat| %>
-          <div class="chat-card">
-            <%= link_to chat.user.name, user_path(chat.user), class:"chat-user-name" %>
-            <span class="chat-text">
-              <%= chat.text %>
-            </span>
-            <span class="chat-text">
-              <%= l chat.created_at, format: :long %>
-            </span>
-            <% if chat.user.id == current_user.id %>
-              <%= link_to "削除", community_chat_path(@community, chat.id), method: :delete %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <%= form_with model: [@community, @chat], local: true, class:"message-form-area" do |f| %>
-        <%= f.text_field :text, class:"message-form" %>
-        <%= f.submit "投稿", class:"message-submit"%>
+  </div>
+  <div class="community-chats-box">
+    <div class="chats-area">
+      <% @chats.each do |chat| %>
+        <div class="chat-card">
+          <% if chat.user.profile.image.present? %>
+            <%= link_to image_tag(chat.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(chat.user) %>
+          <% end %>          
+          <%= link_to chat.user.name, user_path(chat.user), class:"chat-user-name" %>
+          <span class="chat-text">
+            <%= chat.text %>
+          </span>
+          <span class="chat-date">
+            <%= l chat.created_at, format: :long %>
+          </span>
+          <% if chat.user.id == current_user.id %>
+            <%= link_to "削除", community_chat_path(@community, chat.id), method: :delete, class:"chat-delete" %>
+          <% end %>
+        </div>
       <% end %>
     </div>
+    <%= form_with model: [@community, @chat], local: true, class:"chats-form-area" do |f| %>
+      <%= f.text_field :text, placeholder:"チャットを入力する", class:"chats-form" %>
+      <%= f.submit "投稿", class:"chats-submit"%>
+    <% end %>
   </div>
-  
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
-    </div>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
   </div>
-  
+  <div class="right-bar-box">
+  </div>
 </div>

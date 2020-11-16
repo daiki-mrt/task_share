@@ -1,8 +1,79 @@
-// Place all the styles related to the chats controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "style";
 
 .field_with_errors {
   display: contents;
+}
+
+.community-chats-box {
+  width: 97%;
+  height: 65vh;
+  margin: 0 auto;
+  padding: 30px 20px;
+
+  .chats-area {
+    width: 100%;
+    height: 90%;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: $card-back-color;
+    border-radius: 5px;
+    overflow: scroll;
+
+    .chat-card {
+      width: 100%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+
+      .user-image {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        margin-right: 10px;
+      }
+      .chat-user-name {
+        color: $main-text-color;
+        font-size: 18px;
+        margin-right: 8px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .chat-text {
+        margin-right: 10px;
+      }
+      .chat-date {
+        font-size: 13px;
+        color: $sub-text-color;
+        margin-right: 7px;
+      }
+      .chat-delete {
+        font-size: 13px;
+        color: lightgray;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .chats-form-area {
+    width: 100%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+  
+    .chats-form {
+      width: 93%;
+      padding: 12px 10px 8px;
+      border: 1px solid $base-color;
+      outline: none;
+    }
+    .chats-submit {
+      padding: 5px 8px;
+      border: none;
+      background-color: $highlight;
+      color: $with-highlight;
+      border-radius: 5px;
+    }
+  }
 }

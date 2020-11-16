@@ -25,15 +25,14 @@
 </div>
   
 <div class="main">
-  <div class="main-heading">
-    <%= @community.name %>
+  <div class="community-main-heading">
     <div class="main-menu">
-      <%= link_to "task", community_path(@community) %>
+      <%= link_to "みんなのタスク", community_path(@community) %>
       <%= link_to "チャット", community_chats_path(@community) %>
       <%= link_to "質問", community_questions_path(@community) %>
     </div>
   </div>
-  <ul class="posts">
+  <div class="posts">
     <% @tasks.each do |task| %>
       <div class="post-card">
         <div class="post-user"><%= link_to task.user.name, user_path(task.user), class:"post-user-name" %></div>
@@ -60,7 +59,7 @@
         </div>
       </div>
     <% end %>
-  </ul>
+  </div>
 </div>
 
 <div class="right-bar">
