@@ -35,8 +35,12 @@
   <div class="question-area">
     <%= link_to "一覧にもどる", community_questions_path(@community), class:"back-questions-btn" %>
     <div class="question-card">
-    
-      <%= link_to @question.user.name, user_path(@question.user), class:"question-user" %>
+      <div class="question-user">
+        <% if @question.user.profile.image.present? %>
+          <%= link_to image_tag(@question.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(@question.user) %>
+        <% end %>
+        <%= link_to @question.user.name, user_path(@question.user), class:"question-user-name" %>
+      </div>
       <div class="question-title">
         <%= @question.title %>
         <% if @question.user.id == current_user.id %>
@@ -79,7 +83,10 @@
     <% @answers.each do |answer| %>
       <div class="answer-card">
         <div class="answer-user">
-          <%= link_to answer.user.name, user_path(answer.user) %>
+          <% if answer.user.profile.image.present? %>
+            <%= link_to image_tag(answer.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(answer.user) %>
+          <% end %>
+          <%= link_to answer.user.name, user_path(answer.user), class:"answer-user-name" %>
         </div>
         <div class="answer-comment">
           <%= answer.text %>
