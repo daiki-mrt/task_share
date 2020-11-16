@@ -219,55 +219,63 @@
   width: 50%;
   margin: 0 auto;
   padding: 20px;
-  @include waku();
 
   .registration-container {
-    // background-color: lightgrey;
-    height: 100%;
-    // padding: 15px;
-    @include waku();
-  }
+    background-color: $card-back-color;
+    padding: 20px;  
+    border-radius: 5px;
 
-  .registration-heading {
-    font-size: 25px;
-    text-align: center;
-    margin: 15px 0;
-    height: 10%;
-  }
-
-  .registration-form {
-    padding: 20px;
-    @include waku();
-
-    .registration-item {
-      display: flex;
-      // width: 80%;
-      justify-content: center;
-      margin: 20px;
-
-      .label {
-        display: inline-block;
-        min-width: 200px;
-        padding: 10px 12px 8px;        
-      }
-      .form-box {
-        padding: 10px 12px 8px;
-        width: 270px;
-        outline: none;
-      }
+    .registration-heading {
+      font-size: 25px;
+      text-align: center;
+      margin: 20px 0 25px;
     }
-    .submit-btn {
-      display: block;
-      width: 100px;
-      padding: 5px 0;
-      margin: 30px auto 0;
-      background-color: lightseagreen;
-      color: #eeeeee;
-      border: none;
-      font-size: 20px;
-      border-radius: 100px;
-    }
+}
+
+.registration-item {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  
+  
+  .label {
+    display: inline-block;
+    min-width: 200px;
+    padding: 10px 12px 8px;
   }
+  .must {
+    color: red;
+    font-size: 12px;
+  }
+  .form-attach {
+    padding: 10px 0 8px;
+    width: 270px;
+    outline: none;
+    border: none;
+  }
+  .form-box {
+    background-color: $base-color;
+    padding: 10px 12px 8px;
+    width: 270px;
+    outline: none;
+    border: none;
+  }
+}
+.submit-btn {
+  display: block;
+  // width: 80px;
+  padding: 5px 10px;
+  margin: 30px auto 20px;
+  background-color: $highlight;
+  color: $with-highlight;
+  border: none;
+  font-size: 20px;
+  border-radius: 10px;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
 }
 
 
