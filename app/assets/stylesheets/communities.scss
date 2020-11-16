@@ -141,6 +141,9 @@
     text-decoration: underline;
   }
 }
+.task {
+  border-bottom: 2px solid $highlight;
+}
 
 
 /* コミュニティ作成フォーム */
