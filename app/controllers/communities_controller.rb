@@ -34,8 +34,10 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-    task_user_ids = @community.user_communities.pluck(:user_id)
-    @tasks = Task.where(user_id: task_user_ids).order("created_at DESC")
+    @joined_users = @community.joined_users
+    joined_user_ids = @joined_users.pluck(:id)
+    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+    @questions = Question.where(community_id: @community.id)
   end
   
   def join

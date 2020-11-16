@@ -1,21 +1,14 @@
-<div class="wrapper">
-
   <div class="menu-bar">
+    
   </div>
     
   <div class="main">
     <div class="main-heading">
-      <%= @user.name %>のフォローユーザー
+      <%= link_to @user.name, user_path(@user), class:"following-user-name" %>のフォローユーザー
     </div>
-    <ul class="posts">
-      <% @following_users.each do |user| %>
-        <li>
-          <div class="user-card">
-            <%= link_to user.name, user_path(user) %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <div class="posts">
+      <%= render partial: "users_index", locals: { users: @following_users  } %>
+    </div>
   </div>
   
   <div class="right-bar">
@@ -24,5 +17,3 @@
     <div class="right-bar-box">
     </div>
   </div>
-  
-</div>

@@ -1,110 +1,21 @@
 @mixin waku() {
   border: 1px solid lightgrey;
 }
+@import "style";
+
 
 /* 一覧ページ */
 .community-create-btn {
-  text-decoration: none;
-  display: block;
   width: 180px;
   margin: 0 auto;
-  padding: 12px;
+  display: block;
   text-align: center;
-  background-color: lightseagreen;
-  color: #eeeeee;
-  border-radius: 5px;
+  color: $main-text-color;
   margin-bottom: 10px;
-}
-
-/* コミュニティ作成フォーム */
-.community-post-form {
-  width: 80%;
-  margin: 0 auto;
-  padding: 20px 20px 50px;
-  @include waku();
-  border-radius: 5px;
-
-  .community {
-    margin-top: 25px;
-    display: flex;
-    .field_with_errors {
-      display: contents;
-    }
-    
-    .community-label {
-      display: block;
-      min-width: 100px;
-    }
-    .form-box {
-      outline: none;
-    }
-    .community-input {
-      width: 80%;
-      padding: 10px 12px 8px;
-      outline: none;
-      font-size: 15px;
-      border: 1px solid lightgray;
-
-      &.text {
-        height: 100px;
-        color: gray;
-      }
-    }
-  }
-
-  .submit-btn {
-    display: block;
-    width: 100px;
-    padding: 5px 0;
-    margin: 30px auto 0;
-    background-color: lightseagreen;
-    color: #eeeeee;
-    border: none;
-    font-size: 20px;
-    border-radius: 100px;
+  &:hover {
+    text-decoration: underline;
   }
 }
-
-/* コミュニティ詳細ページ */
-.community-edit-btn {
-  text-decoration: none;
-  display: block;
-  width: 180px;
-  margin: 0 auto;
-  padding: 12px;
-  text-align: center;
-  background-color: lightgray;
-  color: gray;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.community-join-btn {
-  text-decoration: none;
-  display: block;
-  width: 180px;
-  margin: 0 auto;
-  padding: 12px;
-  text-align: center;
-  background-color: lightseagreen;
-  color: #eeeeee;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.community-exit-btn {
-  text-decoration: none;
-  display: block;
-  width: 180px;
-  margin: 0 auto;
-  padding: 12px;
-  text-align: center;
-  background-color: lightsalmon;
-  color: #eeeeee;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
 
 /* 検索ボックス */
 .search-field {
@@ -123,5 +34,176 @@
     width: 100%;
     padding: 8px 8px 5px;
     outline: none;
+    border: none;
+    background-color: $base-color;
+  }
+}
+
+
+.community-card {
+  width: 100%;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: $card-back-color;
+  
+  .community-card-head {
+    border-bottom: 1px solid $base-color;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  .community-title {
+    color: $main-text-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .edit-btn {
+    color: lightgray;
+    font-size: 14px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .community-text {
+    color: $sub-text-color;
+    margin-bottom: 5px;
+  }
+  .community-category {
+    color: $sub-text-color;
+  }
+}
+
+
+/* 詳細ページサイドバー */
+.menu-bar-box {
+  .community-name, .community-text {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin: 10px 0 15px;
+  }
+  .community-edit-btn {
+    color: lightgray;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .community-name {
+    color: $main-text-color;
+    font-size: 20px;
+  }
+  .community-text {
+    color: $sub-text-color;
+  }
+  .community-members {
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+  .community-completed-tasks {
+    margin-bottom: 18px;
+  }
+}
+
+.community-join-btn, .community-exit-btn {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 15px;  
+}
+.community-join-btn {
+  background-color: $highlight;
+  color: $with-highlight;
+}
+
+.community-exit-btn {
+  background-color: lightgray;
+  color: $with-highlight;
+}
+
+
+/* 中央 */
+.community-main-heading {
+  width: 95%;
+  padding: 0 30px;
+}
+.communities {
+  border-bottom: 2px solid $highlight;
+  color: $main-text-color;
+}
+
+.community-navigation {
+  color: $main-text-color;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.task {
+  border-bottom: 2px solid $highlight;
+}
+
+
+/* コミュニティ作成フォーム */
+.community-post-form {
+  background-color: $card-back-color;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 20px 50px;
+  border-radius: 5px;
+
+  .community {
+    margin-top: 25px;
+    display: flex;
+    .field_with_errors {
+      display: contents;
+    }
+    
+    .community-label {
+      display: block;
+      min-width: 100px;
+    }
+    .form-box {
+      background-color: $base-color;
+      outline: none;
+      width: 80%;
+      border: none;
+      padding: 5px;
+    }
+    .community-input {
+      background-color: $base-color;
+      width: 80%;
+      padding: 10px 12px 8px;
+      outline: none;
+      font-size: 15px;
+      border: none;
+
+      &.text {
+        height: 100px;
+        color: $sub-text-color;
+      }
+    }
+  }
+
+  .community-submit-btn {
+    background-color: $highlight;
+    color: $with-highlight;
+    display: block;
+    width: 100px;
+    margin: 30px auto 0;
+    padding: 5px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

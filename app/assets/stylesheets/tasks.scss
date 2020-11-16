@@ -1,3 +1,54 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "style";
+
+
+/* タスク投稿フォーム */
+.task-post-form {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 20px 35px;
+  border-radius: 5px;
+  background-color: $card-back-color;
+
+  .task {
+    margin-top: 25px;
+    display: flex;
+    .field_with_errors {
+      display: contents;
+    }
+    
+    .task-label {
+      display: block;
+      min-width: 70px;
+    }
+    .task-input {
+      width: 80%;
+      padding: 10px 12px 8px;
+      outline: none;
+      font-size: 15px;
+      border: none;
+      background-color: $base-color;
+      color: $main-text-color;
+
+      &.text {
+        height: 100px;
+        color: $sub-text-color;
+      }
+    }
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100px;
+    padding: 5px 0;
+    margin: 30px auto 0;
+    background-color: $highlight;
+    color: $with-highlight;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-radius: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

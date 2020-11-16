@@ -6,6 +6,8 @@ class TasksController < ApplicationController
     set_user
     set_profile
     @task = Task.new
+    @following_users = @user.followings
+    @follower_users = @user.followers
   end
 
   def create
@@ -24,6 +26,8 @@ class TasksController < ApplicationController
     set_user
     set_profile
     set_task
+    @following_users = @user.followings
+    @follower_users = @user.followers
   end
 
   def update

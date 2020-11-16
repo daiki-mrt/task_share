@@ -1,63 +1,45 @@
-<div class="wrapper">
-
-  <div class="menu-bar">
-    <div class="menu-bar-box">
-      <ul class="menu-items">
-        <% if current_user.id == @community.user.id %>
-          <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
-        <% elsif current_user.already_joined?(@community) %>
-          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
-        <% else %>
-          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-    
-  <div class="main">
-    <div class="main-heading">
-      <%= @community.name %>
-      <div class="main-menu">
-        <%= link_to "task", community_path(@community) %>
-        <%= link_to "チャット", community_chats_path(@community) %>
-        <%= link_to "質問", community_questions_path(@community) %>
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <div class="community-name"><%= @community.name %></div>
+    <div class="community-text"><%= @community.text %></div>
+    <% if current_user.id == @community.user.id %>
+      <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+    <% elsif current_user.already_joined?(@community) %>
+      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+    <% else %>
+      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+    <% end %>
+    <div class="menu-items">
+      <div class="community-members">
+        参加ユーザー <span><%= @joined_users.count %></span>
+      </div>
+      <div class="community-completed-tasks">
+        参加者の完了タスク <%= @tasks.where(state: true).count %>
+      </div>
+      <div class="question-and-answer">
+        質問 <%= @questions.count%>
+        解決 <%= @questions.where(state: true).count %>
       </div>
     </div>
-    <ul class="posts">
-      <% @tasks.each do |task| %>
-        <div class="post-card">
-          <div class="post-user"><%= link_to task.user.name, user_path(task.user), class:"post-user-name" %></div>
-          <div class="post-title"><%= task.title %></div>
-          <div class="post-text"><%= task.text %></div>
-          <% if user_signed_in? && (task.user.id == current_user.id) %>
-            <div class="edit-area">
-              <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
-              <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
-              <% if !task.state %>
-                <%= link_to "完了にする", done_user_task_path(task.user, task.id), method: :patch, class:"complete-btn" %>
-              <% else %>
-                <span class="completed-btn">完了</span>
-              <% end %>
-            </div>
-          <% end %>
-          <div class="like-area">
-            <% if current_user.already_liked?(task) %>
-              <div><%= link_to "いいね解除", task_like_path(task.id), method: :delete, class:"like-btn" %></div>
-            <% else%>
-              <div><%= link_to "いいね", task_likes_path(task.id), method: :post, class:"like-btn" %></div>
-            <% end %>
-            <div class="like-count"><%= task.likes.count %></div>
-          </div>
-        </div>
-      <% end %>
-    </ul>
   </div>
+</div>
   
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
+<div class="main">
+  <div class="community-main-heading">
+    <div class="main-menu">
+      <%= link_to "みんなのタスク", community_path(@community), class:"community-navigation task" %>
+      <%= link_to "チャット", community_chats_path(@community), class:"community-navigation" %>
+      <%= link_to "質問", community_questions_path(@community), class:"community-navigation" %>
     </div>
   </div>
-  
+  <div class="posts">
+    <%= render partial: "shared/tasks", locals: { tasks: @tasks} %>
+  </div>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
+  </div>
+  <div class="right-bar-box">
+  </div>
 </div>

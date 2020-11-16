@@ -1,78 +1,19 @@
-<div class="wrapper">
+<%= render partial: "sidebar", locals: { user: @user, profile: @profile, following_users: @following_users, follower_users: @follower_users, room: @room } %>
+  
+<div class="main">
+  <div class="main-heading">
+    <% if user_signed_in? && (current_user.id == @user.id) %>
+      <%= link_to "タスクを登録する", new_user_task_path(@user), class:"task-post-btn" %> 
+    <% end %>
+  </div>
+  <div class="posts">
+    <%= render partial: "shared/tasks", locals: { tasks: @tasks} %>
+  </div>
+</div>
 
-  <div class="menu-bar">
-    <div class="menu-bar-box">
-      <div>
-        <% if @profile.image.present? %>
-          <%= image_tag @profile.image.variant(resize: "150x150"), class:"profile-image" %>
-        <% end %>
-      </div>
-      <ul class="menu-items">
-        <li>ユーザー名: <%= @user.name %> <%= link_to " 編集", edit_user_registration_path(@user) %> </li>
-        <% if @user != current_user %>
-          <% if @user.follow?(current_user) %>
-            <li><%= link_to "フォロー済み", user_relationship_path(@user), method: :delete %></li>
-          <% else %>
-            <li><%= link_to "フォローする", user_relationships_path(@user), method: :post %></li>
-          <% end %>
-        <% end %>
-        <li>フォロー <%= link_to "#{@following_users.count}", follows_user_path(@user) %></li>
-        <li>フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user) %></li>
-        <% if current_user != @user %>
-          <% if @room.present? %>
-            <li><%= link_to "DMする", room_path(@room.id) %> </li>
-          <% elsif %>
-            <li><%= link_to "DMする", rooms_path(@user.id), method: :post %> </li>
-          <% end %>
-        <% end %>
-        <li>参加コミュニティ</li>
-        <li>ユーザーを探す</li>
-        <li>コミュニティを探す</li>
-      </ul>
-    </div>
+<div class="right-bar">
+  <div class="right-bar-box">
   </div>
-    
-  <div class="main">
-    <div class="main-heading">
-      <% if user_signed_in? && (current_user.id == @user.id) %>
-        <%= link_to "投稿する", new_user_task_path(@user), class:"task-post-btn" %> 
-      <% end %>
-    </div>
-    <ul class="posts">
-      <% @tasks.each do |task| %>
-        <div class="post-card">
-          <div class="post-user"><%= link_to task.user.name, user_path(task.user), class:"post-user-name" %></div>
-          <div class="post-title"><%= task.title %></div>
-          <div class="post-text"><%= task.text %></div>
-          <% if user_signed_in? && (task.user.id == current_user.id) %>
-            <div class="edit-area">
-              <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
-              <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
-              <% if !task.state %>
-                <%= link_to "完了にする", done_user_task_path(task.user, task.id), method: :patch, class:"complete-btn" %>
-              <% else %>
-                <span class="completed-btn">完了</span>
-              <% end %>
-            </div>
-          <% end %>
-          <div class="like-area">
-            <% if current_user.already_liked?(task) %>
-              <div><%= link_to "いいね解除", task_like_path(task.id), method: :delete, class:"like-btn" %></div>
-            <% else%>
-              <div><%= link_to "いいね", task_likes_path(task.id), method: :post, class:"like-btn" %></div>
-            <% end %>
-            <div class="like-count"><%= task.likes.count %></div>
-          </div>
-        </div>
-      <% end %>
-    </ul>
+  <div class="right-bar-box">
   </div>
-  
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
-    </div>
-  </div>
-  
 </div>

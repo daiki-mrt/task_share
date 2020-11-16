@@ -1,0 +1,44 @@
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <div>
+      <% if @profile.image.present? %>
+        <%= image_tag @profile.image.variant(resize: "200x200"), class:"profile-image" %>
+      <% end %>
+    </div>
+    <div class="user-name"><%= @user.name %></div>
+    <div class="user-text"><%= @user.profile.text %></div>
+    <div class="menu-items">
+      <div class="relationships">
+        <% if @user != current_user %>
+          <% if @user.follow?(current_user) %>
+            <%= link_to "フォロー済み", user_relationship_path(@user), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="relationships-user">
+        フォロー <%= link_to "#{@following_users.count}", follows_user_path(@user), class:"follow-count" %>
+        フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user), class:"follower-count" %>
+      </div>
+      <div class="completed-task">
+        タスク数 <%= @user.tasks.count %>
+      </div>
+      <div class="direct-message">
+        <% if current_user != @user %>
+          <% if @room.present? %>
+            <%= link_to "DMする", room_path(@room.id), class:"message-btn" %>
+          <% elsif %>
+            <%= link_to "DMする", rooms_path(@user.id), method: :post, class:"message-btn" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="joined-communities">
+        参加コミュニティ
+      </div>
+      <%if current_user == @user %>
+        <%= link_to " 編集する", edit_user_registration_path(@user), class:"edit" %>
+      <% end %>
+    </div>
+  </div>
+</div>

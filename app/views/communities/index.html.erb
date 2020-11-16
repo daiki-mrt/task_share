@@ -1,52 +1,55 @@
-<div class="wrapper">
-
-  <div class="menu-bar">
-    <div class="menu-bar-box">
-    <%= link_to "コミュニティ作成", new_community_path, class:"community-create-btn" %>
-      <div class="menu-items">
-        <%= form_with scope: :search, url: communities_path, method: :get, local: true do |f| %>
-          <div class="search-field">
-            <%= f.label :text, "キーワード", class:"search-label" %>
-            <%= f.text_field :text, value: @search_params[:text], class:"search-text" %>
-          </div>
-          <div class="search-field">
-            <%= f.label :catergory_id, "職種", class:"search-label" %>
-            <%= f.collection_select(:category_id, Category.all, :id, :name, {selected: @search_params[:category_id], include_blank: "選択しない"}, {class:"search-category"}) %>
-          </div>
-          <div class="search-btn">
-            <%= f.submit "検索" %>
-          </div>
-        <% end %>
-        <div class="search-cancel-btn">
-          <%= link_to "検索解除", users_path %>
-        </div> 
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <p class="menu-bar-head">コミュニティ検索</p>
+    <%= link_to "作成する", new_community_path, class:"community-create-btn" %>
+    <div class="menu-items">
+      <%= form_with scope: :search, url: communities_path, method: :get, local: true do |f| %>
+        <div class="search-field">
+          <%= f.label :text, "キーワード", class:"search-label" %>
+          <%= f.text_field :text, value: @search_params[:text], class:"search-text" %>
+        </div>
+        <div class="search-field">
+          <%= f.label :catergory_id, "カテゴリー", class:"search-label" %>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {selected: @search_params[:category_id], include_blank: "選択しない"}, {class:"search-category"}) %>
+        </div>
+        <div class="search-btn-area">
+          <%= f.submit "検索", class:"search-btn" %>
+        </div>
+      <% end %>
+      <div class="search-cancel">
+        <%= link_to "検索解除", users_path, class:"search-cancel-btn" %>
+      </div> 
+    </div>
+  </div>
+</div>
+  
+<div class="main">
+  <div class="search-heading">
+    <div class="search-menu">
+      <%= link_to "ユーザー", users_path, class:"search-navigation" %>
+      <%= link_to "コミュニティ", communities_path, class:"search-navigation communities" %>
+    </div>
+  </div>
+  <div class="posts">
+    <% @communities.each do |community| %>
+      <div class="community-card">
+        <div class="community-card-head">
+          <%= link_to community.name, community_path(community), class:"community-title" %>
+        </div>
+        <div class="community-text">
+          詳細：<%= community.text %>
+        </div>
+        <div class="community-category">
+          カテゴリー：<%= community.category.name %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-    
-  <div class="main">
-    <div class="main-heading">
-    </div>
-      <ul class="posts">
-        <% @communities.each do |community| %>
-          <div class="post-card">
-            <div class="post-title"><%= link_to community.name, community_path(community) %></div>
-            <div class="post-text"><%= community.text %></div>
-            <% if community.user.id == current_user.id %>
-              <div class="edit-area">
-                <%= link_to "編集", edit_community_path(community), class:"edit-btn" %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </ul>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
   </div>
-  
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
-    </div>
+  <div class="right-bar-box">
   </div>
-  
 </div>

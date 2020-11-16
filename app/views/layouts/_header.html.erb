@@ -8,8 +8,8 @@
   <div class="header-right">
     <ul class="header-menu">
       <% if user_signed_in? %>
-        <li><%= link_to "ユーザー一覧", users_path %></li>
-        <li><%= link_to "コミュニティ一覧",communities_path %> </li>
+        <li><%= link_to "ユーザー検索", users_path %></li>
+        <li><%= link_to "コミュニティ検索",communities_path %> </li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
       <% end %>

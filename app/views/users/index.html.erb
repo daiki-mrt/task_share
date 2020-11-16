@@ -1,39 +1,35 @@
-<div class="wrapper">
-
-  <div class="menu-bar">
-    <div class="menu-bar-box">
-      <div class="menu-items">
-        <%= form_with scope: :search, url: users_path, method: :get, local: true do |f| %>
-          <div class="search-field">
-            <%= f.label :text, "キーワード", class:"search-label" %>
-            <%= f.text_field :text, value: @search_params[:text], class:"search-text" %>
-          </div>
-          <div class="search-field">
-            <%= f.label :occupation_id, "職種", class:"search-label" %>
-            <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {selected: @search_params[:occupation_id], include_blank: "選択しない"}, {class:"search-occupation"}) %>
-          </div>
-          <div class="search-btn">
-            <%= f.submit "検索" %>
-          </div>
-        <% end %>
-        <div class="search-cancel-btn">
-          <%= link_to "検索解除", users_path %>
-        </div> 
-      </div>
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <p class="menu-bar-head">ユーザー検索</p>
+    <div class="menu-items">
+      <%= form_with scope: :search, url: users_path, method: :get, local: true do |f| %>
+        <div class="search-field">
+          <%= f.label :text, "キーワード", class:"search-label" %>
+          <%= f.text_field :text, value: @search_params[:text], class:"search-text" %>
+        </div>
+        <div class="search-field">
+          <%= f.label :occupation_id, "職種", class:"search-label" %>
+          <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {selected: @search_params[:occupation_id], include_blank: "選択しない"}, {class:"search-occupation"}) %>
+        </div>
+        <div class="search-btn-area">
+          <%= f.submit "検索", class:"search-btn" %>
+        </div>
+      <% end %>
+      <div class="search-cancel">
+        <%= link_to "検索解除", users_path, class:"search-cancel-btn" %>
+      </div> 
     </div>
   </div>
-    
-  <div class="main">
-    <ul class="posts">
-      <% @users.each do |user| %>
-        <li>
-          <div class="user-card">
-            <%= link_to user.name, user_path(user) %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+</div>
+  
+<div class="main">
+  <div class="search-heading">
+    <div class="search-menu">
+      <%= link_to "ユーザー", users_path, class:"search-navigation users" %>
+      <%= link_to "コミュニティ", communities_path, class:"search-navigation" %>
+    </div>
   </div>
-  
-  
+  <div class="posts">
+    <%= render partial: "users_index", locals: { users: @users } %>
+  </div>
 </div>

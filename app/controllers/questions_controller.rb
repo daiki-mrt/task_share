@@ -9,6 +9,10 @@ class QuestionsController < ApplicationController
   
   def index
     @questions = @community.questions.includes(:user).order("created_at DESC")
+    # サイドバー用データ取得
+    @joined_users = @community.joined_users
+    joined_user_ids = @joined_users.pluck(:id)
+    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
   end
 
   def new
@@ -25,6 +29,11 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    # サイドバー用データ取得
+    @joined_users = @community.joined_users
+    joined_user_ids = @joined_users.pluck(:id)
+    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+    @questions = @community.questions
   end
 
   def edit
