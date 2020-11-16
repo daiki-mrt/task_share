@@ -124,9 +124,20 @@
   background-color: $card-back-color;
 
   .post-user {
+    display: flex;
+    align-items: center;
     margin-bottom: 15px;
-    & a {
+    .user-image {
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      margin-right: 10px;
+    }
+    .user-name {
       color: $main-text-color;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .post-title {
