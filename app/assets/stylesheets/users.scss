@@ -142,6 +142,11 @@
         text-decoration: underline;
       }
     }
+    .task-date {
+      color: $sub-text-color;
+      font-size: 14px;
+      margin-left: 8px;
+    }
   }
   .post-title {
     width: 95%;
