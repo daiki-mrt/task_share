@@ -1,8 +1,4 @@
 @import "style";
-@mixin waku() {
-  border: 1px solid lightgrey;
-}
-
 
 .menu-bar {
   height: 100%;
@@ -15,6 +11,7 @@
     margin: 0 auto 8px;
     background-color: $card-back-color;
     width: 95%;
+    border-radius: 5px;
 
     .profile-image {
       display: block;
@@ -340,7 +337,7 @@
 }
 .search-field {
   margin: 0 0 25px;
-
+  
   .search-label {
     display: block;
     margin-bottom: 5px;
@@ -349,16 +346,28 @@
     width: 100%;
     padding: 8px 8px 5px;
     outline: none;
+    border: none;
+    background-color: $base-color;
   }
   .search-occupation {
     width: 100%;
     padding: 8px 8px 5px;
     outline: none;
+    border: none;
+    background-color: $base-color;
   }
 }
 
-.search-btn {
+.search-btn-area {
   text-align: center;
+}
+.search-btn {
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  background-color: lightgray;
+  color: $main-text-color;
+  outline: none;
 }
 .search-cancel {
   margin-top: 20px;
