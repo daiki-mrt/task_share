@@ -3,7 +3,7 @@
 <div class="main">
   <div class="main-heading">
     <% if user_signed_in? && (current_user.id == @user.id) %>
-      <%= link_to "投稿する", new_user_task_path(@user), class:"task-post-btn" %> 
+      <%= link_to "タスクを登録する", new_user_task_path(@user), class:"task-post-btn" %> 
     <% end %>
   </div>
   <div class="posts">
