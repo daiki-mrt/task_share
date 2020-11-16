@@ -143,10 +143,10 @@
 
 /* コミュニティ作成フォーム */
 .community-post-form {
+  background-color: $card-back-color;
   width: 80%;
   margin: 0 auto;
   padding: 20px 20px 50px;
-  @include waku();
   border-radius: 5px;
 
   .community {
@@ -161,31 +161,40 @@
       min-width: 100px;
     }
     .form-box {
+      background-color: $base-color;
       outline: none;
+      width: 80%;
+      border: none;
+      padding: 5px;
     }
     .community-input {
+      background-color: $base-color;
       width: 80%;
       padding: 10px 12px 8px;
       outline: none;
       font-size: 15px;
-      border: 1px solid lightgray;
+      border: none;
 
       &.text {
         height: 100px;
-        color: gray;
+        color: $sub-text-color;
       }
     }
   }
 
-  .submit-btn {
+  .community-submit-btn {
+    background-color: $highlight;
+    color: $with-highlight;
     display: block;
     width: 100px;
-    padding: 5px 0;
     margin: 30px auto 0;
-    background-color: lightseagreen;
-    color: #eeeeee;
+    padding: 5px 0;
+    border-radius: 10px;
     border: none;
+    outline: none;
     font-size: 20px;
-    border-radius: 100px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
