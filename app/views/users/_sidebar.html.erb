@@ -27,9 +27,9 @@
       <div class="direct-message">
         <% if current_user != @user %>
           <% if @room.present? %>
-            <%= link_to "DMする", room_path(@room.id) %>
+            <%= link_to "DMする", room_path(@room.id), class:"message-btn" %>
           <% elsif %>
-            <%= link_to "DMする", rooms_path(@user.id), method: :post %>
+            <%= link_to "DMする", rooms_path(@user.id), method: :post, class:"message-btn" %>
           <% end %>
         <% end %>
       </div>

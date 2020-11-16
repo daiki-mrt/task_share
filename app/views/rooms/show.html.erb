@@ -3,19 +3,20 @@
   
 <div class="main">
   <div class="main-heading">
-    <%= @user.name %>とのDM
+    <%= link_to @user.name, user_path(@user), class:"opposite-user-name" %>とのDM
   </div>
-  <div class="chats-box">
+  <div class="message-box">
     <div class="message-area">
       <% @messages.each do |message| %>
-        <div class="chat-card">
-          <%= link_to message.user.name, user_path(message.user), class:"chat-user-name" %>
-          <span class="chat-text">
+        <div class="message-card">
+          <% if message.user.profile.image.present? %>
+            <%= link_to image_tag(message.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(message.user) %>
+          <% end %>
+          <%= link_to message.user.name, user_path(message.user), class:"message-user-name" %>
+          <span class="message-text">
             <%= message.text %>
           </span>
-          <span class="chat-text">
-            <%= l message.created_at, format: :long %>
-          </span>            
+          <span class="message-date"><%= l message.created_at, format: :long %></span>
         </div>     
       <% end %>
     </div>

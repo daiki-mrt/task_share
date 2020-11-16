@@ -65,6 +65,12 @@
     }
     .direct-message {
       margin-bottom: 18px;
+      .message-btn {
+        color: $main-text-color;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
     .communities {
       margin-bottom: 18px;

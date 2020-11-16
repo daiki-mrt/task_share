@@ -1,49 +1,82 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "style";
 
-.chats-box {
+.opposite-user-name {
+  color: $main-text-color;
+  margin-right: 8px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.message-box {
   width: 95%;
   height: 65vh;
   margin: 15px auto 0;
-  padding: 30px 20px;
-  border: 1px solid gray;
+  padding: 15px 20px;
 
   .message-area {
-    width: 95%;
+    width: 100%;
     height: 90%;
+    padding: 15px;
     margin: 0 auto;
-    border: 1px solid gray;
+    background-color: $card-back-color;
     overflow: scroll;
+    border-radius: 5px;
 
-    .chat-card {
+    .message-card {
       width: 95%;
       margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
 
-      .chat-user-name {
-        text-decoration: none;
+      .user-image {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        margin-right: 10px;
+      }
+      .message-user-name {
+        color: $main-text-color;
         font-size: 18px;
         margin-right: 8px;
+        &:hover {
+          text-decoration: underline;
+        }
       }
-      .chat-text {
+      .message-text {
         line-height: 25px;
+        margin-right: 8px;
+      }
+      .message-date {
+        color: lightgray;
       }
     }
   }
   .message-form-area {
-    width: 85%;
+    width: 100%;
     margin: 15px auto;
-    padding: 5px;
-    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
   
     .message-form {
-      width: 85%;
+      width: 100%;
       padding: 10px 10px 8px;
-      border: 1px solid gray;
+      border: none;
       outline: none;
+      border-radius: 5px;
     }
     .message-submit {
-      padding: 2px 8px;
+      padding: 5px 8px;
+      border: none;
+      background-color: $highlight;
+      color: $with-highlight;
+      outline: none;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
