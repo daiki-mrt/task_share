@@ -17,6 +17,27 @@
   }
 }
 
+/* 検索ボックス */
+.search-field {
+  margin: 25px 0;
+
+  .search-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .search-text {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+  }
+  .search-category {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+  }
+}
+
+
 .community-card {
   width: 100%;
   margin: 30px auto;
@@ -48,26 +69,6 @@
   }
   .community-category {
     color: $sub-text-color;
-  }
-}
-
-/* 検索ボックス */
-.search-field {
-  margin: 25px 0;
-
-  .search-label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .search-text {
-    width: 100%;
-    padding: 8px 8px 5px;
-    outline: none;
-  }
-  .search-category {
-    width: 100%;
-    padding: 8px 8px 5px;
-    outline: none;
   }
 }
 
@@ -130,6 +131,13 @@
 .community-main-heading {
   width: 95%;
   padding: 0 30px;
+}
+
+.community-navigation {
+  color: $main-text-color;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 
