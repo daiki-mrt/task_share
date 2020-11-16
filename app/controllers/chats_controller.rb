@@ -1,7 +1,7 @@
 class ChatsController < ApplicationController
   before_action :set_community, only: [:index, :create, :destroy]
   before_action :set_chats, only: [:index, :create, :destroy]
-  before_action :move_to_index
+  before_action :move_to_index, except: :index
   
   def index
     @chat = Chat.new

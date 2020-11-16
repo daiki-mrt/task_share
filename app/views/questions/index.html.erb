@@ -37,7 +37,7 @@
     <% if current_user.already_joined?(@community) %>
       <%= link_to "質問する", new_community_question_path, class:"create-question-btn" %>
     <% else %>
-      質問投稿にはコミュニティ参加が必要です
+      <span class="need-join-message">質問投稿にはコミュニティ参加が必要です</span>
     <% end %>
     <% @questions.each do |question| %>
       <div class="question-summary-card">

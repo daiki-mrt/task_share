@@ -32,30 +32,35 @@
       <%= link_to "チャット", community_chats_path(@community), class:"community-navigation" %>
       <%= link_to "質問", community_questions_path(@community), class:"community-navigation" %>
     </div>
+    <% unless current_user.already_joined?(@community) %>
+      <span class="need-join-message-chat">チャットにはコミュニティ参加が必要です</span>
+    <% end %>
   </div>
   <div class="community-chats-box">
-    <div class="chats-area">
-      <% @chats.each do |chat| %>
-        <div class="chat-card">
-          <% if chat.user.profile.image.present? %>
-            <%= link_to image_tag(chat.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(chat.user) %>
-          <% end %>          
-          <%= link_to chat.user.name, user_path(chat.user), class:"chat-user-name" %>
-          <span class="chat-text">
-            <%= chat.text %>
-          </span>
-          <span class="chat-date">
-            <%= l chat.created_at, format: :long %>
-          </span>
-          <% if chat.user.id == current_user.id %>
-            <%= link_to "削除", community_chat_path(@community, chat.id), method: :delete, class:"chat-delete" %>
-          <% end %>
-        </div>
+    <% if current_user.already_joined?(@community) %>
+      <div class="chats-area">
+        <% @chats.each do |chat| %>
+          <div class="chat-card">
+            <% if chat.user.profile.image.present? %>
+              <%= link_to image_tag(chat.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(chat.user) %>
+            <% end %>          
+            <%= link_to chat.user.name, user_path(chat.user), class:"chat-user-name" %>
+            <span class="chat-text">
+              <%= chat.text %>
+            </span>
+            <span class="chat-date">
+              <%= l chat.created_at, format: :long %>
+            </span>
+            <% if chat.user.id == current_user.id %>
+              <%= link_to "削除", community_chat_path(@community, chat.id), method: :delete, class:"chat-delete" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <%= form_with model: [@community, @chat], local: true, class:"chats-form-area" do |f| %>
+        <%= f.text_field :text, placeholder:"チャットを入力する", class:"chats-form" %>
+        <%= f.submit "投稿", class:"chats-submit"%>
       <% end %>
-    </div>
-    <%= form_with model: [@community, @chat], local: true, class:"chats-form-area" do |f| %>
-      <%= f.text_field :text, placeholder:"チャットを入力する", class:"chats-form" %>
-      <%= f.submit "投稿", class:"chats-submit"%>
     <% end %>
   </div>
 </div>
