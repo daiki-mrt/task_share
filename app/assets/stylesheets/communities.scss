@@ -3,7 +3,76 @@
 }
 @import "style";
 
-/* 詳細ページメニュー */
+
+/* 一覧ページ */
+.community-create-btn {
+  width: 180px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  color: $main-text-color;
+  margin-bottom: 10px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.community-card {
+  width: 100%;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: $card-back-color;
+  
+  .community-card-head {
+    border-bottom: 1px solid $base-color;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+  .community-title {
+    color: $main-text-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .edit-btn {
+    color: lightgray;
+    font-size: 14px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .community-text {
+    color: $sub-text-color;
+    margin-bottom: 5px;
+  }
+  .community-category {
+    color: $sub-text-color;
+  }
+}
+
+/* 検索ボックス */
+.search-field {
+  margin: 25px 0;
+
+  .search-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .search-text {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+  }
+  .search-category {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+  }
+}
+
+
+/* 詳細ページサイドバー */
 .menu-bar-box {
   .community-name, .community-text {
     width: 100%;
@@ -54,75 +123,6 @@
 .community-exit-btn {
   background-color: lightgray;
   color: $with-highlight;
-}
-
-
-/* 一覧ページ */
-.community-create-btn {
-  width: 180px;
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-  color: $main-text-color;
-  margin-bottom: 10px;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-/* 検索ボックス */
-.search-field {
-  margin: 25px 0;
-
-  .search-label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .search-text {
-    width: 100%;
-    padding: 8px 8px 5px;
-    outline: none;
-  }
-  .search-category {
-    width: 100%;
-    padding: 8px 8px 5px;
-    outline: none;
-  }
-}
-
-/* 一覧ページ */
-.community-card {
-  width: 100%;
-  margin: 30px auto;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: $card-back-color;
-  
-  .community-card-head {
-    border-bottom: 1px solid $base-color;
-    padding-bottom: 8px;
-    margin-bottom: 10px;
-  }
-  .community-title {
-    color: $main-text-color;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  .edit-btn {
-    color: lightgray;
-    font-size: 14px;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  .community-text {
-    color: $sub-text-color;
-    margin-bottom: 5px;
-  }
-  .community-category {
-    color: $sub-text-color;
-  }
 }
 
 
