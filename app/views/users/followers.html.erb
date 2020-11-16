@@ -1,22 +1,14 @@
-<div class="wrapper">
-
   <div class="menu-bar">
 
   </div>
     
   <div class="main">
     <div class="main-heading">
-      <%= @user.name %>のフォロワーユーザー
+      <%= link_to @user.name, user_path(@user), class:"following-user-name" %>のフォロワー
     </div>
-    <ul class="posts">
-      <% @follower_users.each do |user| %>
-        <li>
-          <div class="user-card">
-            <%= link_to user.name, user_path(user) %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <div class="posts">
+      <%= render partial: "users_index", locals: { users: @follower_users  } %>
+    </div>
   </div>
   
   <div class="right-bar">

@@ -380,6 +380,13 @@
   }
 }
 
+.following-user-name {
+  color: $main-text-color;
+  margin-right: 5px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 
 /* right-bar */

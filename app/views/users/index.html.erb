@@ -24,21 +24,6 @@
   
 <div class="main">
   <div class="posts">
-    <% @users.each do |user| %>
-        <div class="user-card">
-          <div class="user-card-head">
-            <% if user.profile.image.present? %>
-              <%= link_to image_tag(user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(user) %>
-            <% end %>
-            <%= link_to user.name, user_path(user), class:"user-name" %>
-          </div>
-          <div class="user-text">
-            自己紹介：<%= user.profile.text %>
-          </div>
-          <div class="user-occupation">
-            職種：<%= user.profile.occupation_name(user) %>
-          </div>
-        </div>
-    <% end %>
+    <%= render partial: "users_index", locals: { users: @users } %>
   </div>
 </div>
