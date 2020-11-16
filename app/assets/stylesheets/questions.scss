@@ -1,4 +1,64 @@
- 
+@import "style";
+
+/* 質問一覧ページ */
+.posts {
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.create-question-btn {
+  display: inline-block;
+  background-color: $highlight;
+  color: $with-highlight;
+  padding: 7px;
+  border-radius: 5px;
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+.question-summary-card {
+  width: 100%;
+  margin: 10px auto 20px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: $card-back-color;
+
+  .question-summary-head {
+    margin: 0 auto;
+    padding-bottom: 15px;
+    .question-title {
+      font-size: 18px;
+      color: $main-text-color;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .question-date {
+      font-size: 14px;
+      color: $sub-text-color;
+    }
+  }
+  .question-summary-status {
+    display: flex;
+    justify-content: flex-end;
+    .question-summary-response {
+      color: $sub-text-color;
+      margin-right: 15px;
+      .question-summary-metoo {
+        margin-right: 5px;
+      }
+    }
+    .question-summary-close {
+      color: $sub-text-color;
+    }
+    .question-summary-open {
+      color: $highlight;
+    }
+  }
+}
+
+
+/* 質問詳細ページ */
 .question-area {
   border: 1px solid lightgray;
   width: 90%;

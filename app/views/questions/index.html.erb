@@ -1,64 +1,71 @@
-<div class="wrapper">
-
-  <div class="menu-bar">
-    <div class="menu-bar-box">
-      <ul class="menu-items">
-        <% if current_user.id == @community.user.id %>
-          <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
-        <% elsif current_user.already_joined?(@community) %>
-          <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
-        <% else %>
-          <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-    
-  <div class="main">
-    <div class="main-heading">
-      <%= @community.name %>
-      <div class="main-menu">
-        <%= link_to "task", community_path(@community) %>
-        <%= link_to "チャット", community_chats_path(@community) %>
-        <%= link_to "質問", community_questions_path(@community) %>
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <div class="community-name"><%= @community.name %></div>
+    <div class="community-text"><%= @community.text %></div>
+    <% if current_user.id == @community.user.id %>
+      <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+    <% elsif current_user.already_joined?(@community) %>
+      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+    <% else %>
+      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+    <% end %>
+    <div class="menu-items">
+      <div class="community-members">
+        参加ユーザー <span><%= @joined_users.count %></span>
+      </div>
+      <div class="community-completed-tasks">
+        参加者の完了タスク <%= @tasks.where(state: true).count %>
+      </div>
+      <div class="question-and-answer">
+        質問 <%= @questions.count%>
+        解決 <%= @questions.where(state: true).count %>
       </div>
     </div>
-    <div class="posts">
-      <% if current_user.already_joined?(@community) %>
-        <%= link_to "質問する", new_community_question_path %>
-      <% else %>
-        質問投稿にはコミュニティ参加が必要です
-      <% end %>
-      <% @questions.each do |question| %>
-        <div class="post-card">
-          <div class="post-title"><%= link_to question.title, community_question_path(@community, question) %>
-          <%= l question.created_at, format: :short %></div>
-          
-          <div class="post-text"><%= question.content %></div>
-          <div class="edit-area">
+  </div>
+</div>
 
-            <div class="response-count">
-              知りたい！<%= question.me_toos.count %>
-              役に立った！<%= question.goods.count %>
-            </div>
-            <% if question.state %>
-              <span class="question-close">解決済み</span>
-            <% else %>
-              <span class="question-open">受付中</span>
-            <% end %>
-          </div>
-          <div class="like-area">
-          </div>
+  
+<div class="main">
+  <div class="community-main-heading">
+    <div class="main-menu">
+      <%= link_to "みんなのタスク", community_path(@community) %>
+      <%= link_to "チャット", community_chats_path(@community) %>
+      <%= link_to "質問", community_questions_path(@community) %>
+    </div>
+  </div>
+  <div class="posts">
+    <% if current_user.already_joined?(@community) %>
+      <%= link_to "質問する", new_community_question_path, class:"create-question-btn" %>
+    <% else %>
+      質問投稿にはコミュニティ参加が必要です
+    <% end %>
+    <% @questions.each do |question| %>
+      <div class="question-summary-card">
+        <div class="question-summary-head">
+          <%= link_to question.title, community_question_path(@community, question), class:"question-title" %>
+          <span class="question-date"><%= l question.created_at, format: :short %></span> 
         </div>
-      <% end %>
-    </div>
+        <div class="question-summary-status">
+          <div class="question-summary-response">
+            <span class="question-summary-metoo">知りたい！<%= question.me_toos.count %></span>
+            <span class="question-summary-good">役に立った！<%= question.goods.count %></span>
+          </div>
+          <% if question.state %>
+            <span class="question-summary-close">解決済み</span>
+          <% else %>
+            <span class="question-summary-open">受付中</span>
+          <% end %>
+        </div>
+        <div class="like-area">
+        </div>
+      </div>
+    <% end %>
   </div>
-  
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
-    </div>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
   </div>
-  
+  <div class="right-bar-box">
+  </div>
 </div>

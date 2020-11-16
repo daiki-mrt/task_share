@@ -9,6 +9,9 @@ class QuestionsController < ApplicationController
   
   def index
     @questions = @community.questions.includes(:user).order("created_at DESC")
+    @joined_users = @community.joined_users
+    joined_user_ids = @joined_users.pluck(:id)
+    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
   end
 
   def new
