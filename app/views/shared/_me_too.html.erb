@@ -1,10 +1,10 @@
 <% if current_user.already_me_too?(question) %>
   <%= link_to question_me_too_path(question, question_id: question.id), method: :delete, remote: true do %>
-    <span class="metoo-text">同じく</span><i class="fas fa-cloud-showers-heavy un-metoo-btn"></i>
+    <span class="metoo-text">知りたい!</span><i class="fas fa-cloud-showers-heavy un-metoo-btn"></i>
   <% end %>
 <% else %>
   <%= link_to question_me_toos_path(question), method: :post, remote: true do %>
-    <span class="metoo-text">同じく</span><i class="fas fa-cloud-showers-heavy metoo-btn"></i>
+    <span class="metoo-text">知りたい!</span><i class="fas fa-cloud-showers-heavy metoo-btn"></i>
   <% end %>
 <% end %>
 <%= question.me_toos.count %>
