@@ -4,11 +4,11 @@
   <div class="task-post-form">
     <%= form_with model: [@user, @task], local: true do |f|%>
       <%= render 'shared/error_messages', model: f.object %>
-      <div class="task">
+      <div class="task-form">
         <%= f.label "タスク", class:"task-label"%>
         <%= f.text_field :title, class:"task-input" %>
       </div>
-      <div class="task">
+      <div class="task-form">
         <%= f.label "内容", class:"task-label"%>
         <%= f.text_area :text, class:"task-input text" %>
       </div>
