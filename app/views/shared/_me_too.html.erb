@@ -1,0 +1,6 @@
+<% if current_user.already_me_too?(question) %>
+  <%= link_to "知りたい！解除", question_me_too_path(question, question_id: question.id), method: :delete, remote: true, class:"metoo-btn" %>
+<% else %>
+  <%= link_to "知りたい！", question_me_toos_path(question), method: :post, remote: true, class:"metoo-btn" %>
+<% end %>
+<%= question.me_toos.count %>
