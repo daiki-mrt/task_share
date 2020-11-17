@@ -150,3 +150,12 @@
   margin-left: 15px;
   text-align: center;
 }
+
+/* 完了タスク一覧 */
+.task-index-user-name {
+  color: $main-text-color;
+  margin-right: 8px;
+  &:hover {
+    text-decoration: underline;
+  }
+}

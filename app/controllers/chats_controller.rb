@@ -6,8 +6,8 @@ class ChatsController < ApplicationController
   def index
     @chat = Chat.new
     @joined_users = @community.joined_users
-    joined_user_ids = @joined_users.pluck(:id)
-    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+    # タスク総数を取得 → ビューで完了未完了を分岐
+    @tasks = Task.user_is(@joined_users.pluck(:id)).order("created_at DESC")
     @questions = Question.where(community_id: @community.id)
   end
 
@@ -17,8 +17,8 @@ class ChatsController < ApplicationController
       redirect_to community_chats_path(@community)
     else
       @joined_users = @community.joined_users
-      joined_user_ids = @joined_users.pluck(:id)
-      @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+      # タスク総数を取得 → ビューで完了未完了を分岐
+      @tasks = Task.user_is(@joined_users.pluck(:id)).order("created_at DESC")
       @questions = Question.where(community_id: @community.id)
       render :index
     end
