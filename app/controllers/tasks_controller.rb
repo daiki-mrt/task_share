@@ -79,7 +79,7 @@ class TasksController < ApplicationController
   def move_to_index
     set_user
     unless user_signed_in? && (current_user.id == @user.id)
-      redirect_to root_path
+      redirect_to "/"
     end
   end
 end
