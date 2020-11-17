@@ -30,8 +30,9 @@
     }
     .user-text {
       color: $sub-text-color;
-      margin: 10px 0 15px;
+      margin: 10px 0 30px;
       width: 100%;
+      line-height: 20px;
     }
 
     .menu-items {
@@ -44,33 +45,30 @@
     .relationships {
       margin-bottom: 18px;
       text-align: center;
-      & a {
-        color: $main-text-color;
-      }
-      &:hover {
-        text-decoration: underline;
-      }
     }
     .relationships-user {
       margin-bottom: 18px;
       .follow-count, .follower-count {
-        color: $main-text-color;
+        color: $sub-text-color;
         &:hover {
-          text-decoration: underline;
+          opacity: 0.7;
         }
       }
     }
     .completed-task {
       margin-bottom: 18px;
     }
+    .completed-task-count {
+      color: $main-text-color;
+      &:hover {
+        opacity: 0.7;
+      }
+      span {
+        margin-right: 5px;
+      }
+    }
     .direct-message {
       margin-bottom: 18px;
-      .message-btn {
-        color: $main-text-color;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
     }
     .joined-communities {
       margin-bottom: 18px;
@@ -84,6 +82,32 @@
     }
   }
 }
+
+/* フォローボタン */
+.unfollow-btn {
+  font-size: 15px;
+  color: #2a2a2a;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.follow-btn {
+  font-size: 15px;
+  color: #808080;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }  
+}
+
+/* メッセージボタン */
+.message-btn {
+  color: $main-text-color;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 
 /* 中央エリア */
 .main {
@@ -247,7 +271,8 @@
         text-decoration: underline;
       }
   }
-  .user-text {
+  .user-text
+   {
     color: $sub-text-color;
     margin-bottom: 5px;
   }
