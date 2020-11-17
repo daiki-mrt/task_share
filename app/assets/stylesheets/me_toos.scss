@@ -1,3 +1,23 @@
-// Place all the styles related to the me_toos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.un-metoo-btn {
+  font-size: 15px;
+  color: #2a2a2a;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.metoo-btn {
+  font-size: 15px;
+  color: #808080;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.metoo-text {
+  font-size: 13px;
+  color: #808080;
+  margin-right: 5px;
+}

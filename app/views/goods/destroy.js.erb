@@ -1,0 +1,1 @@
+document.getElementById('good_question_<%= @question.id %>').innerHTML = '<%= escape_javascript(render 'shared/good', question: @question) %>'
