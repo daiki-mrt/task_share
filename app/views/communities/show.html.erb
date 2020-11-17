@@ -33,7 +33,7 @@
     </div>
   </div>
   <div class="posts">
-    <% @tasks.each do |task| %>
+    <% @remain_tasks.each do |task| %>
       <span id="task_<%= task.id %>">
         <%= render partial: "shared/tasks", locals: { task: task } %>
       </span>

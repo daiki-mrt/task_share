@@ -34,9 +34,12 @@ class CommunitiesController < ApplicationController
   end
 
   def show
+    # 参加ユーザー
     @joined_users = @community.joined_users
-    joined_user_ids = @joined_users.pluck(:id)
-    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+    # 参加ユーザーのタスク(サイドバー)
+    @tasks = Task.user_is(@joined_users.pluck(:id))
+    # うち未完了のタスク(一覧表示)
+    @remain_tasks = @tasks.not_completed.order("created_at DESC")
     @questions = Question.where(community_id: @community.id)
   end
   
