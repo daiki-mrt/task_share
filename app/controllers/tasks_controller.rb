@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index
+  before_action :move_to_index, except: :index
 
   def index
+    set_user
     @tasks = Task.user_is(params[:user_id]).completed
   end
 
