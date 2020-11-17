@@ -11,8 +11,7 @@ class QuestionsController < ApplicationController
     @questions = @community.questions.includes(:user).order("created_at DESC")
     # サイドバー用データ取得
     @joined_users = @community.joined_users
-    joined_user_ids = @joined_users.pluck(:id)
-    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+    @tasks = Task.user_is(@joined_users.pluck(:id))
   end
 
   def new
@@ -31,8 +30,7 @@ class QuestionsController < ApplicationController
   def show
     # サイドバー用データ取得
     @joined_users = @community.joined_users
-    joined_user_ids = @joined_users.pluck(:id)
-    @tasks = Task.where(user_id: joined_user_ids).order("created_at DESC")
+    @tasks = Task.user_is(@joined_users.pluck(:id))
     @questions = @community.questions
   end
 
