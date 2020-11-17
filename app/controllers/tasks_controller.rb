@@ -2,6 +2,10 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index
 
+  def index
+    @tasks = Task.user_is(params[:user_id]).completed
+  end
+
   def new
     set_user
     set_profile

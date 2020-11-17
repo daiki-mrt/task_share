@@ -22,7 +22,7 @@
         フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user), class:"follower-count" %>
       </div>
       <div class="completed-task">
-        タスク数 <%= @user.tasks.count %>
+        完了タスク数 <%= link_to @user.tasks.where(state: true).count, user_tasks_path(@user.id) %>
       </div>
       <div class="direct-message">
         <% if current_user != @user %>
