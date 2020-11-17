@@ -217,6 +217,9 @@
 .search-navigation {
   color: $main-text-color;
   margin-right: 8px;
+    &:hover {
+    border-bottom: 2px solid lightgray;
+    }
 }
 .user-card {
   width: 100%;
