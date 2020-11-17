@@ -22,8 +22,12 @@
         <% end %>
       </div>
       <div class="relationships-user">
-        フォロー <%= link_to "#{@following_users.count}", follows_user_path(@user), class:"follow-count" %>
-        フォロワー <%= link_to "#{@follower_users.count}", followers_user_path(@user), class:"follower-count" %>
+        <%= link_to follows_user_path(@user) do %>
+          <span class="follow-count"><i class="fas fa-user-friends"></i>フォロー<%= @following_users.count %></span>
+        <% end %>
+        <%= link_to followers_user_path(@user) do %>
+          <span class="follower-count">フォロワー<%= @follower_users.count %></span>
+        <% end %>
       </div>
       <div class="completed-task">
         完了タスク数 <%= link_to @user.tasks.where(state: true).count, user_tasks_path(@user.id) %>

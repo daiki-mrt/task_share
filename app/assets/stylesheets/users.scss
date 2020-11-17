@@ -49,9 +49,9 @@
     .relationships-user {
       margin-bottom: 18px;
       .follow-count, .follower-count {
-        color: $main-text-color;
+        color: $sub-text-color;
         &:hover {
-          text-decoration: underline;
+          opacity: 0.7;
         }
       }
     }
