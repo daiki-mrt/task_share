@@ -29,9 +29,6 @@
           <span class="follower-count">フォロワー<%= @follower_users.count %></span>
         <% end %>
       </div>
-      <div class="completed-task">
-        完了タスク数 <%= link_to @user.tasks.where(state: true).count, user_tasks_path(@user.id) %>
-      </div>
       <div class="direct-message">
         <% if current_user != @user %>
           <% if @room.present? %>
@@ -44,6 +41,11 @@
             <% end %>
           <% end %>
         <% end %>
+      </div>
+      <div class="completed-task">
+        <%= link_to user_tasks_path(@user.id) do %>
+          <span class="completed-task-count"><span>完了タスク数</span><%= @user.tasks.where(state: true).count %></span>
+        <% end %><span><%= " /#{@user.tasks.count}" %></span>
       </div>
       <div class="joined-communities">
         参加コミュニティ

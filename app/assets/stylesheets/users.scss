@@ -58,6 +58,15 @@
     .completed-task {
       margin-bottom: 18px;
     }
+    .completed-task-count {
+      color: $main-text-color;
+      &:hover {
+        opacity: 0.7;
+      }
+      span {
+        margin-right: 5px;
+      }
+    }
     .direct-message {
       margin-bottom: 18px;
     }
