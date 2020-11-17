@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, update_only: true
   has_many :tasks
 
@@ -67,4 +67,10 @@ class User < ApplicationRecord
     self.where(id: profiles.pluck(:user_id))
   end
   
+  def self.guest
+    find_or_create_by!(email: "guest@guest.com") do |user|
+      user.name = "ゲスト"
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end

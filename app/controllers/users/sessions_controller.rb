@@ -12,6 +12,19 @@ class Users::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     new_user_session_path
   end
+
+  # ゲストユーザーログイン
+  def guest_sign_in
+    user = User.guest
+    # プロフィール登録
+    profile = user.build_profile(occupation_id: 1, text: "ゲストユーザーです。よろしくお願いします", user_id: user.id)
+    profile.image.attach(io: File.open('app/assets/images/default_user_image.png'), filename: 'default_user_image.png')
+    profile.save
+    
+    sign_in(user)
+    redirect_to '/'
+  end
+
   # GET /resource/sign_in
   # def new
   #   super

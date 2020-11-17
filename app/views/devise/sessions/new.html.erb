@@ -23,8 +23,8 @@
         <%= f.submit "ログイン", class:"submit-btn" %>
 
         <ul class="not-login" >
-          <li>ゲストユーザーは <%= link_to "こちら", "" %></li>
-          <li>新規登録は <%= link_to "こちら", new_user_registration_path %></li>
+          <li>ゲストログイン(閲覧用)は <%= link_to "こちら", users_guest_sign_in_path, method: :post, class:"guest-btn" %></li>
+          <li>新規登録は <%= link_to "こちら", new_user_registration_path, class:"sign-up-btn" %></li>
         </ul>          
 
       <% end %>
