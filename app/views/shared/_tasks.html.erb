@@ -23,9 +23,17 @@
   <% end %>
   <div class="like-area">
     <% if current_user.already_liked?(task) %>
-      <div><%= link_to "いいね解除", task_like_path(task.id, task_id: task.id), method: :delete, remote: true, class:"like-btn" %></div>
+      <div>
+        <%= link_to task_like_path(task.id, task_id: task.id), method: :delete, remote: true do %>
+          <i class="fas fa-heart unlike-btn"></i>
+        <% end %>
+      </div>
     <% else%>
-      <div><%= link_to "いいね", task_likes_path(task_id: task.id), method: :post, remote: true, class:"like-btn" %></div>
+      <div>
+        <%= link_to task_likes_path(task_id: task.id), method: :post, remote: true do %>
+          <i class="fas fa-heart like-btn"></i>
+        <% end %>
+      </div>
     <% end %>
     <div class="like-count"><%= task.likes.count %></div>  
   </div>
