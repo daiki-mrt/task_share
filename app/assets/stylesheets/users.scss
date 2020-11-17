@@ -30,8 +30,9 @@
     }
     .user-text {
       color: $sub-text-color;
-      margin: 10px 0 15px;
+      margin: 10px 0 30px;
       width: 100%;
+      line-height: 20px;
     }
 
     .menu-items {
@@ -247,7 +248,8 @@
         text-decoration: underline;
       }
   }
-  .user-text {
+  .user-text
+   {
     color: $sub-text-color;
     margin-bottom: 5px;
   }
