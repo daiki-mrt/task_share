@@ -7,7 +7,11 @@
     <% end %>
   </div>
   <div class="posts">
-    <%= render partial: "shared/tasks", locals: { tasks: @tasks} %>
+    <% @tasks.each do |task| %>
+      <div id="task_<%= task.id %>">
+        <%= render partial: "shared/tasks", locals: { task: task} %>
+      </div>
+    <% end %>
   </div>
 </div>
 
