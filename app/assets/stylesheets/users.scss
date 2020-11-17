@@ -60,12 +60,6 @@
     }
     .direct-message {
       margin-bottom: 18px;
-      .message-btn {
-        color: $main-text-color;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
     }
     .joined-communities {
       margin-bottom: 18px;
@@ -95,6 +89,14 @@
   &:hover {
     opacity: 1;
   }  
+}
+
+/* メッセージボタン */
+.message-btn {
+  color: $main-text-color;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 
