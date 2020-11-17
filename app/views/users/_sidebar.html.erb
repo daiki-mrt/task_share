@@ -11,9 +11,13 @@
       <div class="relationships">
         <% if @user != current_user %>
           <% if @user.follow?(current_user) %>
-            <%= link_to "フォロー済み", user_relationship_path(@user), method: :delete %>
+            <%= link_to  user_relationship_path(@user), method: :delete, class:"unfollow-link" do %>
+              <span class="unfollow-btn"><i class="fas fa-user-check"></i>フォロー済み</span> 
+            <% end %>
           <% else %>
-            <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
+            <%= link_to user_relationships_path(@user), method: :post, class:"follow-link" do %>
+              <span class="follow-btn"><i class="fas fa-user-check"></i>フォローする</span>
+            <% end %>
           <% end %>
         <% end %>
       </div>

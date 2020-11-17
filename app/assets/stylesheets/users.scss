@@ -45,12 +45,6 @@
     .relationships {
       margin-bottom: 18px;
       text-align: center;
-      & a {
-        color: $main-text-color;
-      }
-      &:hover {
-        text-decoration: underline;
-      }
     }
     .relationships-user {
       margin-bottom: 18px;
@@ -85,6 +79,24 @@
     }
   }
 }
+
+/* フォローボタン */
+.unfollow-btn {
+  font-size: 15px;
+  color: #2a2a2a;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.follow-btn {
+  font-size: 15px;
+  color: #808080;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }  
+}
+
 
 /* 中央エリア */
 .main {
