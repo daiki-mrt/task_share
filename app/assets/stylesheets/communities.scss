@@ -142,7 +142,7 @@
 .community-navigation {
   color: $main-text-color;
   &:hover {
-    text-decoration: underline;
+    border-bottom: 2px solid lightgray;
   }
 }
 .task {
