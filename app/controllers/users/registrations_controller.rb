@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     @profile = @user.build_profile(sign_up_params[:profile_attributes])
+    @profile.image_added?
     if @user.valid?
       @user.save
       @profile.save
