@@ -3,6 +3,9 @@
 # devise用 https://github.com/tigrish/devise-i18n/blob/master/rails/locales/ja.yml
 ja:
   activerecord:
+    models:
+      user: ユーザ
+      message: メッセージ
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -29,8 +32,10 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         name: なまえ
-    models:
-      user: ユーザ
+      message:
+        text: メッセージ
+        room_id: ルーム
+        user_id: ユーザ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
