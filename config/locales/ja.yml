@@ -6,6 +6,7 @@ ja:
     models:
       user: ユーザ
       message: メッセージ
+      profile: プロフィール
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -36,6 +37,11 @@ ja:
         text: メッセージ
         room_id: ルーム
         user_id: ユーザ
+      profile:
+        user_id: ユーザ
+        occupation_id: 職種
+        text: テキスト
+        image: プロフィール画像
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
