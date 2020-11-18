@@ -15,4 +15,10 @@ class Profile < ApplicationRecord
     Occupation.find(occupation_id).name
   end
 
+  # 新規登録時にプロフィール画像が指定されているかどうか
+  def image_added?
+    unless image.attached?
+      image.attach(io: File.open('app/assets/images/default_user_image.png'), filename: 'default_user_image.png')
+    end
+  end
 end
