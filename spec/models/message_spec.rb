@@ -12,7 +12,6 @@ RSpec.describe Message, type: :model do
     it "テキストが無いと保存できない" do
       @message.text = nil
       @message.valid?
-      binding.pry
       expect(@message.errors[:text]).to include("を入力してください")
     end
     it "userが紐付いていないと保存できない" do
