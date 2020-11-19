@@ -11,6 +11,7 @@ ja:
       task: タスク
       like: いいね
       community: コミュニティ
+      chat: チャット
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -62,6 +63,10 @@ ja:
         category_id: カテゴリ
         text: 詳細
         user_id: ユーザ
+      chat:
+        text: テキスト
+        user_id: ユーザ
+        community_id: コミュニティ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
