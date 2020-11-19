@@ -13,6 +13,7 @@ ja:
       community: コミュニティ
       chat: チャット
       question: 質問
+      answer: 回答
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -75,6 +76,10 @@ ja:
         image: 画像
         user_id: ユーザ
         community_id: コミュニティ
+      answer:
+        text: コメント
+        question_id: 質問
+        user_id: ユーザ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
