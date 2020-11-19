@@ -14,6 +14,7 @@ ja:
       chat: チャット
       question: 質問
       answer: 回答
+      me_too: 知りたい
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -80,6 +81,9 @@ ja:
         text: コメント
         question_id: 質問
         user_id: ユーザ
+      me_too:
+        user_id: ユーザ
+        question_id: 質問
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
