@@ -7,7 +7,8 @@ ja:
       user: ユーザ
       message: メッセージ
       profile: プロフィール
-      relationships: フォロー・フォロワー
+      relationship: フォロー・フォロワー
+      task: タスク
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -43,9 +44,14 @@ ja:
         occupation_id: 職種
         text: テキスト
         image: プロフィール画像
-      relationships:
+      relationship:
         following_id: フォロー
         follower_id: フォロワー
+      task:
+        title: タイトル
+        text: 内容
+        state: 状態
+        user_id: ユーザ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
