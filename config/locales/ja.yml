@@ -12,6 +12,7 @@ ja:
       like: いいね
       community: コミュニティ
       chat: チャット
+      question: 質問
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -65,6 +66,13 @@ ja:
         user_id: ユーザ
       chat:
         text: テキスト
+        user_id: ユーザ
+        community_id: コミュニティ
+      question:
+        title: タイトル
+        content: 内容
+        state: 状態
+        image: 画像
         user_id: ユーザ
         community_id: コミュニティ
     errors:

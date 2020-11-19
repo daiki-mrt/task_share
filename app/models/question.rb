@@ -7,4 +7,5 @@ class Question < ApplicationRecord
   has_many :goods
 
   validates :title, :content, presence: true
+  validates :state, inclusion: { in: [true, false] }
 end
