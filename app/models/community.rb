@@ -9,7 +9,7 @@ class Community < ApplicationRecord
   has_many :questions
 
   validates :name, presence: true
-  validates :category_id, numericality: { other_than: 0 }
+  validates :text, presence: true
 
   # 検索
   scope :search, -> (search_params) do

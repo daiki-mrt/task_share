@@ -10,6 +10,7 @@ ja:
       relationship: フォロー・フォロワー
       task: タスク
       like: いいね
+      community: コミュニティ
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -56,6 +57,11 @@ ja:
       like:
         user_id: ユーザ
         task_id: タスク
+      community:
+        name: コミュニティ名
+        category_id: カテゴリ
+        text: 詳細
+        user_id: ユーザ
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
