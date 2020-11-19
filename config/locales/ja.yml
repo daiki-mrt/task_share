@@ -3,6 +3,19 @@
 # devise用 https://github.com/tigrish/devise-i18n/blob/master/rails/locales/ja.yml
 ja:
   activerecord:
+    models:
+      user: ユーザ
+      message: メッセージ
+      profile: プロフィール
+      relationship: フォロー・フォロワー
+      task: タスク
+      like: いいね
+      community: コミュニティ
+      chat: チャット
+      question: 質問
+      answer: 回答
+      me_too: 知りたい
+      good: 役に立った
     attributes:
       user:
         confirmation_sent_at: パスワード確認送信時刻
@@ -28,8 +41,53 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-    models:
-      user: ユーザ
+        name: なまえ
+      message:
+        text: メッセージ
+        room_id: ルーム
+        user_id: ユーザ
+      profile:
+        user_id: ユーザ
+        occupation_id: 職種
+        text: テキスト
+        image: プロフィール画像
+      relationship:
+        following_id: フォロー
+        follower_id: フォロワー
+      task:
+        title: タイトル
+        text: 内容
+        state: 状態
+        user_id: ユーザ
+      like:
+        user_id: ユーザ
+        task_id: タスク
+      community:
+        name: コミュニティ名
+        category_id: カテゴリ
+        text: 詳細
+        user_id: ユーザ
+      chat:
+        text: テキスト
+        user_id: ユーザ
+        community_id: コミュニティ
+      question:
+        title: タイトル
+        content: 内容
+        state: 状態
+        image: 画像
+        user_id: ユーザ
+        community_id: コミュニティ
+      answer:
+        text: コメント
+        question_id: 質問
+        user_id: ユーザ
+      me_too:
+        user_id: ユーザ
+        question_id: 質問
+      good:
+        user_id: ユーザ
+        question_id: 質問
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -151,7 +209,7 @@ ja:
       greater_than: は%{count}より大きい値にしてください
       greater_than_or_equal_to: は%{count}以上の値にしてください
       inclusion: は一覧にありません
-      invalid: は不正な値です
+      invalid: は無効な値です
       less_than: は%{count}より小さい値にしてください
       less_than_or_equal_to: は%{count}以下の値にしてください
       model_invalid: 'バリデーションに失敗しました: %{errors}'

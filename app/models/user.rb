@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates :password, format: { with: PASSWORD_REGEX, message: "は半角英数字で入力してください" }
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, update_only: true

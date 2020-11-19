@@ -15,12 +15,12 @@
       
       <div class="registration-item">
         <span class="label">Eメール <span class="must">*必須</span></span>
-        <%= f.email_field :email, class:"form-box" %>
+        <%= f.email_field :email, placeholder:"example@example.com", class:"form-box" %>
       </div>
 
       <div class="registration-item">
         <span class="label">パスワード <span class="must">*必須</span></span>
-        <%= f.password_field :password, class:"form-box" %>
+        <%= f.password_field :password, placeholder:"半角英数字 6ケタ以上", class:"form-box" %>
       </div>
 
       <div class="registration-item">
@@ -36,7 +36,7 @@
 
         <div class="registration-item">
           <%= f.label "自己紹介", class:"label" %>
-          <%= f.text_area :text, class:"form-box" %>
+          <%= f.text_area :text, placeholder:"興味や関心のあることを書いてみよう!", class:"form-box" %>
         </div>
 
         <div class="registration-item">
