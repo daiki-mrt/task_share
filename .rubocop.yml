@@ -61,3 +61,7 @@ Style/Documentation:
 # コントローラーの空メソッドを許可
 Style/EmptyMethod:
   Enabled: false
+
+# "Missing frozen string literal comment."を許可
+Style/FrozenStringLiteralComment:
+  Enabled: false

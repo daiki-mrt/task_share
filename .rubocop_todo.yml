@@ -14,13 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 146
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Style/GlobalStdStream:
