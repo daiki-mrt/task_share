@@ -33,3 +33,8 @@ Metrics/BlockLength:
 # 要確認のため退避 registrations_controller.rb
 Metrics/MethodLength:
   Enabled: false
+
+# 要確認のため退避 Specify an :inverse_of option.
+Rails/InverseOf:
+  Exclude:
+    - 'app/models/user.rb'
