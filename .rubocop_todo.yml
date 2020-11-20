@@ -17,15 +17,6 @@ Bundler/OrderedGems:
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
-# SupportedStyles: line_count_dependent, lambda, literal
-Style/Lambda:
-  Exclude:
-    - 'app/models/community.rb'
-    - 'app/models/user.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
 # SupportedStyles: both, prefix, postfix
 Style/NegatedIf:
   Exclude:

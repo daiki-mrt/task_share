@@ -18,6 +18,9 @@ AllCops:
 Layout/SpaceInLambdaLiteral:
   Enabled: false
 
+Style/Lambda:
+  Enabled: false
+
 # sessions_controller.rbのafter_sign_out_path_forメソッド
 Lint/UnusedMethodArgument:
   Enabled: false
