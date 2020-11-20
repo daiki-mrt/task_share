@@ -38,3 +38,7 @@ Metrics/MethodLength:
 Rails/InverseOf:
   Exclude:
     - 'app/models/user.rb'
+
+# app/models/like.rb
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
