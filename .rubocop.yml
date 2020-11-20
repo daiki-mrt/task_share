@@ -53,3 +53,7 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'app/controllers/users/*'
     - 'test/channels/application_cable/connection_test.rb'
+
+# "Missing top-level class documentation comment."を許可
+Style/Documentation:
+  Enabled: false
