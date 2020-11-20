@@ -11,7 +11,7 @@ AllCops:
     - 'db/**/*'
     - 'node_modules/**/*'
     - 'config/**/*'
-
+    - 'spec/spec_helper.rb'
 
 # scope -> (params) 引数を囲む記述を認める
 Layout/SpaceInLambdaLiteral:
