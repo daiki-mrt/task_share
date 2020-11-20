@@ -1,11 +1,7 @@
 class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
-    if @answer.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer
-    end
+    redirect_to request.referer if @answer.save
   end
 
   private

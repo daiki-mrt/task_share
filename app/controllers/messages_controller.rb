@@ -1,11 +1,7 @@
 class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-    if @message.save
-      redirect_to room_path(params[:message][:room_id])
-    else
-      redirect_to room_path(params[:message][:room_id])
-    end
+    redirect_to room_path(params[:message][:room_id]) if @message.save
   end
 
   private

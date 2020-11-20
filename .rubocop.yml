@@ -69,3 +69,13 @@ Style/FrozenStringLiteralComment:
 # https://docs.rubocop.org/rubocop/cops_style.html#styleguardclause
 Style/GuardClause:
   Enabled: false
+
+# 要確認のため退避
+Style/HashAsLastArrayItem:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+  
+# 現状は同期通信で切り替えているため許可
+Style/IdenticalConditionalBranches:
+  Exclude:
+    - 'app/controllers/questions_controller.rb'

@@ -50,8 +50,6 @@ class TasksController < ApplicationController
     set_task
     if @task.destroy
       redirect_to user_path(current_user)
-    else
-      redirect_to user_path(current_user)
     end
   end
 

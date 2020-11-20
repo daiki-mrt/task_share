@@ -14,29 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/GlobalStdStream:
-  Exclude:
-    - 'config/environments/production.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: braces, no_braces
-Style/HashAsLastArrayItem:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-
-# Offense count: 12
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/controllers/answers_controller.rb'
-    - 'app/controllers/messages_controller.rb'
-    - 'app/controllers/questions_controller.rb'
-    - 'app/controllers/relationships_controller.rb'
-    - 'app/controllers/tasks_controller.rb'
-
 # Offense count: 7
 # Cop supports --auto-correct.
 Style/IfUnlessModifier:
