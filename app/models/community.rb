@@ -3,10 +3,10 @@ class Community < ApplicationRecord
   belongs_to :category
 
   belongs_to :user
-  has_many :user_communities
+  has_many :user_communities, dependent: :destroy
   has_many :users, through: :user_communities
-  has_many :chats
-  has_many :questions
+  has_many :chats, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   validates :name, presence: true
   validates :text, presence: true

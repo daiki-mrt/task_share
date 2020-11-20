@@ -10,20 +10,20 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, update_only: true
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
-  has_many :user_rooms
+  has_many :user_rooms, dependent: :destroy
   has_many :rooms, through: :user_rooms
-  has_many :messages
-  has_many :likes
-  has_many :own_communities, class_name: "Community"
-  has_many :user_communities
+  has_many :messages, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :own_communities, class_name: "Community", dependent: :destroy
+  has_many :user_communities, dependent: :destroy
   has_many :communities, through: :user_communities
-  has_many :chats
-  has_many :questions
-  has_many :answers
-  has_many :me_toos
-  has_many :goods
+  has_many :chats, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+  has_many :me_toos, dependent: :destroy
+  has_many :goods, dependent: :destroy
 
   # フォロー側
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id, dependent: :destroy
