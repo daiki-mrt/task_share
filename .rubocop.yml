@@ -82,3 +82,7 @@ Style/HashAsLastArrayItem:
 Style/IdenticalConditionalBranches:
   Exclude:
     - 'app/controllers/questions_controller.rb'
+
+# ダブルクォーテーションを許可
+Style/StringLiterals:
+  Enabled: false
