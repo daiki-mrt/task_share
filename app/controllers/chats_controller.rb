@@ -31,6 +31,7 @@ class ChatsController < ApplicationController
   end
 
   private
+
   def set_community
     @community = Community.find(params[:community_id])
   end
