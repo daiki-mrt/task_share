@@ -60,5 +60,4 @@ RSpec.describe User, type: :model do
     it "パスワード(確認)がパスワードと異なっていると保存できない" do
     end
   end
-
 end
