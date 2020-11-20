@@ -14,19 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: SafeForConstants.
-Style/RedundantFetchBlock:
-  Exclude:
-    - 'config/puma.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/RedundantRegexpCharacterClass:
-  Exclude:
-    - 'app/models/user.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 Style/RedundantSelf:
