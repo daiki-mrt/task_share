@@ -35,7 +35,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 11
 
-# 要確認のため退避 Specify an :inverse_of option.
+# Specify an :inverse_of option.を許可
 Rails/InverseOf:
   Exclude:
     - 'app/models/user.rb'
