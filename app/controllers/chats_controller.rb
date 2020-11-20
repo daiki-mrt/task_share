@@ -46,6 +46,6 @@ class ChatsController < ApplicationController
 
   def move_to_index
     set_community
-    redirect_to community_path(@community) if !current_user.already_joined?(@community)
+    redirect_to community_path(@community) unless current_user.already_joined?(@community)
   end
 end

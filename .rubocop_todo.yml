@@ -16,15 +16,6 @@ Bundler/OrderedGems:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: both, prefix, postfix
-Style/NegatedIf:
-  Exclude:
-    - 'app/controllers/chats_controller.rb'
-    - 'app/controllers/questions_controller.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
 # Configuration parameters: SafeForConstants.
 Style/RedundantFetchBlock:
   Exclude:
