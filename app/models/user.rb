@@ -44,17 +44,17 @@ class User < ApplicationRecord
 
   # communityに参加済みかどうかの確認
   def already_joined?(community)
-    self.user_communities.where(community_id: community.id).exists?
+    user_communities.where(community_id: community.id).exists?
   end
 
   # questionに「知りたい！」済みかどうかの確認
   def already_me_too?(question)
-    self.me_toos.where(question_id: question.id).exists?
+    me_toos.where(question_id: question.id).exists?
   end
 
   # questionに「役に立った！」済みかどうかの確認
   def already_good?(question)
-    self.goods.where(question_id: question.id).exists?
+    goods.where(question_id: question.id).exists?
   end
 
   # 検索
@@ -66,7 +66,7 @@ class User < ApplicationRecord
     profiles = Profile.occupation_is(search_params[:occupation_id]).text_like(search_params[:text])
 
     # 取得したprofileのuser_idからuserを検索
-    self.where(id: profiles.pluck(:user_id))
+    where(id: profiles.pluck(:user_id))
   end
 
   def self.guest
