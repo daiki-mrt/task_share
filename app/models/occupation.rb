@@ -6,5 +6,4 @@ class Occupation < ActiveHash::Base
     { id: 4, name: "学生" },
     { id: 5, name: "その他" }
   ]
-  
 end

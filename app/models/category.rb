@@ -4,5 +4,4 @@ class Category < ActiveHash::Base
     { id: 2, name: "趣味" },
     { id: 3, name: "その他" },
   ]
-  
 end

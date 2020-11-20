@@ -1,7 +1,7 @@
 class CommunitiesController < ApplicationController
   before_action :set_community, only: [:edit, :update, :show, :join]
   before_action :move_to_index, only: [:edit, :update]
-  
+
   def index
     @search_params = community_search_params
     @communities = Community.search(@search_params)
@@ -42,7 +42,7 @@ class CommunitiesController < ApplicationController
     @remain_tasks = @tasks.not_completed.order("created_at DESC")
     @questions = Question.where(community_id: @community.id)
   end
-  
+
   def join
     user_community = @community.user_communities.new(user_id: current_user.id)
     if user_community.save

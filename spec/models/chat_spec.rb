@@ -4,7 +4,7 @@ RSpec.describe Chat, type: :model do
   before do
     @chat = build(:chat)
   end
-  
+
   context "chatを保存できる場合" do
     it "textが正しく入力されていれば保存できる" do
       expect(@chat).to be_valid

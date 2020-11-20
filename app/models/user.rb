@@ -68,7 +68,7 @@ class User < ApplicationRecord
     # 取得したprofileのuser_idからuserを検索
     self.where(id: profiles.pluck(:user_id))
   end
-  
+
   def self.guest
     find_or_create_by!(email: "guest@guest.com") do |user|
       user.name = "ゲスト"

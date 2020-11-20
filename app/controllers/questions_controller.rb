@@ -5,8 +5,7 @@ class QuestionsController < ApplicationController
   before_action :configure_author, only: [:edit, :update, :resolve]
   before_action :answer_new, only: [:show, :create, :update, :resolve]
   before_action :set_answers, only: [:show, :update, :resolve]
-  
-  
+
   def index
     @questions = @community.questions.includes(:user).order("created_at DESC")
     # サイドバー用データ取得
@@ -70,7 +69,7 @@ class QuestionsController < ApplicationController
   def set_question
     @question = Question.find(params[:id])
   end
-  
+
   def question_params
     params.require(:question).permit(:title, :content, :image).merge(user_id: current_user.id, community_id: params[:community_id])
   end

@@ -1,4 +1,4 @@
-class Profile < ApplicationRecord  
+class Profile < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :occupation
 
@@ -7,7 +7,7 @@ class Profile < ApplicationRecord
 
   # User検索用スコープ
   scope :occupation_is, -> (occupation_id) { where(occupation_id: occupation_id) if occupation_id.present? }
-  scope :text_like, -> (text) { where("text LIKE ?", "%#{text}%") if text.present? }  
+  scope :text_like, -> (text) { where("text LIKE ?", "%#{text}%") if text.present? }
 
   def occupation_name(user)
     occupation_id = user.profile.occupation_id

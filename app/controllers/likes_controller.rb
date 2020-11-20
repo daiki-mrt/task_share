@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :task_params
-  
+
   def create
     @like = Like.new(like_params)
     @like.save
