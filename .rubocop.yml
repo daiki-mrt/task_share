@@ -10,3 +10,7 @@ AllCops:
     - 'bin/**/*'
     - 'db/**/*'
     - 'node_modules/**/*'
+
+# scope -> (params) 引数を囲む記述を認める
+Layout/SpaceInLambdaLiteral:
+  Enabled: false
