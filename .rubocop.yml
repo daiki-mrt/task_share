@@ -86,3 +86,7 @@ Style/IdenticalConditionalBranches:
 # ダブルクォーテーションを許可
 Style/StringLiterals:
   Enabled: false
+
+# https://docs.rubocop.org/rubocop/1.0/cops_style.html#stylesymbolarray
+Style/SymbolArray:
+  Enabled: false
