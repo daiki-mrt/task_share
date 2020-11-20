@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
   def update
     if @question.update(question_params)
       redirect_to community_question_path(@community, @question)
-    elsif
+    else
       render :edit
     end
   end
