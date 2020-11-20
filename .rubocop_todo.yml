@@ -15,12 +15,6 @@ Bundler/OrderedGems:
     - 'Gemfile'
 
 # Offense count: 1
-# Configuration parameters: AllowSafeAssignment.
-Lint/AssignmentInCondition:
-  Exclude:
-    - 'app/controllers/rooms_controller.rb'
-
-# Offense count: 1
 # Configuration parameters: AllowComments.
 Lint/EmptyConditionalBody:
   Exclude:
