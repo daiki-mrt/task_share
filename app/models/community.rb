@@ -22,6 +22,6 @@ class Community < ApplicationRecord
 
   def joined_users
     user_ids = user_communities.pluck(:user_id)
-    users = User.where(id: user_ids)
+    User.where(id: user_ids)
   end
 end
