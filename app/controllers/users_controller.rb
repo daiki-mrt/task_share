@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @following_users = @user.followings
     @follower_users = @user.followers
 
-
     # DM用するボタンのためのデータ取得
     # user_roomから自分が含まれるidを取得
     room_ids = current_user.user_rooms.pluck(:room_id)
@@ -36,7 +35,6 @@ class UsersController < ApplicationController
     set_user
     @follower_users = @user.followers
   end
-
 
   private
   def set_user
