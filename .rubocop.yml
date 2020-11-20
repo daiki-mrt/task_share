@@ -29,3 +29,7 @@ Lint/UselessAssignment:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
+
+# 要確認のため退避 registrations_controller.rb
+Metrics/MethodLength:
+  Enabled: false

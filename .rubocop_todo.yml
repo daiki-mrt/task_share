@@ -14,11 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 3
-# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
-Metrics/MethodLength:
-  Max: 18
-
 # Offense count: 1
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql
