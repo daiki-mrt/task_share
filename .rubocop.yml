@@ -42,3 +42,7 @@ Rails/InverseOf:
 # app/models/like.rb
 Rails/UniqueValidationWithoutIndex:
   Enabled: false
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
