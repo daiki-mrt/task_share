@@ -24,5 +24,4 @@ class Community < ApplicationRecord
     user_ids = self.user_communities.pluck(:user_id)
     users = User.where(id: user_ids)
   end
-
 end
