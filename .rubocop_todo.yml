@@ -14,12 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/EmptyLinesAroundMethodBody:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowDoxygenCommentStyle, AllowGemfileRubyComment.

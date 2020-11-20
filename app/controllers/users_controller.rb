@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     if @target_user_room.present?
       @room = @target_user_room.room
     end
-
   end
 
   # フォロー数
