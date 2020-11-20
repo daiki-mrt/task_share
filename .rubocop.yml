@@ -16,3 +16,7 @@ AllCops:
 # scope -> (params) 引数を囲む記述を認める
 Layout/SpaceInLambdaLiteral:
   Enabled: false
+
+# sessions_controller.rbのafter_sign_out_path_forメソッド
+Lint/UnusedMethodArgument:
+  Enabled: false
