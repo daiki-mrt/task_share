@@ -24,3 +24,8 @@ Lint/UnusedMethodArgument:
 # 要確認のため退避 models/community.rbの users = User.where(id: user_ids)
 Lint/UselessAssignment:
   Enabled: false
+
+# RSpecのBlock has too many lines を認める
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

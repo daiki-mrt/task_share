@@ -14,12 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 11
-# Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
-# ExcludedMethods: refine
-Metrics/BlockLength:
-  Max: 58
-
 # Offense count: 3
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
 Metrics/MethodLength:
