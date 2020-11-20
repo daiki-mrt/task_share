@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :profile do
-    occupation_id {1}
-    text {Faker::Quote.matz}
+    occupation_id { 1 }
+    text { Faker::Quote.matz }
     association :user
     
     after(:build) do |profile|
