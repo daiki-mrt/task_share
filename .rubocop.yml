@@ -20,3 +20,7 @@ Layout/SpaceInLambdaLiteral:
 # sessions_controller.rbのafter_sign_out_path_forメソッド
 Lint/UnusedMethodArgument:
   Enabled: false
+
+# 要確認のため退避 models/community.rbの users = User.where(id: user_ids)
+Lint/UselessAssignment:
+  Enabled: false

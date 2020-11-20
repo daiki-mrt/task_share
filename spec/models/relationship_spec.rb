@@ -26,7 +26,7 @@ RSpec.describe Relationship, type: :model do
     end
     it "すでにフォローしたユーザーをフォローすることは出来ない" do
       user3 = create(:user)
-      relationship1 = Relationship.create(following_id: @user1.id, follower_id: @user2.id)
+      Relationship.create(following_id: @user1.id, follower_id: @user2.id)
       relationship2 = Relationship.create(following_id: @user1.id, follower_id: user3.id)
       relationship2.follower_id = @user2.id
       relationship2.valid?

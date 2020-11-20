@@ -14,12 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 2
-Lint/UselessAssignment:
-  Exclude:
-    - 'app/models/community.rb'
-    - 'spec/models/relationship_spec.rb'
-
 # Offense count: 11
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods.
 # ExcludedMethods: refine
