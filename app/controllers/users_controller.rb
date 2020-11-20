@@ -18,9 +18,7 @@ class UsersController < ApplicationController
     # 取得したuser_roomのうち、自分と相手のペアを探す
     @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
     # 特定したuser_roomからroom_idを取得する
-    if @target_user_room.present?
-      @room = @target_user_room.room
-    end
+    @room = @target_user_room.room if @target_user_room.present?
   end
 
   # フォロー数

@@ -76,16 +76,12 @@ class QuestionsController < ApplicationController
 
   def move_to_index
     set_community
-    if !current_user.already_joined?(@community)
-      redirect_to community_questions_path(@community)
-    end
+    redirect_to community_questions_path(@community) if !current_user.already_joined?(@community)
   end
 
   def configure_author
     set_question
-    if current_user.id != @question.user.id
-      redirect_to community_question_path(@community, @question)
-    end
+    redirect_to community_question_path(@community, @question) if current_user.id != @question.user.id
   end
 
   def answer_new

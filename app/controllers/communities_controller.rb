@@ -72,9 +72,7 @@ class CommunitiesController < ApplicationController
   end
 
   def move_to_index
-    if @community.user.id != current_user.id
-      redirect_to communities_path
-    end
+    redirect_to communities_path if @community.user.id != current_user.id
   end
 
   def community_search_params

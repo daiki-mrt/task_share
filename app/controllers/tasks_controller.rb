@@ -48,9 +48,7 @@ class TasksController < ApplicationController
 
   def destroy
     set_task
-    if @task.destroy
-      redirect_to user_path(current_user)
-    end
+    redirect_to user_path(current_user) if @task.destroy
   end
 
   def done
@@ -79,8 +77,6 @@ class TasksController < ApplicationController
 
   def move_to_index
     set_user
-    unless user_signed_in? && (current_user.id == @user.id)
-      redirect_to "/"
-    end
+    redirect_to "/" unless user_signed_in? && (current_user.id == @user.id)
   end
 end

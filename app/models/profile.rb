@@ -18,8 +18,6 @@ class Profile < ApplicationRecord
 
   # 新規登録時にプロフィール画像が指定されているかどうか
   def image_added?
-    unless image.attached?
-      image.attach(io: File.open('app/assets/images/default_user_image.png'), filename: 'default_user_image.png')
-    end
+    image.attach(io: File.open('app/assets/images/default_user_image.png'), filename: 'default_user_image.png') unless image.attached?
   end
 end
