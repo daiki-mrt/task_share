@@ -90,3 +90,7 @@ Style/StringLiterals:
 # https://docs.rubocop.org/rubocop/1.0/cops_style.html#stylesymbolarray
 Style/SymbolArray:
   Enabled: false
+
+# questinosのストロングパラメーター
+Layout/LineLength:
+  Max: 131
