@@ -12,6 +12,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'config/**/*'
     - 'spec/spec_helper.rb'
+    - 'test/**'
 
 # scope -> (params) 引数を囲む記述を認める
 Layout/SpaceInLambdaLiteral:
@@ -46,3 +47,9 @@ Rails/UniqueValidationWithoutIndex:
 # 日本語コメントを許可
 Style/AsciiComments:
   Enabled: false
+
+# 自動生成ファイルのため許可
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/users/*'
+    - 'test/channels/application_cable/connection_test.rb'
