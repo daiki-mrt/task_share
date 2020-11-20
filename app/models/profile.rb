@@ -12,6 +12,7 @@ class Profile < ApplicationRecord
   def occupation_name(user)
     occupation_id = user.profile.occupation_id
     return if occupation_id.blank?
+
     Occupation.find(occupation_id).name
   end
 
