@@ -20,18 +20,6 @@ Style/GlobalStdStream:
   Exclude:
     - 'config/environments/production.rb'
 
-# Offense count: 8
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/controllers/chats_controller.rb'
-    - 'app/controllers/communities_controller.rb'
-    - 'app/controllers/questions_controller.rb'
-    - 'app/controllers/rooms_controller.rb'
-    - 'app/controllers/tasks_controller.rb'
-    - 'app/controllers/users_controller.rb'
-    - 'app/models/profile.rb'
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
