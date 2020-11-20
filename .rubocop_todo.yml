@@ -14,15 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/communities_controller.rb'
-    - 'app/controllers/questions_controller.rb'
-
 # Offense count: 146
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.

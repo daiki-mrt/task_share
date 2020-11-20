@@ -57,3 +57,7 @@ Style/ClassAndModuleChildren:
 # "Missing top-level class documentation comment."を許可
 Style/Documentation:
   Enabled: false
+
+# コントローラーの空メソッドを許可
+Style/EmptyMethod:
+  Enabled: false
