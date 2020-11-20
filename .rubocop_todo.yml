@@ -14,31 +14,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBrackets.
-# SupportedStyles: space, no_space, compact
-# SupportedStylesForEmptyBrackets: space, no_space
-Layout/SpaceInsideArrayLiteralBrackets:
-  Exclude:
-    - 'config/environments/production.rb'
-    - 'db/migrate/20201105020452_create_active_storage_tables.active_storage.rb'
-
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: final_newline, final_blank_line
-Layout/TrailingEmptyLines:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/questions_controller.rb'
-    - 'app/models/category.rb'
-    - 'app/models/occupation.rb'
-    - 'app/models/user.rb'
-    - 'config/routes.rb'
-    - 'db/migrate/20201105023433_create_profiles.rb'
-    - 'db/migrate/20201109041252_create_likes.rb'
-
 # Offense count: 31
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
