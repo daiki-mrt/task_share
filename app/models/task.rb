@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
   validates :title, presence: true
   validates :state, inclusion: { in: [true, false] }

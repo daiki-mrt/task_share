@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     before do
       @user = build(:user)
     end
-    
+
     it "なまえ、Eメール、パスワード、パスワード(確認)が正しく入力されていれば保存される" do
       expect(@user).to be_valid
     end
@@ -60,5 +60,4 @@ RSpec.describe User, type: :model do
     it "パスワード(確認)がパスワードと異なっていると保存できない" do
     end
   end
-
 end

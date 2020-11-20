@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :task_params
-  
+
   def create
     @like = Like.new(like_params)
     @like.save
@@ -13,6 +13,7 @@ class LikesController < ApplicationController
   end
 
   private
+
   def like_params
     params.permit(:task_id).merge(user_id: current_user.id)
   end

@@ -37,7 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to user_path(@user)
     else
       render action: :edit
-    end    
+    end
   end
 
   # GET /resource/sign_up

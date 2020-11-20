@@ -5,8 +5,7 @@ class QuestionsController < ApplicationController
   before_action :configure_author, only: [:edit, :update, :resolve]
   before_action :answer_new, only: [:show, :create, :update, :resolve]
   before_action :set_answers, only: [:show, :update, :resolve]
-  
-  
+
   def index
     @questions = @community.questions.includes(:user).order("created_at DESC")
     # サイドバー用データ取得
@@ -40,7 +39,7 @@ class QuestionsController < ApplicationController
   def update
     if @question.update(question_params)
       redirect_to community_question_path(@community, @question)
-    elsif
+    else
       render :edit
     end
   end
@@ -62,6 +61,7 @@ class QuestionsController < ApplicationController
   end
 
   private
+
   def set_community
     @community = Community.find(params[:community_id])
   end
@@ -69,23 +69,19 @@ class QuestionsController < ApplicationController
   def set_question
     @question = Question.find(params[:id])
   end
-  
+
   def question_params
     params.require(:question).permit(:title, :content, :image).merge(user_id: current_user.id, community_id: params[:community_id])
   end
 
   def move_to_index
     set_community
-    if !current_user.already_joined?(@community)
-      redirect_to community_questions_path(@community)
-    end
+    redirect_to community_questions_path(@community) unless current_user.already_joined?(@community)
   end
 
   def configure_author
     set_question
-    if current_user.id != @question.user.id
-      redirect_to community_question_path(@community, @question)
-    end
+    redirect_to community_question_path(@community, @question) if current_user.id != @question.user.id
   end
 
   def answer_new

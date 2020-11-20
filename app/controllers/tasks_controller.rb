@@ -48,11 +48,7 @@ class TasksController < ApplicationController
 
   def destroy
     set_task
-    if @task.destroy
-      redirect_to user_path(current_user)
-    else
-      redirect_to user_path(current_user)
-    end
+    redirect_to user_path(current_user) if @task.destroy
   end
 
   def done
@@ -62,6 +58,7 @@ class TasksController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:user_id])
   end
@@ -73,14 +70,13 @@ class TasksController < ApplicationController
   def set_task
     @task = Task.find(params[:id])
   end
+
   def task_params
     params.require(:task).permit(:title, :text).merge(user_id: current_user.id)
   end
 
   def move_to_index
     set_user
-    unless user_signed_in? && (current_user.id == @user.id)
-      redirect_to "/"
-    end
+    redirect_to "/" unless user_signed_in? && (current_user.id == @user.id)
   end
 end

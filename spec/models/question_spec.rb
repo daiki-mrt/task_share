@@ -4,7 +4,7 @@ RSpec.describe Question, type: :model do
   before do
     @question = build(:question)
   end
-  
+
   context "questionを保存できる場合" do
     it "title、content、state、imageが正しく入力されていれば保存できる" do
       expect(@question).to be_valid

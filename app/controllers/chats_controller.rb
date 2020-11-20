@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   before_action :set_community, only: [:index, :create, :destroy]
   before_action :set_chats, only: [:index, :create, :destroy]
   before_action :move_to_index, except: :index
-  
+
   def index
     @chat = Chat.new
     @joined_users = @community.joined_users
@@ -31,6 +31,7 @@ class ChatsController < ApplicationController
   end
 
   private
+
   def set_community
     @community = Community.find(params[:community_id])
   end
@@ -45,8 +46,6 @@ class ChatsController < ApplicationController
 
   def move_to_index
     set_community
-    if !current_user.already_joined?(@community)
-      redirect_to community_path(@community)
-    end
+    redirect_to community_path(@community) unless current_user.already_joined?(@community)
   end
 end
