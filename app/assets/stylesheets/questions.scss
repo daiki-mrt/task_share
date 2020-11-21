@@ -20,6 +20,47 @@
   color: lightcoral;
 }
 
+
+/* 質問作成ページ */
+.question-post-form {
+  background-color: $card-back-color;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 20px 50px;
+  border-radius: 5px;
+  .question-form-item {
+    margin-top: 25px;
+    display: flex;
+  }
+  .question-label {
+    display: block;
+    min-width: 100px;
+  }
+  .question-input {
+    background-color: $base-color;
+    width: 80%;
+    padding: 10px 12px 8px;
+    outline: none;
+    font-size: 15px;
+    border: none;
+  }
+  .question-submit-btn {
+    background-color: $highlight;
+    color: $with-highlight;
+    display: block;
+    width: 100px;
+    margin: 30px auto 0;
+    padding: 5px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 .question-summary-card {
   width: 100%;
   margin: 10px auto 20px;
