@@ -1,24 +1,65 @@
-# README
+# (アプリ名)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## URL
+- 準備中
+## 概要
+「ToDo管理×仲間」で、目標達成をサポートするアプリです。
 
-Things you may want to cover:
+自らのタスク管理はもちろん、コミュニティ機能で同じ目標を掲げるユーザが繋がることが出来ます。
+タスク投稿で日々の積み上げをしながら、いいね・質問機能で仲間と励まし合い、みんなで高め合う場を提供します。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 製作背景
+- 準備中
+## 使用言語
+- Ruby 2.6.5
+- Ruby on Rails 6.0.3
+- HTML/CSS
+- JavaScript
+## 使用技術
+- Git
+- MySQL
+- RSpec
+## ER図
+- 準備中
+## サービス構成図
+- 準備中
+## 機能一覧
+### 認証機能(device)
+- 新規登録、ログイン、ログアウト
+  - なまえ、Eメール、パスワードが必須
+- その他、画像等の登録可能
+- ゲストログイン
+### タスク機能
+- CRUD機能
+- 完了へ切替が可能
+### コミュニティ機能
+- CRUD機能
+- コミュニティへの登録(参加)が可能
+### 質問機能
+- CRUD機能(コミュニティに紐付く)
+  - 「受付中」と「解決済み」を切替可能
+  - 画像の添付が可能
+### コメント機能
+- 投稿された質問に対しコメント(回答)を投稿
+### チャット機能
+- テキストを投稿(コミュニティ下のチャットページにて)
+### 検索機能
+- ユーザー、コミュニティの検索
+  - カテゴリ選択、フリーワード
+### いいね機能
+- タスクに対して：いいね!
+- 質問に対して：知りたい!、役に立った!
+### フォロー機能
+- フォロー・フォロー解除
+- フォロー・フォロワー一覧表示
+### メッセージ機能
+- 特定のユーザーとのチャット
+## 今後の実装予定
+- 非同期通信の活用
+  - タスクの投稿、完了
+  - 検索機能
+- 双方向通信の活用
+  - コミュニティ内、ユーザー間チャット
+- レスポンシブ対応
+- 使いたくなる仕掛け
+  - タスク完了日に色が付くカレンダー
