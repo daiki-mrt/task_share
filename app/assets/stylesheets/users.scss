@@ -339,6 +339,9 @@
   background-color: lightgray;
   color: $main-text-color;
   outline: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .search-cancel {
   margin-top: 20px;
