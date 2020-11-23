@@ -43,7 +43,8 @@
 ## ER図
 - 準備中
 ## サービス構成図
-- 準備中
+![Goal Share! インフラ構成図](https://user-images.githubusercontent.com/70130536/99929963-a912f880-2d92-11eb-9565-876409b09ffa.png)
+
 ## 機能一覧
 ### 認証機能(device)
 - 新規登録、ログイン、ログアウト
