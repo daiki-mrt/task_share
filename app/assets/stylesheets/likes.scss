@@ -1,0 +1,18 @@
+
+/* いいねボタン */
+.unlike-btn {
+  font-size: 15px;
+  color: #e54747;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.like-btn {
+  font-size: 15px;
+  color: #808080;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}

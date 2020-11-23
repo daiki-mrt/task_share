@@ -1,0 +1,58 @@
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <div>
+      <% if @profile.image.present? %>
+        <%= image_tag @profile.image.variant(resize: "200x200"), class:"profile-image" %>
+      <% end %>
+    </div>
+    <div class="user-name"><%= @user.name %></div>
+    <div class="user-text"><%= @user.profile.text %></div>
+    <div class="menu-items">
+      <div class="relationships">
+        <% if @user != current_user %>
+          <% if @user.follow?(current_user) %>
+            <%= link_to  user_relationship_path(@user), method: :delete, class:"unfollow-link" do %>
+              <span class="unfollow-btn"><i class="fas fa-user-check"></i>フォロー済み</span> 
+            <% end %>
+          <% else %>
+            <%= link_to user_relationships_path(@user), method: :post, class:"follow-link" do %>
+              <span class="follow-btn"><i class="fas fa-user-check"></i>フォローする</span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="relationships-user">
+        <%= link_to follows_user_path(@user) do %>
+          <span class="follow-count"><i class="fas fa-user-friends"></i>フォロー<%= @following_users.count %></span>
+        <% end %>
+        <%= link_to followers_user_path(@user) do %>
+          <span class="follower-count">フォロワー<%= @follower_users.count %></span>
+        <% end %>
+      </div>
+      <div class="direct-message">
+        <% if current_user != @user %>
+          <% if @room.present? %>
+            <%= link_to room_path(@room.id) do %>
+              <span class="message-btn"><i class="far fa-envelope"></i>メッセージを送る</span>
+            <% end %>
+          <% elsif %>
+            <%= link_to rooms_path(@user.id), method: :post do %>
+              <span class="message-btn"><i class="far fa-envelope"></i>メッセージを送る</span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="completed-task">
+        <%= link_to user_tasks_path(@user.id) do %>
+          <span class="completed-task-count"><span>完了タスク数</span><%= @user.tasks.where(state: true).count %></span>
+        <% end %><span><%= " /#{@user.tasks.count}" %></span>
+      </div>
+      <div class="joined-communities">
+        参加コミュニティ
+      </div>
+      <%if current_user == @user %>
+        <%= link_to " 編集する", edit_user_registration_path(@user), class:"edit" %>
+      <% end %>
+    </div>
+  </div>
+</div>

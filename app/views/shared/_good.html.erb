@@ -1,0 +1,10 @@
+<% if current_user.already_good?(question) %>
+  <%= link_to question_good_path(question, question_id: question.id), method: :delete, remote: true do %>
+    <span class="good-text">役に立った!</span><i class="fas fa-thumbs-up un-good-btn"></i>
+  <% end %>
+<% else %>
+  <%= link_to question_goods_path(question), method: :post, remote: true do %>
+    <span class="good-text">役に立った!</span><i class="fas fa-thumbs-up good-btn"></i>
+  <% end %>
+<% end %>
+<%= question.goods.count %>

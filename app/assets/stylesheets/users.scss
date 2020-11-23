@@ -1,0 +1,379 @@
+@import "style";
+
+.menu-bar {
+  height: 100%;
+  flex-basis: 25%;
+  min-height: 100vh;
+  padding: 20px;
+
+  .menu-bar-box {
+    padding: 10px 20px;
+    margin: 0 auto 8px;
+    background-color: $card-back-color;
+    width: 95%;
+    border-radius: 5px;
+
+    .profile-image {
+      display: block;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      margin: 10px auto;
+      background-color: $base-color;
+    }
+    .user-name, .user-text {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .user-name {
+      color: $main-text-color;
+    }
+    .user-text {
+      color: $sub-text-color;
+      margin: 10px 0 30px;
+      width: 100%;
+      line-height: 20px;
+    }
+
+    .menu-items {
+      border-top: 1px solid $base-color;
+      padding: 15px;
+      width: 90%;
+      margin: 0 auto;
+      color: $main-text-color;
+    }
+    .relationships {
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .relationships-user {
+      margin-bottom: 18px;
+      .follow-count, .follower-count {
+        color: $sub-text-color;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+    .completed-task {
+      margin-bottom: 18px;
+    }
+    .completed-task-count {
+      color: $main-text-color;
+      &:hover {
+        opacity: 0.7;
+      }
+      span {
+        margin-right: 5px;
+      }
+    }
+    .direct-message {
+      margin-bottom: 18px;
+    }
+    .joined-communities {
+      margin-bottom: 18px;
+    }
+    .edit {
+      color: lightgray;
+      font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* フォローボタン */
+.unfollow-btn {
+  font-size: 15px;
+  color: #2a2a2a;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.follow-btn {
+  font-size: 15px;
+  color: #808080;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }  
+}
+
+/* メッセージボタン */
+.message-btn {
+  color: $main-text-color;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+
+/* 中央エリア */
+.main {
+  height: 100%;
+  flex-basis: 55%;
+  min-height: 100vh;
+  padding: 30px 20px 20px;
+
+  .main-heading {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    
+    .task-post-btn {
+      background-color: $highlight;
+      color: #eff0f3;
+      font-size: 20px;
+      padding: 15px;        
+      width: 200px;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+  }
+}
+
+/* 投稿されたタスクエリア */
+.posts {
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+
+/* エラーメッセージ */
+.error-alert {
+  text-align: center;
+  color: red;
+}
+
+/* ユーザー新規登録 */
+.registration-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+
+  .registration-container {
+    background-color: $card-back-color;
+    padding: 20px;  
+    border-radius: 5px;
+
+    .registration-heading {
+      font-size: 25px;
+      text-align: center;
+      margin: 20px 0 25px;
+    }
+}
+
+.registration-item {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  
+  
+  .label {
+    display: inline-block;
+    min-width: 200px;
+    padding: 10px 12px 8px;
+  }
+  .must {
+    color: red;
+    font-size: 12px;
+  }
+  .form-attach {
+    padding: 10px 0 8px;
+    width: 270px;
+    outline: none;
+    border: none;
+  }
+  .form-box {
+    background-color: $base-color;
+    padding: 10px 12px 8px;
+    width: 270px;
+    outline: none;
+    border: none;
+  }
+}
+.submit-btn {
+  display: block;
+  // width: 80px;
+  padding: 5px 10px;
+  margin: 30px auto 20px;
+  background-color: $highlight;
+  color: $with-highlight;
+  border: none;
+  font-size: 20px;
+  border-radius: 10px;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+}
+
+
+/* ログイン */
+.login-flash-message {
+  text-align: center;
+  margin: 20px 0;
+  color: red;
+}
+
+.not-login {
+  text-align: center;
+  & li {
+    margin: 15px;
+  }
+}
+.guest-btn {
+  color: $highlight;
+  border-bottom: 1px solid $highlight;
+  font-weight: bold;
+  margin-left: 5px;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.sign-up-btn {
+  color: $main-text-color;
+  border-bottom: 1px solid $main-text-color;
+  margin-left: 5px;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* ユーザー一覧 */
+.search-heading {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 10px 0;
+}
+.users {
+  border-bottom: 2px solid $highlight;
+}
+.search-navigation {
+  color: $main-text-color;
+  margin-right: 8px;
+    &:hover {
+    border-bottom: 2px solid lightgray;
+    }
+}
+.user-card {
+  width: 100%;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: $card-back-color;
+
+  .user-card-head {
+    margin-bottom: 8px;
+    border-bottom: 1px solid $base-color;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .user-image {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+  }
+  .user-name {
+    color: $main-text-color;
+      &:hover {
+        text-decoration: underline;
+      }
+  }
+  .user-text
+   {
+    color: $sub-text-color;
+    margin-bottom: 5px;
+  }
+  .user-occupation {
+    color: $sub-text-color;
+  }
+}
+
+
+/* 検索ボックス */
+.menu-bar-head {
+  text-align: center;
+  margin: 15px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.search-field {
+  margin: 0 0 25px;
+  
+  .search-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .search-text {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+    border: none;
+    background-color: $base-color;
+  }
+  .search-occupation {
+    width: 100%;
+    padding: 8px 8px 5px;
+    outline: none;
+    border: none;
+    background-color: $base-color;
+  }
+}
+
+.search-btn-area {
+  text-align: center;
+}
+.search-btn {
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  background-color: lightgray;
+  color: $main-text-color;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.search-cancel {
+  margin-top: 20px;
+  text-align: center;
+}
+.search-cancel-btn {
+  color: $sub-text-color;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.following-user-name {
+  color: $main-text-color;
+  margin-right: 5px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/* right-bar */
+.right-bar {
+  height: 100%;
+  flex-basis: 20%;
+  min-height: 100vh;
+  padding: 20px;
+
+  .right-bar-box {
+    background-color: $base-color;
+    height: 200px;
+    width: 90%;
+    margin: 0 auto 15px;
+  }
+}

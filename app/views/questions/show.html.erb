@@ -1,0 +1,103 @@
+<div class="menu-bar">
+  <div class="menu-bar-box">
+    <div class="community-name"><%= @community.name %></div>
+    <div class="community-text"><%= @community.text %></div>
+    <% if current_user.id == @community.user.id %>
+      <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
+    <% elsif current_user.already_joined?(@community) %>
+      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+    <% else %>
+      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+    <% end %>
+    <div class="menu-items">
+      <div class="community-members">
+        参加ユーザー <span><%= @joined_users.count %></span>
+      </div>
+      <div class="community-completed-tasks">
+        参加者の完了タスク <%= @tasks.where(state: true).count %>
+      </div>
+      <div class="question-and-answer">
+        質問 <%= @questions.count%>
+        解決 <%= @questions.where(state: true).count %>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="main">
+  <div class="community-main-heading">
+    <div class="main-menu">
+      <%= link_to "みんなのタスク", community_path(@community), class:"community-navigation" %>
+      <%= link_to "チャット", community_chats_path(@community), class:"community-navigation" %>
+      <%= link_to "質問", community_questions_path(@community), class:"community-navigation question" %>
+    </div>
+  </div>
+  <div class="question-area">
+    <%= link_to "一覧にもどる", community_questions_path(@community), class:"back-questions-btn" %>
+    <div class="question-card">
+      <div class="question-user">
+        <% if @question.user.profile.image.present? %>
+          <%= link_to image_tag(@question.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(@question.user) %>
+        <% end %>
+        <%= link_to @question.user.name, user_path(@question.user), class:"question-user-name" %>
+      </div>
+      <div class="question-title">
+        <%= @question.title %>
+        <% if @question.user.id == current_user.id %>
+          <%= link_to "編集する", edit_community_question_path(@community, @question), class:"edit-btn" %>
+        <% end %>
+      </div>
+      <div class="question-content">
+        <%= @question.content %>
+      </div>
+      <% if @question.image.present? %>
+        <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
+      <% end %>
+
+      <div class="question-response-area">
+        <div id="question_<%= @question.id %>">
+          <%= render partial: "shared/me_too", locals: { question: @question } %>
+        </div>
+
+        <div id="good_question_<%= @question.id %>">
+          <%= render partial: "shared/good", locals: { question: @question } %>
+        </div>
+
+        <% if @question.state %>
+          <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
+        <% else %>
+          <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+  <div class="answer-area">
+    <p class="answer-label">コメント一覧</p>
+    <% @answers.each do |answer| %>
+      <div class="answer-card">
+        <div class="answer-user">
+          <% if answer.user.profile.image.present? %>
+            <%= link_to image_tag(answer.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(answer.user) %>
+          <% end %>
+          <%= link_to answer.user.name, user_path(answer.user), class:"answer-user-name" %>
+        </div>
+        <div class="answer-comment">
+          <%= answer.text %>
+        </div>
+      </div>
+    <% end %>
+    <%= form_with model: [@question, @answer], local: true, class:"answer-form-area" do |f| %>
+      <p class="answer-form-label">コメントする</p>
+      <%= f.text_area :text, class:"answer-form" %>
+      <%= f.submit "投稿", class:"answer-submit-btn" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
+  </div>
+  <div class="right-bar-box">
+  </div>
+</div>

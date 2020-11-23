@@ -1,0 +1,23 @@
+
+.un-good-btn {
+  font-size: 15px;
+  color: #d9376e;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.good-btn {
+  font-size: 15px;
+  color: #808080;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.good-text {
+  font-size: 13px;
+  color: #808080;
+  margin: 0 5px 0 10px;
+}

@@ -1,0 +1,93 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.6
+  TargetRailsVersion: 6.0
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'config/**/*'
+    - 'spec/spec_helper.rb'
+    - 'test/**'
+    - 'Gemfile'
+
+# scope -> (params) 引数を囲む記述を認める
+Layout/SpaceInLambdaLiteral:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+# sessions_controller.rbのafter_sign_out_path_forメソッド
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+# RSpecのBlock has too many lines を認める
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+# registrations_controller.rb
+Metrics/MethodLength:
+  Max: 11
+
+# Specify an :inverse_of option.を許可
+Rails/InverseOf:
+  Exclude:
+    - 'app/models/user.rb'
+
+# app/models/like.rb
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# 自動生成ファイルのため許可
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/users/*'
+    - 'test/channels/application_cable/connection_test.rb'
+
+# "Missing top-level class documentation comment."を許可
+Style/Documentation:
+  Enabled: false
+
+# コントローラーの空メソッドを許可
+Style/EmptyMethod:
+  Enabled: false
+
+# "Missing frozen string literal comment."を許可
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# https://docs.rubocop.org/rubocop/cops_style.html#styleguardclause
+Style/GuardClause:
+  Enabled: false
+
+# deviseのストロングパラメーター
+Style/HashAsLastArrayItem:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+  
+# 現状は同期通信で切り替えているため許可
+Style/IdenticalConditionalBranches:
+  Exclude:
+    - 'app/controllers/questions_controller.rb'
+
+# ダブルクォーテーションを許可
+Style/StringLiterals:
+  Enabled: false
+
+# https://docs.rubocop.org/rubocop/1.0/cops_style.html#stylesymbolarray
+Style/SymbolArray:
+  Enabled: false
+
+# questionsのストロングパラメーター
+Layout/LineLength:
+  Max: 131

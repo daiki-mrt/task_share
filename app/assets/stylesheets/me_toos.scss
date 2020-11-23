@@ -1,0 +1,23 @@
+
+.un-metoo-btn {
+  font-size: 15px;
+  color: #2a2a2a;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.metoo-btn {
+  font-size: 15px;
+  color: #808080;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.metoo-text {
+  font-size: 13px;
+  color: #808080;
+  margin-right: 5px;
+}

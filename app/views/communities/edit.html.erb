@@ -1,0 +1,32 @@
+<div class="menu-bar">
+</div>
+  
+<div class="main">
+  <div class="community-post-form">
+    <%= form_with model: @community, local: true do |f|%>
+      <%= render 'shared/error_messages', model: f.object %>
+      <div class="community">
+        <%= f.label "名前", class:"community-label"%>
+        <%= f.text_field :name, class:"community-input" %>
+      </div>
+      <div class="community">
+        <%= f.label "カテゴリー", class:"community-label" %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-box"}) %>
+      </div>
+      <div class="community">
+        <%= f.label "説明", class:"community-label"%>
+        <%= f.text_area :text, class:"community-input text" %>
+      </div>
+      
+      <%= f.submit "投稿", class:"community-submit-btn" %>
+
+    <% end %>
+  </div>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
+  </div>
+  <div class="right-bar-box">
+  </div>
+</div>

@@ -1,12 +1,19 @@
 <div class="header">
-  <a href="/" class="header-left">ロゴ</a>
+
+  <% if user_signed_in? %>
+    <%= link_to "ロゴ", user_path(current_user), class:"header-left" %>
+  <% else %>
+    <%= link_to "ロゴ", new_user_session_path, class:"header-left" %>
+  <% end %>
 
   <div class="header-right">
     <ul class="header-menu">
-      <li><a href="/communities">コミュニティ</a></li>
-      <li><a href="">ユーザー名</a></li>
-      <li><a href="">ログアウト</a></li>
-      <li><a href="/users/new">新規登録</a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "ユーザー検索", users_path %></li>
+        <li><%= link_to "コミュニティ検索",communities_path %> </li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
+      <% end %>
     </ul>
   </div>
   

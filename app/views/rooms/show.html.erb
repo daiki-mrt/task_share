@@ -1,0 +1,36 @@
+<div class="menu-bar">
+</div>
+  
+<div class="main">
+  <div class="main-heading">
+    <%= link_to @user.name, user_path(@user), class:"opposite-user-name" %>とのDM
+  </div>
+  <div class="message-box">
+    <div class="message-area">
+      <% @messages.each do |message| %>
+        <div class="message-card">
+          <% if message.user.profile.image.present? %>
+            <%= link_to image_tag(message.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(message.user) %>
+          <% end %>
+          <%= link_to message.user.name, user_path(message.user), class:"message-user-name" %>
+          <span class="message-text">
+            <%= message.text %>
+          </span>
+          <span class="message-date"><%= l message.created_at, format: :long %></span>
+        </div>     
+      <% end %>
+    </div>
+    <%= form_with model: @message, local: true, class:"message-form-area" do |f| %>
+      <%= f.text_field :text, class:"message-form" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "投稿", class:"message-submit"%>
+    <% end %>
+  </div>
+</div>
+
+<div class="right-bar">
+  <div class="right-bar-box">
+  </div>
+  <div class="right-bar-box">
+  </div>
+</div>
