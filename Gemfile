@@ -64,3 +64,7 @@ gem 'mini_magick'
 gem 'image_processing'
 gem 'active_hash'
 gem 'font-awesome-sass'
+
+group :production, :staging do
+  gem 'unicorn'
+end
