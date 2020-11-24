@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: task_share_production
-  username: task_share
-  password: <%= ENV['TASK_SHARE_DATABASE_PASSWORD'] %>
+  database: <%= Rails.application.credentials.DB_NAME %>
+  username: <%= Rails.application.credentials.DB_USERNAME %>
+  password: <%= Rails.application.credentials.DB_PASSWORD %>
+  host: <%= Rails.application.credentials.DB_HOSTNAME %>
