@@ -64,6 +64,7 @@ gem 'mini_magick'
 gem 'image_processing'
 gem 'active_hash'
 gem 'font-awesome-sass'
+gem "aws-sdk-s3", require: false
 
 group :production, :staging do
   gem 'unicorn'
