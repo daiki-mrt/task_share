@@ -6,11 +6,13 @@ class UsersController < ApplicationController
     @users = User.search(@search_params).includes(:profile)
   end
 
-  def show
-    set_user
+  def show    
     @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
     @following_users = @user.followings
     @follower_users = @user.followers
+    
+    # タスク投稿フォーム用
+    @task = Task.new
 
     # DM用するボタンのためのデータ取得
     # user_roomから自分が含まれるidを取得
@@ -23,13 +25,11 @@ class UsersController < ApplicationController
 
   # フォロー数
   def follows
-    set_user
     @following_users = @user.followings
   end
 
   # フォロワー数
   def followers
-    set_user
     @follower_users = @user.followers
   end
 
