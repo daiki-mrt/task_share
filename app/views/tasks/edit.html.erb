@@ -1,21 +1,8 @@
 <%= render partial: "users/sidebar", locals: { user: @user, profile: @profile, following_users: @following_users, follower_users: @follower_users, room: @room } %>
 
 <div class="main">
-  <div class="task-post-form">
-    <%= form_with model: [@user, @task], local: true do |f|%>
-    <%= render 'shared/error_messages', model: f.object %>
-      <div class="task-form">
-        <%= f.label "タスク", class:"task-label"%>
-        <%= f.text_field :title, class:"task-input" %>
-      </div>
-      <div class="task-form">
-        <%= f.label "内容", class:"task-label"%>
-        <%= f.text_area :text, class:"task-input text" %>
-      </div>
-      
-      <%= f.submit "更新", class:"submit-btn" %>
-
-    <% end %>
+  <div class="posts">
+    <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
   </div>
 </div>
 

@@ -2,11 +2,12 @@
   
 <div class="main">
   <div class="main-heading">
-    <% if user_signed_in? && (current_user.id == @user.id) %>
-      <%= link_to "タスクを登録する", new_user_task_path(@user), class:"task-post-btn" %> 
-    <% end %>
   </div>
   <div class="posts">
+    <% if user_signed_in? && (current_user.id == @user.id) %>
+      <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
+      <hr class="form-post-border"></hr>
+    <% end %>
     <% @tasks.each do |task| %>
       <div id="task_<%= task.id %>">
         <%= render partial: "shared/tasks", locals: { task: task} %>

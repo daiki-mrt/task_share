@@ -3,26 +3,28 @@
 
 /* タスク投稿フォーム */
 .task-post-form {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px 20px 35px;
+  padding: 20px;
   border-radius: 5px;
   background-color: $card-back-color;
 
   .task-form {
-    margin-top: 25px;
-    display: flex;
+    // margin-bottom: 25px;
+    // display: flex;
     .field_with_errors {
       display: contents;
     }
     
     .task-label {
       display: block;
-      min-width: 70px;
+      margin-bottom: 5px;
+      font-weight: 500;
     }
     .task-input {
-      width: 80%;
+      width: 100%;
       padding: 10px 12px 8px;
+      margin-bottom: 8px;
       outline: none;
       font-size: 15px;
       border: none;
@@ -38,21 +40,26 @@
 
   .submit-btn {
     display: block;
-    width: 100px;
-    padding: 5px 0;
-    margin: 30px auto 0;
+    width: auto;
+    padding: 2px 8px;
+    margin: 0 0 0 auto;
     background-color: $highlight;
     color: $with-highlight;
     border: none;
     outline: none;
     font-size: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     &:hover {
       cursor: pointer;
     }
   }
 }
 
+/* フォームとタスクカード間の仕切り */
+.form-post-border {
+  border-top: 1px solid lightgray;
+  border: 10px 0;
+}
 
 /* タスクカード */
 .post-card {
