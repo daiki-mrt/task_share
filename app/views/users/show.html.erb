@@ -6,8 +6,8 @@
   <div class="posts">
     <% if user_signed_in? && (current_user.id == @user.id) %>
       <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
+      <hr class="form-post-border"></hr>
     <% end %>
-    <hr class="form-post-border"></hr>
     <% @tasks.each do |task| %>
       <div id="task_<%= task.id %>">
         <%= render partial: "shared/tasks", locals: { task: task} %>
