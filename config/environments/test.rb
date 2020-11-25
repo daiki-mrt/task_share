@@ -45,4 +45,8 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
+
+  # テスト一括実行時のエラー対応 Mysql2::Error: MySQL client is not connected
+  # https://github.com/rails/rails/issues/32794
+  config.active_job.queue_adapter = :inline  
 end
