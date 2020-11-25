@@ -39,8 +39,8 @@ RSpec.describe Community, type: :model do
   describe "communityの検索" do
     before do
       @community = create(:community)
-      @community_category2 = create(:community_category2)
-      @community_category3 = create(:community_category3)
+      @community_with_category2 = create(:community_with_category2)
+      @community_with_category3 = create(:community_with_category3)
       @community_with_other_name = create(:community_with_other_name)
       @community_with_other_introduction = create(:community_with_other_introduction)
     end
@@ -113,7 +113,7 @@ RSpec.describe Community, type: :model do
   # joined_users
   describe "userが対象のcommunityに所属しているか確認する" do
     context "userが所属しているとき" do
-      it "所属しているuserを返すこと" do
+      before do
         @community = create(:community)
         @joined_user1 = create(:user)
         @joined_user2 = create(:user)
@@ -121,8 +121,14 @@ RSpec.describe Community, type: :model do
         # joined_user1, joined_user2参加
         @community.user_communities.create(user_id: @joined_user1.id)
         @community.user_communities.create(user_id: @joined_user2.id)  
+      end
 
+      it "所属しているuserを返すこと" do
         expect(@community.joined_users).to include(@joined_user1, @joined_user2)
+      end
+
+      it "所属していないuserは返さないこと" do
+        expect(@community.joined_users).to_not include(@not_joined_user)
       end
     end
 

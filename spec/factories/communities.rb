@@ -6,14 +6,14 @@ FactoryBot.define do
     association :user
   end
 
-  factory :community_category2, class:"Community" do
+  factory :community_with_category2, class:"Community" do
     sequence(:name) { |n| "コミュニティ名_#{n}" }
     text { "コミュニティの紹介文" }
     category_id { 2 }
     association :user
   end
 
-  factory :community_category3, class:"Community" do
+  factory :community_with_category3, class:"Community" do
     sequence(:name) { |n| "コミュニティ名_#{n}" }
     text { "コミュニティの紹介文" }
     category_id { 3 }
