@@ -162,8 +162,9 @@ a {
   }
   
   .header-left {
-    font-size: 25px;
-    font-weight: bold;
+    display: block;
+    height: 50px;
+    width: 110px;
   }
 
   .header-right {
