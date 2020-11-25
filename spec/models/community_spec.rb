@@ -35,6 +35,7 @@ RSpec.describe Community, type: :model do
     end
   end
 
+  # 検索機能
   describe "communityの検索" do
     before do
       @community = create(:community)
@@ -44,7 +45,7 @@ RSpec.describe Community, type: :model do
       @community_with_other_introduction = create(:community_with_other_introduction)
     end
 
-    # scope :text_like, :text_like
+    # scope :text_like
     describe "文字列に一致するcommunityを検索する" do
       context "一致するデータが見つかるとき" do
         it "検索文字列に一致する名前を持つcommunityを返すこと" do
@@ -105,6 +106,30 @@ RSpec.describe Community, type: :model do
           search_params = { category_id: 99 }
           expect(Community.search(search_params)).to be_empty
         end
+      end
+    end
+  end
+
+  # joined_users
+  describe "userが対象のcommunityに所属しているか確認する" do
+    context "userが所属しているとき" do
+      it "所属しているuserを返すこと" do
+        @community = create(:community)
+        @joined_user1 = create(:user)
+        @joined_user2 = create(:user)
+        @not_joined_user = create(:user)
+        # joined_user1, joined_user2参加
+        @community.user_communities.create(user_id: @joined_user1.id)
+        @community.user_communities.create(user_id: @joined_user2.id)  
+
+        expect(@community.joined_users).to include(@joined_user1, @joined_user2)
+      end
+    end
+
+    context "userが1人も所属していないとき" do
+      it "空のコレクションを返すこと" do
+        @community = create(:community)
+        expect(@community.joined_users).to be_empty
       end
     end
   end
