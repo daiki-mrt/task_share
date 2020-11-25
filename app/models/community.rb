@@ -17,12 +17,10 @@ class Community < ApplicationRecord
 
     category_is(search_params[:category_id])
     .text_like(search_params[:text])
-    .name_like(search_params[:text])
     
   end
   scope :category_is, -> (category_id) { where(category_id: category_id) if category_id.present? }
-  scope :text_like, -> (text) { where("text LIKE ?", "%#{name}%") if text.present? }
-  scope :name_like, -> (text) { where("name LIKE ?", "%#{text}%") if text.present? }
+  scope :text_like, -> (text) { where("text LIKE ?", "%#{text}%").or(where("name LIKE ?", "%#{text}%")) if text.present? }
 
   def joined_users
     user_ids = user_communities.pluck(:user_id)
