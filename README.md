@@ -1,7 +1,9 @@
 # Goal Share!
+![logo_orange_base](https://user-images.githubusercontent.com/70130536/100323405-0b752e80-3009-11eb-9bce-9b6582d7bbf6.png)
+
 
 ## URL
-- 準備中
+https://www.goal-share.xyz/
 ## 概要
 **「ToDo管理×仲間づくり」** で、**目標達成をサポート** するアプリです。
 
@@ -39,11 +41,12 @@
 - Git
 - MySQL
 - RSpec
-- AWS (VPC/EC2/RDS/Route53/ALB/S3)
+- AWS (VPC/EC2/RDS/Route53/ALB/S3/ACM)
 ## ER図
-- 準備中
+![goal_share! ER](https://user-images.githubusercontent.com/70130536/100323013-6f4b2780-3008-11eb-95b6-2873ece04e1f.png)
+
 ## サービス構成図
-![Goal Share! インフラ構成図](https://user-images.githubusercontent.com/70130536/99929963-a912f880-2d92-11eb-9565-876409b09ffa.png)
+![Goal Share! インフラ構成図](https://user-images.githubusercontent.com/70130536/100320556-ad464c80-3004-11eb-8a67-c9a4e3f8e8f3.png)
 
 ## 機能一覧
 ### 認証機能(device)
