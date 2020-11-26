@@ -32,32 +32,32 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
 
-  # フォロー済みかどうかの確認
+  # 引数のユーザが既にフォローしているかどうかの確認
   def follow?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
 
-  # taskいいね済みかどうかの確認
+  # 引数のtaskにいいね済みかどうかの確認
   def already_liked?(task)
     likes.where(task_id: task.id).exists?
   end
 
-  # communityに参加済みかどうかの確認
+  # 引数のcommunityに参加済みかどうかの確認
   def already_joined?(community)
     user_communities.where(community_id: community.id).exists?
   end
 
-  # questionに「知りたい！」済みかどうかの確認
+  # 引数のquestionに「知りたい！」済みかどうかの確認
   def already_me_too?(question)
     me_toos.where(question_id: question.id).exists?
   end
 
-  # questionに「役に立った！」済みかどうかの確認
+  # 引数のquestionに「役に立った！」済みかどうかの確認
   def already_good?(question)
     goods.where(question_id: question.id).exists?
   end
 
-  # 検索
+  # ユーザ検索
   scope :search, -> (search_params) do
     # search_paramsが無かったら実行しない
     return if search_params.blank?
@@ -69,6 +69,7 @@ class User < ApplicationRecord
     where(id: profiles.pluck(:user_id))
   end
 
+  # ゲストユーザログイン時に「ゲスト」を検索or作成
   def self.guest
     find_or_create_by!(email: "guest@guest.com") do |user|
       user.name = "ゲスト"
