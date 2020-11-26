@@ -62,11 +62,17 @@ class User < ApplicationRecord
     # search_paramsが無かったら実行しない
     return if search_params.blank?
 
-    # 検索条件に合うprofileを取得
-    profiles = Profile.occupation_is(search_params[:occupation_id]).text_like(search_params[:text])
-
-    # 取得したprofileのuser_idからuserを検索
-    where(id: profiles.pluck(:user_id))
+    # userのnameが一致したuser
+    users_name_match = User.where("name LIKE ?", "%#{search_params[:text]}%")    
+    # profileのtextが一致したuser
+    profiles_text_match = Profile.text_like(search_params[:text])
+    # profileのoccupationが一致したuser
+    profiles_occupation_match = Profile.occupation_is(search_params[:occupation_id])
+    
+    # nameまたはprofileで取得したuser、かつ、occupationで取得したuser
+    where("name LIKE ?", "%#{search_params[:text]}%")
+    .or(where(id: profiles_text_match.pluck(:user_id)))
+    .where(id: profiles_occupation_match.pluck(:user_id))
   end
 
   # ゲストユーザログイン時に「ゲスト」を検索or作成
