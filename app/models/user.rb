@@ -32,43 +32,50 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
 
-  # フォロー済みかどうかの確認
+  # 引数のユーザが既にフォローしているかどうかの確認
   def follow?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
 
-  # taskいいね済みかどうかの確認
+  # 引数のtaskにいいね済みかどうかの確認
   def already_liked?(task)
     likes.where(task_id: task.id).exists?
   end
 
-  # communityに参加済みかどうかの確認
+  # 引数のcommunityに参加済みかどうかの確認
   def already_joined?(community)
     user_communities.where(community_id: community.id).exists?
   end
 
-  # questionに「知りたい！」済みかどうかの確認
+  # 引数のquestionに「知りたい！」済みかどうかの確認
   def already_me_too?(question)
     me_toos.where(question_id: question.id).exists?
   end
 
-  # questionに「役に立った！」済みかどうかの確認
+  # 引数のquestionに「役に立った！」済みかどうかの確認
   def already_good?(question)
     goods.where(question_id: question.id).exists?
   end
 
-  # 検索
+  # ユーザ検索
   scope :search, -> (search_params) do
     # search_paramsが無かったら実行しない
     return if search_params.blank?
 
-    # 検索条件に合うprofileを取得
-    profiles = Profile.occupation_is(search_params[:occupation_id]).text_like(search_params[:text])
-
-    # 取得したprofileのuser_idからuserを検索
-    where(id: profiles.pluck(:user_id))
+    # userのnameが一致したuser
+    users_name_match = User.where("name LIKE ?", "%#{search_params[:text]}%")    
+    # profileのtextが一致したuser
+    profiles_text_match = Profile.text_like(search_params[:text])
+    # profileのoccupationが一致したuser
+    profiles_occupation_match = Profile.occupation_is(search_params[:occupation_id])
+    
+    # nameまたはprofileで取得したuser、かつ、occupationで取得したuser
+    where("name LIKE ?", "%#{search_params[:text]}%")
+    .or(where(id: profiles_text_match.pluck(:user_id)))
+    .where(id: profiles_occupation_match.pluck(:user_id))
   end
 
+  # ゲストユーザログイン時に「ゲスト」を検索or作成
   def self.guest
     find_or_create_by!(email: "guest@guest.com") do |user|
       user.name = "ゲスト"
