@@ -23,7 +23,17 @@ class TasksController < ApplicationController
     else
       set_user
       set_profile
-      render :new
+      # サイドバー情報の取得(フォロー)
+      @following_users = @user.followings
+      @follower_users = @user.followers  
+      # サイドバー情報の取得(メッセージ)
+      room_ids = current_user.user_rooms.pluck(:room_id)
+      @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
+      @room = @target_user_room.room if @target_user_roo
+      # 投稿タスク一覧取得
+      @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
+
+      render "users/show"
     end
   end
 
