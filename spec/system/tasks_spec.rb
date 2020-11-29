@@ -103,4 +103,25 @@ RSpec.describe 'Tasks', type: :system do
     end
   end
 
+  describe "タスクを削除する" do
+    before "ログインし、タスク投稿する" do
+      @user = create(:user)
+      user_profile = create(:profile, user_id: @user.id)
+      sign_in_as @user
+
+      # タスクを投稿
+      @task_title = 'タスクのタイトル'
+      fill_in 'task_title', with: @task_title
+      click_on '登録'
+      @task = Task.find_by(title: @task_title)
+    end
+
+    it "削除ボタンをクリックするとタスクが削除され、マイページに表示されなくなる" do
+      # 削除ボタンクリックで、Taskのレコードが1減ることを確認
+      expect {
+        # 削除ボタンをクリック
+        find('.delete-btn').click
+      }.to change { Task.count }.by(-1)
+    end
+  end
 end
