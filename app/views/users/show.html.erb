@@ -1,4 +1,4 @@
-<%= render partial: "sidebar", locals: { user: @user, profile: @profile, following_users: @following_users, follower_users: @follower_users, room: @room } %>
+<%= render partial: "users/sidebar", locals: { user: @user, profile: @profile, following_users: @following_users, follower_users: @follower_users, room: @room } %>
   
 <div class="main">
   <div class="main-heading">
@@ -10,7 +10,7 @@
     <% end %>
     <% @tasks.each do |task| %>
       <div id="task_<%= task.id %>">
-        <%= render partial: "shared/tasks", locals: { task: task} %>
+        <%= render partial: "shared/tasks", locals: { task: task } %>
       </div>
     <% end %>
   </div>
