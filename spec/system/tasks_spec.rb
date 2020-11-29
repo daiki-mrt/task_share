@@ -61,4 +61,67 @@ RSpec.describe 'Tasks', type: :system do
       expect(task.state).to eq true
     end
   end
+
+  describe "タスクを編集する" do
+    before "ログインし、タスク投稿する" do
+      @user = create(:user)
+      user_profile = create(:profile, user_id: @user.id)
+      sign_in_as @user
+
+      # タスクを投稿
+      @task_title = 'タスクのタイトル'
+      fill_in 'task_title', with: @task_title
+      click_on '登録'
+      @task = Task.find_by(title: @task_title)
+    end
+    
+    context "タスクを編集できるとき" do
+      it "タイトルを入力すれば、タスクを保存できてマイページに遷移し、タスクがマイページに表示される" do
+        # 編集ページヘ遷移する
+        click_link '編集', href: "/users/#{@user.id}/tasks/#{@task.id}/edit"
+        expect(current_url).to include "/tasks/#{@task.id}/edit"
+        revised_task_title = '編集後のタイトル'
+        fill_in 'task_title', with: revised_task_title
+        click_on '登録'
+        # マイページに遷移し、投稿したタスクがあることを確認する
+        expect(page).to have_content revised_task_title
+      end
+    end
+
+    context "タスクを編集できないとき" do
+      it "タイトルが入力されていないと、保存できずに編集画面に戻る" do
+        # 編集ページへ遷移
+        click_link '編集', href: "/users/#{@user.id}/tasks/#{@task.id}/edit"
+        expect(current_url).to include "/tasks/#{@task.id}/edit"
+        find('#task_title').set ''
+        click_on '登録'
+        # 保存されず、編集ページに戻ることを確認する
+        expect(current_url).to include "/tasks/#{@task.id}"
+        # レコードが更新されていないことを確認する
+        expect(@task.title).to eq @task_title
+      end
+    end
+  end
+
+  describe "タスクを削除する" do
+    before "ログインし、タスク投稿する" do
+      @user = create(:user)
+      user_profile = create(:profile, user_id: @user.id)
+      sign_in_as @user
+
+      # タスクを投稿
+      @task_title = 'タスクのタイトル'
+      fill_in 'task_title', with: @task_title
+      click_on '登録'
+      @task = Task.find_by(title: @task_title)
+    end
+
+    it "削除ボタンをクリックするとタスクが削除され、マイページに表示されなくなる" do
+      # 削除ボタンクリックで、Taskのレコードが1減ることを確認
+      expect {
+        # 削除ボタンをクリック
+        find('.delete-btn').click
+      }.to change { Task.count }.by(-1)
+    end
+  end
 end
