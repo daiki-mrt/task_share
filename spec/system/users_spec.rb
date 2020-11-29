@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
+  include LoginSupport
   describe "ユーザ新規登録" do
     context "新規登録できるとき" do
       it "正しく情報を入力すれば、新規登録できて、マイページに遷移する" do
@@ -52,13 +53,7 @@ RSpec.describe 'Users', type: :system do
       it "正しく情報を入力すれば、ログインできて、マイページに遷移する" do
         user = create(:user)
         profie = create(:profile, user_id: user.id)
-        # ルートパスへ移動する
-        visit "/"
-        # フォームに正しい情報を入力する
-        fill_in 'user_email', with: user.email
-        fill_in 'user_password', with: user.password
-        # 「ログイン」をクリック
-        click_on 'ログイン'
+        sign_in_as user
         # マイページへ遷移する
         expect(current_url).to include "/users/#{user.id}"
         # マイページのヘッダにログアウトボタンがある
@@ -99,10 +94,7 @@ RSpec.describe 'Users', type: :system do
       # ログインする
       user = create(:user)
       profile = create(:profile, user_id: user.id)
-      visit '/'
-      fill_in 'user_email', with: user.email
-      fill_in 'user_password', with: user.password
-      click_on 'ログイン'
+      sign_in_as user
       # ヘッダーの「ログアウト」をクリックする
       click_on 'ログアウト'
       # ログアウトしてログイン画面へ遷移する
@@ -118,10 +110,7 @@ RSpec.describe 'Users', type: :system do
         # ログインする
         user = create(:user)
         profile = create(:profile, user_id: user.id)
-        visit '/'
-        fill_in 'user_email', with: user.email
-        fill_in 'user_password', with: user.password
-        click_on 'ログイン'  
+        sign_in_as user
         # 「編集する」をクリックしてユーザ編集ページへ遷移する
         click_link '編集する'
         # ユーザ情報が入力されていることを確認する
@@ -143,10 +132,7 @@ RSpec.describe 'Users', type: :system do
         # ログインする
         user = create(:user)
         profile = create(:profile, user_id: user.id)
-        visit '/'
-        fill_in 'user_email', with: user.email
-        fill_in 'user_password', with: user.password
-        click_on 'ログイン'  
+        sign_in_as user
         # なまえを空にして「編集する」をクリックする
         click_link '編集する'
         find('#user_name').set ''
