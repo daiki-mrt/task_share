@@ -82,4 +82,39 @@ RSpec.describe 'Communities', type: :system do
     end
   end
 
+  describe "コミュニティ参加" do
+    before "ユーザ設定とログイン" do
+      @owner_user = create(:user)
+      owner_user_profile = create(:profile, user_id: @owner_user.id)
+      @owner_community = create(:community, user_id: @owner_user.id)
+      @joining_user = create(:user)
+      joining_user_profile = create(:profile, user_id: @joining_user.id)
+      sign_in_as @joining_user
+    end
+
+    it "参加ボタンをクリックすると、コミュニティに参加することができる" do
+      visit '/communities'
+      expect(page).to have_content @owner_community.name
+      click_link @owner_community.name
+      expect(current_url).to include "/communities/#{@owner_community.id}"
+
+      expect {
+        click_on '参加する'
+        expect(page).to have_content '脱退する'
+      }.to change { UserCommunity.count }.by(1)
+    end
+    it "脱退ボタンをクリックすると、コミュニティから抜けることが出来る" do
+      UserCommunity.create(user_id: @joining_user.id, community_id: @owner_community.id)
+      visit '/communities'
+      expect(page).to have_content @owner_community.name
+      click_link @owner_community.name
+      expect(current_url).to include "/communities/#{@owner_community.id}"
+      expect(page).to have_content '脱退する'
+
+      expect {
+        click_on '脱退する'
+        expect(page).to have_content '参加する'
+      }.to change { UserCommunity.count }.by(-1)
+    end
+  end
 end
