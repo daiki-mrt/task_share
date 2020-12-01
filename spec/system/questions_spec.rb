@@ -109,4 +109,53 @@ RSpec.describe 'Communities', type: :system do
     end
   end
 
+  describe "質問を解決済みにする" do
+    before "ログインし、質問を登録" do
+      @user = create(:user)
+      user_profile = create(:profile, user_id: @user.id)
+      @community = create(:community, user_id: @user.id)
+      UserCommunity.create(user_id: @user.id, community_id: @community.id)
+      sign_in_as @user
+      @question = create(:question, user_id: @user.id, community_id: @community.id)
+    end
+    
+    context "切り替えできるとき" do
+      it "受付中ボタンを押すと、解決済みに切り替わる" do
+        visit "/communities/#{@community.id}/questions/#{@question.id}"
+        click_link '受付中'
+        expect(page).to have_content '解決済み'
+        # @question.stateを参照するとtrueにならないため、questionで初期化
+        question = Question.find(@question.id)
+        expect(question.state).to eq true
+      end
+      it "解決済みボタンを押すと、受付中ボタンに切り替わる" do
+        # @questionを解決済みに更新
+        @question.update(state: 1)
+        visit "/communities/#{@community.id}/questions/#{@question.id}"
+        click_link '解決済み'
+        expect(page).to have_content '受付中'
+        # @question.stateを参照するとfalseにならないため、questionを初期化
+        question = Question.find(@question.id)
+        expect(question.state).to eq false
+      end
+    end
+
+    context "切り替えできないとき" do
+      it "別のユーザーの質問は解決済みに出来ない" do
+        # 別のユーザーが質問を投稿
+        other_user = create(:user)
+        other_user_profile = create(:profile, user_id: other_user.id)
+        UserCommunity.create(user_id: other_user.id, community_id: @community.id)
+        other_user_question = create(:question, user_id: other_user.id, community_id: @community.id)
+        
+        visit "/communities/#{@community.id}/questions/#{other_user_question.id}"
+        expect(page).to have_content other_user_question.title
+        # @userが受付中ボタンを押す
+        click_link '受付中'
+        # 状態が変わらないことを確認する
+        expect(page).to have_content '受付中'
+        expect(other_user_question.state).to eq false
+      end
+    end
+  end
 end
