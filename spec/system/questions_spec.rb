@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Communities', type: :system do
+RSpec.describe 'Questions', type: :system do
   include LoginSupport
 
   describe "質問を投稿する" do
