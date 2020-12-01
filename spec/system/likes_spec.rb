@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Messages', type: :system do
+RSpec.describe 'Likes', type: :system do
   include LoginSupport
 
   describe "タスクにいいねする" do
