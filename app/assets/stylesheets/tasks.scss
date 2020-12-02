@@ -113,18 +113,6 @@
     justify-content: flex-end;
     align-items: flex-end;
 
-    .complete-btn {
-      background-color: $highlight;
-      color: $with-highlight;
-      border: none;
-      padding: 7px;
-      font-size: 20px;
-      border-radius: 5px;
-      width: 120px;
-      margin-top: 15px;
-      margin-left: 15px;
-      text-align: center;
-    }
     .edit-btn, .delete-btn {
       color: lightgray;
       font-size: 14px;
@@ -142,6 +130,18 @@
   }
 }
 
+/* 完了ボタン */
+.complete {
+  background-color: $highlight;
+  color: $with-highlight;
+  border: none;
+  padding: 6px 7px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-left: 15px;
+  text-align: center;
+}
 
 /* 完了済み */
 .completed-btn {
