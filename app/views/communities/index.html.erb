@@ -13,7 +13,7 @@
           <%= f.collection_select(:category_id, Category.all, :id, :name, {selected: @search_params[:category_id], include_blank: "選択しない"}, {class:"search-category"}) %>
         </div>
         <div class="search-btn-area">
-          <%= f.submit "検索", class:"search-btn" %>
+          <%= f.submit "検索", class:"search btn" %>
         </div>
       <% end %>
       <div class="search-cancel">

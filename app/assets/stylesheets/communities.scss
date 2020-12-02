@@ -37,6 +37,17 @@
     border: none;
     background-color: $base-color;
   }
+  .search {
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: $main-text-color;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }  
 }
 
 
