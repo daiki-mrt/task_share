@@ -172,23 +172,18 @@ a {
   & a {
     color: #eff0f3;
   }
-  
   .header-left {
     display: block;
     height: 50px;
     width: 110px;
   }
-
   .header-right {
     font-size: 18px;
-
     .header-menu {
       display: flex;
-      justify-content: space-between;
-      
+      justify-content: space-between;      
       & li {
         margin: 0 5px;
-
       }
     }
   }
