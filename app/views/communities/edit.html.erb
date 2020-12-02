@@ -6,7 +6,7 @@
     <%= form_with model: @community, local: true do |f|%>
       <%= render 'shared/error_messages', model: f.object %>
       <div class="community">
-        <%= f.label "名前", class:"community-label"%>
+        <span class="community-label">名前 <span class="must">*必須</span></span>
         <%= f.text_field :name, class:"community-input" %>
       </div>
       <div class="community">
