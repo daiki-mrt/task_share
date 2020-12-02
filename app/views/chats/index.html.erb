@@ -5,9 +5,9 @@
     <% if current_user.id == @community.user.id %>
       <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
     <% elsif current_user.already_joined?(@community) %>
-      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
+      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit btn" %>
     <% else %>
-      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
+      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join btn" %>
     <% end %>
     <div class="menu-items">
       <div class="community-members">
