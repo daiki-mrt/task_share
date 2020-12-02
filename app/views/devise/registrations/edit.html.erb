@@ -10,7 +10,7 @@
         <%= render 'shared/error_messages', model: resource %>
 
         <div class="registration-item">
-          <%= f.label "なまえ", class:"label" %>
+          <span class="label">なまえ <span class="must">*必須</span></span>
           <%= f.text_field :name, class:"form-box" %>
         </div>
         
