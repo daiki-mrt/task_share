@@ -23,10 +23,11 @@
       </div>
       <div class="relationships-user">
         <%= link_to follows_user_path(@user) do %>
-          <span class="follow-count"><i class="fas fa-user-friends"></i>フォロー<%= @following_users.count %></span>
+          <span class="follow-count"><i class="fas fa-user-friends"></i>フォロー<%= " #{@following_users.count}" %></span>
         <% end %>
+        <span class="follow-btn-separater">|</span>
         <%= link_to followers_user_path(@user) do %>
-          <span class="follower-count">フォロワー<%= @follower_users.count %></span>
+          <span class="follower-count">フォロワー<%= " #{follower_users.count}" %></span>
         <% end %>
       </div>
       <div class="direct-message">
