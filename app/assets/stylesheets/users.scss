@@ -172,10 +172,6 @@
     min-width: 200px;
     padding: 10px 12px 8px;
   }
-  .must {
-    color: red;
-    font-size: 12px;
-  }
   .form-attach {
     padding: 10px 0 8px;
     width: 270px;
@@ -190,16 +186,16 @@
     border: none;
   }
 }
-.submit-btn {
+.sign-in {
   display: block;
-  // width: 80px;
-  padding: 5px 10px;
+  width: 50%;
+  padding: 5px 7px;
   margin: 30px auto 20px;
   background-color: $highlight;
   color: $with-highlight;
   border: none;
-  font-size: 20px;
-  border-radius: 10px;
+  font-size: 18px;
+  border-radius: 5px;
   outline: none;
   &:hover {
     cursor: pointer;
@@ -208,35 +204,34 @@
 }
 
 
-/* ログイン */
+/* ログインメッセージ */
 .login-flash-message {
   text-align: center;
   margin: 20px 0;
   color: red;
 }
 
-.not-login {
+/* 新規登録・ゲストログイン */
+.not-login-area {
   text-align: center;
-  & li {
-    margin: 15px;
-  }
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  width: 50%;
 }
-.guest-btn {
-  color: $highlight;
-  border-bottom: 1px solid $highlight;
-  font-weight: bold;
-  margin-left: 5px;
-  &:hover {
-    opacity: 0.7;
-  }
+.sign-up {
+  background-color: #f45d48;
+  color: $with-highlight;
+  width: 140px;
+  padding: 10px;
+  border-radius: 5px;
 }
-.sign-up-btn {
-  color: $main-text-color;
-  border-bottom: 1px solid $main-text-color;
-  margin-left: 5px;
-  &:hover {
-    opacity: 0.7;
-  }
+.guest-sign-in {
+  background-color: #078080;
+  color: $with-highlight;
+  width: 140px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /* ユーザー一覧 */
