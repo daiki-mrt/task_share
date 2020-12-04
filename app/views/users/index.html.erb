@@ -30,6 +30,8 @@
     </div>
   </div>
   <div class="posts">
-    <%= render partial: "users_index", locals: { users: @users } %>
+    <div class="user-cards">
+      <%= render partial: "users_index", locals: { users: @users } %>
+    </div>
   </div>
 </div>
