@@ -3,24 +3,7 @@
   
 <div class="main">
   <div class="community-post-form">
-    <%= form_with model: @community, local: true do |f|%>
-      <%= render 'shared/error_messages', model: f.object %>
-      <div class="community">
-        <span class="community-label">名前 <span class="must">*必須</span></span>
-        <%= f.text_field :name, class:"community-input" %>
-      </div>
-      <div class="community">
-        <%= f.label "カテゴリー", class:"community-label" %>
-        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-box"}) %>
-      </div>
-      <div class="community">
-        <%= f.label "説明", class:"community-label"%>
-        <%= f.text_area :text, class:"community-input text" %>
-      </div>
-      
-      <%= f.submit "更新", class:"community-submit-btn" %>
-
-    <% end %>
+    <%= render partial: "communities/community_form", locals: { community: @community } %>
   </div>
 </div>
 
