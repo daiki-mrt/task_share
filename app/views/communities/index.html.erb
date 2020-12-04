@@ -33,17 +33,19 @@
   <div class="posts">
     <div class="community-cards">
       <% @communities.each do |community| %>
-        <div class="community-card">
-          <div class="community-card-head">
-            <%= link_to community.name, community_path(community), class:"community-title" %>
+        <%= link_to community_path(community) do %>
+          <div class="community-card">
+            <div class="community-card-head">
+              <span class="community-title"><%= community.name %></span>
+            </div>
+            <div class="community-text">
+              詳細：<%= community.text %>
+            </div>
+            <div class="community-category">
+              カテゴリー：<%= community.category.name %>
+            </div>
           </div>
-          <div class="community-text">
-            詳細：<%= community.text %>
-          </div>
-          <div class="community-category">
-            カテゴリー：<%= community.category.name %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
