@@ -5,21 +5,22 @@
 .community-navigation {
   &.question {
     background-color: $highlight;
-    color: $main-text-color;
+    color: $with-highlight;
   }
 }
-
 
 .communities-main-menu-under {
   margin-top: 15px;
 }
 .create-question {
   display: inline-block;
-  background-color: $highlight;
+  width: 100%;
+  text-align: center;
+  background-color: #078080;
   color: $with-highlight;
-  padding: 7px;
+  padding: 12px 0;
   border-radius: 5px;
-  margin-top: 8px;
+  margin: 8px 0;
   font-size: 18px;
 }
 
