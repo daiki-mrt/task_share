@@ -8,66 +8,68 @@
       <%= link_to "質問", community_questions_path(@community), class:"community-navigation question" %>
     </div>
   </div>
-  <div class="question-area">
-    <%= link_to "<< 一覧にもどる", community_questions_path(@community), class:"back-questions-btn" %>
-    <div class="question-card">
-      <div class="question-user">
-        <% if @question.user.profile.image.present? %>
-          <%= link_to image_tag(@question.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(@question.user) %>
-        <% end %>
-        <%= link_to @question.user.name, user_path(@question.user), class:"question-user-name" %>
-      </div>
-      <div class="question-title">
-        <%= @question.title %>
-        <% if @question.user.id == current_user.id %>
-          <%= link_to "編集する", edit_community_question_path(@community, @question), class:"edit-btn" %>
-        <% end %>
-      </div>
-      <div class="question-content">
-        <%= @question.content %>
-      </div>
-      <% if @question.image.present? %>
-        <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
-      <% end %>
-
-      <div class="question-response-area">
-        <div id="question_<%= @question.id %>">
-          <%= render partial: "shared/me_too", locals: { question: @question } %>
-        </div>
-
-        <div id="good_question_<%= @question.id %>">
-          <%= render partial: "shared/good", locals: { question: @question } %>
-        </div>
-
-        <% if @question.state %>
-          <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
-        <% else %>
-          <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open" %>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-  <div class="answer-area">
-    <p class="answer-label">コメント一覧</p>
-    <% @answers.each do |answer| %>
-      <div class="answer-card">
-        <div class="answer-user">
-          <% if answer.user.profile.image.present? %>
-            <%= link_to image_tag(answer.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(answer.user) %>
+  <div class="question-and-answer-area">
+    <div class="question-area">
+      <%= link_to "<< 一覧にもどる", community_questions_path(@community), class:"back-questions-btn" %>
+      <div class="question-card">
+        <div class="question-user">
+          <% if @question.user.profile.image.present? %>
+            <%= link_to image_tag(@question.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(@question.user) %>
           <% end %>
-          <%= link_to answer.user.name, user_path(answer.user), class:"answer-user-name" %>
+          <%= link_to @question.user.name, user_path(@question.user), class:"question-user-name" %>
         </div>
-        <div class="answer-comment">
-          <%= answer.text %>
+        <div class="question-title">
+          <%= @question.title %>
+          <% if @question.user.id == current_user.id %>
+            <%= link_to "編集する", edit_community_question_path(@community, @question), class:"edit-btn" %>
+          <% end %>
         </div>
+        <div class="question-content">
+          <%= @question.content %>
+        </div>
+        <% if @question.image.present? %>
+          <%= image_tag @question.image.variant(resize: "500x500"), class:"question-image" %>
+        <% end %>
+
+        <div class="question-response-area">
+          <div id="question_<%= @question.id %>">
+            <%= render partial: "shared/me_too", locals: { question: @question } %>
+          </div>
+
+          <div id="good_question_<%= @question.id %>">
+            <%= render partial: "shared/good", locals: { question: @question } %>
+          </div>
+
+          <% if @question.state %>
+            <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
+          <% else %>
+            <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open" %>
+          <% end %>
+        </div>
+
       </div>
-    <% end %>
-    <%= form_with model: [@question, @answer], local: true, class:"answer-form-area" do |f| %>
-      <p class="answer-form-label">コメントする</p>
-      <%= f.text_area :text, class:"answer-form" %>
-      <%= f.submit "投稿", class:"answer-submit-btn" %>
-    <% end %>
+    </div>
+    <div class="answer-area">
+      <p class="answer-label">コメント一覧</p>
+      <% @answers.each do |answer| %>
+        <div class="answer-card">
+          <div class="answer-user">
+            <% if answer.user.profile.image.present? %>
+              <%= link_to image_tag(answer.user.profile.image.variant(resize: "50x50"), class:"user-image"), user_path(answer.user) %>
+            <% end %>
+            <%= link_to answer.user.name, user_path(answer.user), class:"answer-user-name" %>
+          </div>
+          <div class="answer-comment">
+            <%= answer.text %>
+          </div>
+        </div>
+      <% end %>
+      <%= form_with model: [@question, @answer], local: true, class:"answer-form-area" do |f| %>
+        <p class="answer-form-label">コメントする</p>
+        <%= f.text_area :text, class:"answer-form" %>
+        <%= f.submit "投稿", class:"answer-submit-btn" %>
+      <% end %>
+    </div>
   </div>
 </div>
 

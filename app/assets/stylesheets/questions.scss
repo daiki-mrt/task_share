@@ -118,6 +118,11 @@
 
 
 /* 質問詳細ページ */
+.question-and-answer-area {
+  height: 90%;
+  overflow: scroll;
+  border-radius: 5px;
+}
 .question-area {
   width: 95%;
   margin: 0 auto;
