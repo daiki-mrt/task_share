@@ -16,27 +16,29 @@
         <p class="need-join-message">質問投稿にはコミュニティ参加が必要です</p>
       <% end %>
     </div>
-    <% @questions.each do |question| %>
-      <div class="question-summary-card">
-        <div class="question-summary-head">
-          <%= link_to question.title, community_question_path(@community, question), class:"question-title" %>
-          <span class="question-date"><%= l question.created_at, format: :short %></span> 
-        </div>
-        <div class="question-summary-status">
-          <div class="question-summary-response">
-            <span class="question-summary-metoo">知りたい！<%= question.me_toos.count %></span>
-            <span class="question-summary-good">役に立った！<%= question.goods.count %></span>
+    <div class="question-cards">
+      <% @questions.each do |question| %>
+        <div class="question-summary-card">
+          <div class="question-summary-head">
+            <%= link_to question.title, community_question_path(@community, question), class:"question-title" %>
+            <span class="question-date"><%= l question.created_at, format: :short %></span> 
           </div>
-          <% if question.state %>
-            <span class="question-summary-close">解決済み</span>
-          <% else %>
-            <span class="question-summary-open">受付中</span>
-          <% end %>
+          <div class="question-summary-status">
+            <div class="question-summary-response">
+              <span class="question-summary-metoo">知りたい！<%= question.me_toos.count %></span>
+              <span class="question-summary-good">役に立った！<%= question.goods.count %></span>
+            </div>
+            <% if question.state %>
+              <span class="question-summary-close">解決済み</span>
+            <% else %>
+              <span class="question-summary-open">受付中</span>
+            <% end %>
+          </div>
+          <div class="like-area">
+          </div>
         </div>
-        <div class="like-area">
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
