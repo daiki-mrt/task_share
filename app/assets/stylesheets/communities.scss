@@ -156,17 +156,37 @@
 
 /* 中央 */
 .community-main-heading {
-  width: 95%;
+  width: 100%;
   padding: 0 30px;
+  margin: 0 auto 10px;
+}
+.community-main-menu {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
 }
 .community-navigation {
-  color: $main-text-color;
+  display: inline-block;
+  color: $sub-text-color;
+  width: 33.3%;
+  background-color: $base-color;
+  border-radius: 5px;
+  padding: 12px 0;
   &:hover {
-    border-bottom: 2px solid lightgray;
+    opacity: 0.8;
   }
 }
 .task {
-  border-bottom: 2px solid $highlight;
+  background-color: $highlight;
+  color: $main-text-color;
+}
+
+.communities-posts-cards {
+  height: 700px;
+  overflow: scroll;
+  border-radius: 5px;
 }
 
 

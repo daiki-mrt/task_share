@@ -1,5 +1,12 @@
 @import "style";
 
+.community-navigation {
+  &.chat {
+    background-color: $highlight;
+    color: $main-text-color;
+  }
+}
+
 .field_with_errors {
   display: contents;
 }
@@ -84,8 +91,4 @@
       outline: none;
     }
   }
-}
-
-.chat {
-  border-bottom: 2px solid $highlight;
 }

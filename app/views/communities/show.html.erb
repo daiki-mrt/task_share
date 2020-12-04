@@ -2,18 +2,20 @@
 
 <div class="main">
   <div class="community-main-heading">
-    <div class="main-menu">
+    <div class="community-main-menu">
       <%= link_to "みんなのタスク", community_path(@community), class:"community-navigation task" %>
       <%= link_to "チャット", community_chats_path(@community), class:"community-navigation" %>
       <%= link_to "質問", community_questions_path(@community), class:"community-navigation" %>
     </div>
   </div>
   <div class="posts">
-    <% @remain_tasks.each do |task| %>
-      <span id="task_<%= task.id %>">
-        <%= render partial: "shared/tasks", locals: { task: task } %>
-      </span>
-    <% end %>
+    <div class="communities-posts-cards">
+      <% @remain_tasks.each do |task| %>
+        <span id="task_<%= task.id %>">
+          <%= render partial: "shared/tasks", locals: { task: task } %>
+        </span>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -1,11 +1,15 @@
 @import "style";
 
+
 /* 質問一覧ページ */
-.posts {
-  width: 95%;
-  margin: 0 auto;
-  padding: 10px;
+.community-navigation {
+  &.question {
+    background-color: $highlight;
+    color: $main-text-color;
+  }
 }
+
+
 .communities-main-menu-under {
   margin-top: 15px;
 }
@@ -105,9 +109,6 @@
   }
 }
 
-.question {
-  border-bottom: 2px solid $highlight;
-}
 
 /* 質問詳細ページ */
 .question-area {
