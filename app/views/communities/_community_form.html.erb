@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', model: f.object %>
   <div class="community">
     <span class="community-label">名前 <span class="must">*必須</span></span>
-    <%= f.text_field :name, class:"community-input" %>
+    <%= f.text_field :name, placeholder: "コミュニティのなまえを入力しよう", class:"community-input" %>
   </div>
   <div class="community">
     <%= f.label "カテゴリー", class:"community-label" %>
@@ -10,7 +10,7 @@
   </div>
   <div class="community">
     <%= f.label "説明", class:"community-label"%>
-    <%= f.text_area :text, class:"community-input text" %>
+    <%= f.text_area :text, placeholder: "コミュニティの内容・目的を入力しよう", class:"community-input text" %>
   </div>
   
   <%= f.submit "更新", class:"community-submit btn" %>
