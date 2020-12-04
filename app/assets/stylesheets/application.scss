@@ -179,16 +179,28 @@ a {
   }
   .header-right {
     font-size: 18px;
+    height: 60px;
+    display: flex;
+    align-items: center;
     .header-menu {
       display: flex;
-      justify-content: space-between;      
-      & li {
-        margin: 0 5px;
+      justify-content: space-between;
+      & a {
+        padding: 30px 10px;
+        &:hover {
+          transition: 0.7s;
+          background-color: #fead73;
+          opacity: 0.8;
+        }
+      }
+      & span {
+        padding: 30px 0;
+        color: #fac8a4;
       }
     }
+  }
   .header-separater {
     color: $with-highlight;
-  }
   }
 }
 

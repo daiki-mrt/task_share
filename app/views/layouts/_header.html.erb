@@ -7,17 +7,17 @@
   <% end %>
 
   <div class="header-right">
-    <ul class="header-menu">
+    <div class="header-menu">
       <% if user_signed_in? %>
-        <li><%= link_to "ユーザー検索", users_path %></li>
-        <li class="header-separater">|</li>
-        <li><%= link_to "コミュニティ検索",communities_path %> </li>
-        <li class="header-separater">|</li>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-        <li class="header-separater">|</li>
-        <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <span class="header-separater">|</span>
+        <%= link_to "#{current_user.name}", user_path(current_user) %>
+        <span class="header-separater">|</span>
+        <%= link_to "ユーザ", users_path %>
+        <span class="header-separater">|</span>
+        <%= link_to "コミュニティ",communities_path %> 
       <% end %>
-    </ul>
+    </div>
   </div>
   
 </div>
