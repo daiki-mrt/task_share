@@ -67,7 +67,7 @@
       <%= form_with model: [@question, @answer], local: true, class:"answer-form-area" do |f| %>
         <p class="answer-form-label">コメントする</p>
         <%= f.text_area :text, class:"answer-form" %>
-        <%= f.submit "投稿", class:"answer-submit-btn" %>
+        <%= f.submit "投稿", class:"answer-submit btn" %>
       <% end %>
     </div>
   </div>
