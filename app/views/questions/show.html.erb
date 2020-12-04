@@ -41,9 +41,9 @@
           </div>
 
           <% if @question.state %>
-            <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close" %>
+            <%= link_to "解決済み", resolve_community_question_path(@community, @question), method: :patch, class:"question-close btn" %>
           <% else %>
-            <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open" %>
+            <%= link_to "受付中", resolve_community_question_path(@community, @question), method: :patch, class:"question-open btn" %>
           <% end %>
         </div>
 
