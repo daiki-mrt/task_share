@@ -9,11 +9,13 @@
     </div>
   </div>
   <div class="posts">
-    <% if current_user.already_joined?(@community) %>
-      <%= link_to "質問する", new_community_question_path, class:"create-question-btn" %>
-    <% else %>
-      <span class="need-join-message">質問投稿にはコミュニティ参加が必要です</span>
-    <% end %>
+    <div class="communities-main-menu-under">
+      <% if current_user.already_joined?(@community) %>
+          <%= link_to "質問する", new_community_question_path, class:"create-question btn" %>
+      <% else %>
+        <span class="need-join-message">質問投稿にはコミュニティ参加が必要です</span>
+      <% end %>
+    </div>
     <% @questions.each do |question| %>
       <div class="question-summary-card">
         <div class="question-summary-head">

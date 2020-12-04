@@ -7,9 +7,11 @@
       <%= link_to "チャット", community_chats_path(@community), class:"community-navigation chat" %>
       <%= link_to "質問", community_questions_path(@community), class:"community-navigation" %>
     </div>
-    <% unless current_user.already_joined?(@community) %>
-      <span class="need-join-message-chat">チャットにはコミュニティ参加が必要です</span>
-    <% end %>
+    <div class="communities-main-menu-under">
+      <% unless current_user.already_joined?(@community) %>
+        <span class="need-join-message-chat">チャットにはコミュニティ参加が必要です</span>
+      <% end %>
+    </div>
   </div>
   <div class="community-chats-box">
     <% if current_user.already_joined?(@community) %>
