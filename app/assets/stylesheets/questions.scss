@@ -81,6 +81,9 @@
   padding: 15px;
   border-radius: 5px;
   background-color: $card-back-color;
+  &:hover {
+    opacity: 0.9;
+  }
 
   .question-summary-head {
     margin: 0 auto;
