@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="question-area">
-    <%= link_to "一覧にもどる", community_questions_path(@community), class:"back-questions-btn" %>
+    <%= link_to "<< 一覧にもどる", community_questions_path(@community), class:"back-questions-btn" %>
     <div class="question-card">
       <div class="question-user">
         <% if @question.user.profile.image.present? %>
