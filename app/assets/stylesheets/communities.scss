@@ -5,16 +5,15 @@
 
 
 /* 一覧ページ */
-.community-create-btn {
-  width: 180px;
-  margin: 0 auto;
+.community-create {
+  width: 100%;
+  margin: 10px auto;
   display: block;
   text-align: center;
-  color: $main-text-color;
-  margin-bottom: 10px;
-  &:hover {
-    text-decoration: underline;
-  }
+  color: $with-highlight;
+  background-color: #078080;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 /* 検索ボックス */

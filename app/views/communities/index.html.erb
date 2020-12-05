@@ -1,7 +1,6 @@
 <div class="menu-bar">
   <div class="menu-bar-box">
     <p class="menu-bar-head">コミュニティ検索</p>
-    <%= link_to "作成する", new_community_path, class:"community-create-btn" %>
     <div class="menu-items">
       <%= form_with scope: :search, url: communities_path, method: :get, local: true do |f| %>
         <div class="search-field">
@@ -29,6 +28,7 @@
       <%= link_to "ユーザー", users_path, class:"search-navigation" %>
       <%= link_to "コミュニティ", communities_path, class:"search-navigation communities" %>
     </div>
+    <%= link_to "コミュニティを作る", new_community_path, class:"community-create btn" %>
   </div>
   <div class="posts">
     <div class="community-cards">
