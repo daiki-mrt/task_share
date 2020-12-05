@@ -108,7 +108,10 @@
     .edit-btn, .delete-btn {
       color: lightgray;
       font-size: 14px;
-      margin: 0 4px;
+      margin: 0 8px;
+    }
+    .edit-btn-text, .delete-btn-text {
+      margin-left: 5px;
     }
   }
   
