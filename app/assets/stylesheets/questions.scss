@@ -219,6 +219,14 @@
  background-color: lightskyblue;
 }
 
+/* 役に立った!知りたい!数 */
+.question-response-count {
+  font-size: 14px;
+  margin-left: 3px;
+  color: $sub-text-color;
+}
+
+
 /* 編集画面 */
  .delete-btn {
   text-decoration: none;
