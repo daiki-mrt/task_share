@@ -3,9 +3,15 @@
 <div class="main">
   <div class="community-main-heading">
     <div class="community-main-menu">
-      <%= link_to "みんなのタスク", community_path(@community), class:"community-navigation task" %>
-      <%= link_to "チャット", community_chats_path(@community), class:"community-navigation" %>
-      <%= link_to "質問", community_questions_path(@community), class:"community-navigation" %>
+      <%= link_to community_path(@community), class:"community-navigation task" do %>
+        <%= image_tag "check.png", size: "18x18", class: "task-icon" %><span>みんなのタスク</span>
+      <% end %>
+      <%= link_to community_chats_path(@community), class:"community-navigation" do %>
+        <%= image_tag "chat_man.png", size: "18x18", class: "chat-icon" %><span>チャット</span>
+      <% end %>
+      <%= link_to community_questions_path(@community), class:"community-navigation" do %>
+        <%= image_tag "question.png", size: "18x18", class: "question-icon" %><span>質問</span>
+      <% end %>
     </div>
   </div>
   <div class="posts">

@@ -177,10 +177,26 @@
   background-color: $base-color;
   border-radius: 5px;
   padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     opacity: 0.8;
   }
 }
+.task-icon {
+  margin-right: 5px;
+  opacity: 0.8;
+}
+.chat-icon {
+  margin-right: 5px;
+  opacity: 0.8;
+}
+.question-icon {
+  margin-right: 5px;
+  opacity: 0.8;
+}
+
 .task {
   background-color: $highlight;
   color: $with-highlight;
