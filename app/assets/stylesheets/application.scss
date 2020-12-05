@@ -168,42 +168,83 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 25px;  
-  & a {
-    color: #eff0f3;
-  }
-  .header-left {
-    display: block;
-    height: 50px;
-    width: 110px;
-  }
-  .header-right {
-    font-size: 18px;
-    height: 60px;
+  padding: 10px 25px;
+}
+.header-left {
+  display: block;
+  height: 50px;
+  width: 110px;
+}
+.header-right {
+  font-size: 18px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  .header-menu {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    .header-menu {
-      display: flex;
-      justify-content: space-between;
-      & a {
-        padding: 30px 10px;
-        &:hover {
-          transition: 0.7s;
-          background-color: #fead73;
-          opacity: 0.8;
-        }
-      }
-      & span {
-        padding: 30px 0;
-        color: #fac8a4;
+    & a {
+      padding: 30px 10px;
+      color: $with-highlight;
+      &:hover {
+        transition: 0.7s;
+        background-color: #fead73;
+        opacity: 0.8;
       }
     }
   }
-  .header-separater {
+}
+.header-separater {
+  color: $with-highlight;
+  padding: 30px 0;
+  color: #fac8a4;
+}
+
+/* ログインユーザ */
+.header-current_user {
+  display: flex;
+  align-items: center;
+  .header-current_user-image {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 8px;
+    background-color: $base-color;
+  }  
+  .header-current_user-name {
+    color: $with-highlight;
+  }
+}
+/* ユーザ一覧リンク */
+.header-users {
+  display: flex;
+  align-items: center;
+  .header-users-icon {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 8px;
+  }
+  .header-users-title {
     color: $with-highlight;
   }
 }
 
+/* コミュニティ一覧リンク */
+.header-communities {
+  display: flex;
+  align-items: center;
+  .header-communities-icon {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 8px;
+  }
+  .header-communities-title {
+    color: $with-highlight;
+  }
+}
 
 /* footer */
 .footer {
