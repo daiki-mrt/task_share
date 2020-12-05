@@ -4,14 +4,12 @@
 /* タスク投稿フォーム */
 .task-post-form {
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   padding: 20px;
   border-radius: 5px;
   background-color: $card-back-color;
 
   .task-form {
-    // margin-bottom: 25px;
-    // display: flex;
     .field_with_errors {
       display: contents;
     }
@@ -38,7 +36,7 @@
     }
   }
 
-  .submit-btn {
+  .task-submit {
     display: block;
     width: auto;
     padding: 2px 8px;
@@ -55,16 +53,10 @@
   }
 }
 
-/* フォームとタスクカード間の仕切り */
-.form-post-border {
-  border-top: 1px solid lightgray;
-  border: 10px 0;
-}
-
 /* タスクカード */
 .post-card {
   width: 100%;
-  margin: 20px auto;
+  margin: 0 auto 20px;
   padding: 15px;
   border-radius: 5px;
   background-color: $card-back-color;
@@ -113,22 +105,13 @@
     justify-content: flex-end;
     align-items: flex-end;
 
-    .complete-btn {
-      background-color: $highlight;
-      color: $with-highlight;
-      border: none;
-      padding: 7px;
-      font-size: 20px;
-      border-radius: 5px;
-      width: 120px;
-      margin-top: 15px;
-      margin-left: 15px;
-      text-align: center;
-    }
     .edit-btn, .delete-btn {
       color: lightgray;
       font-size: 14px;
-      margin: 0 4px;
+      margin: 0 8px;
+    }
+    .edit-btn-text, .delete-btn-text {
+      margin-left: 5px;
     }
   }
   
@@ -142,6 +125,18 @@
   }
 }
 
+/* 完了ボタン */
+.complete {
+  background-color: $highlight;
+  color: $with-highlight;
+  border: none;
+  padding: 6px 7px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-left: 15px;
+  text-align: center;
+}
 
 /* 完了済み */
 .completed-btn {

@@ -1,24 +1,23 @@
 <%= render partial: "users/sidebar", locals: { user: @user, profile: @profile, following_users: @following_users, follower_users: @follower_users, room: @room } %>
   
 <div class="main">
-  <div class="main-heading">
-  </div>
   <div class="posts">
     <% if user_signed_in? && (current_user.id == @user.id) %>
       <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
-      <hr class="form-post-border"></hr>
+      <span class="task-index-comment">タスク一覧</span>
     <% end %>
-    <% @tasks.each do |task| %>
-      <div id="task_<%= task.id %>">
-        <%= render partial: "shared/tasks", locals: { task: task } %>
-      </div>
-    <% end %>
+    <div class="posts-cards">
+      <% @tasks.each do |task| %>
+        <div id="task_<%= task.id %>">
+          <%= render partial: "shared/tasks", locals: { task: task } %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div class="right-bar">
   <div class="right-bar-box">
-  </div>
-  <div class="right-bar-box">
+    <span class="coming-soon">Coming Soon!</span>
   </div>
 </div>

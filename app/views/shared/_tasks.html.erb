@@ -12,10 +12,14 @@
   <div class="post-text"><%= task.text %></div>
   <% if user_signed_in? && (task.user.id == current_user.id) %>
     <div class="edit-area">
-      <%= link_to "編集", edit_user_task_path(task.user, task.id), class:"edit-btn" %>
-      <%= link_to "削除", user_task_path(task.user, task.id), method: :delete, class:"delete-btn" %>
+      <%= link_to edit_user_task_path(task.user, task.id), class: "edit-btn" do %>
+        <i class="fas fa-pencil-alt"></i><span class="edit-btn-text">編集</span>
+      <% end %>
+      <%= link_to user_task_path(task.user, task.id), method: :delete, class:"delete-btn" do %>
+        <i class="far fa-trash-alt"></i><span class="delete-btn-text">削除</span>
+      <% end %>
       <% if !task.state %>
-        <%= link_to "完了にする", done_user_task_path(task.user, task.id), method: :patch, class:"complete-btn" %>
+        <%= link_to "完了!!", done_user_task_path(task.user, task.id), method: :patch, class:"complete btn" %>
       <% else %>
         <span class="completed-btn">完了</span>
       <% end %>

@@ -55,7 +55,7 @@ RSpec.describe 'Tasks', type: :system do
       click_on '登録'
       expect(page).to have_content task_title
       # 完了ボタンを押すと、そのタスクは表示されなくなり、stateカラムがtrueになる
-      click_on '完了にする'
+      click_on '完了!!'
       expect(page).to_not have_content task_title
       task = Task.find_by(title: 'タスクのタイトル')
       expect(task.state).to eq true

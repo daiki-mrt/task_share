@@ -12,7 +12,7 @@
           <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {selected: @search_params[:occupation_id], include_blank: "選択しない"}, {class:"search-occupation"}) %>
         </div>
         <div class="search-btn-area">
-          <%= f.submit "検索", class:"search-btn" %>
+          <%= f.submit "検索", class:"search btn" %>
         </div>
       <% end %>
       <div class="search-cancel">
@@ -30,6 +30,8 @@
     </div>
   </div>
   <div class="posts">
-    <%= render partial: "users_index", locals: { users: @users } %>
+    <div class="user-cards">
+      <%= render partial: "users_index", locals: { users: @users } %>
+    </div>
   </div>
 </div>

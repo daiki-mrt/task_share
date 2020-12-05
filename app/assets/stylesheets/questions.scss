@@ -1,23 +1,32 @@
 @import "style";
 
 /* 質問一覧ページ */
-.posts {
-  width: 95%;
-  margin: 0 auto;
-  padding: 10px;
+.community-navigation {
+  &.question {
+    background-color: $highlight;
+    color: $with-highlight;
+  }
 }
-.create-question-btn {
+
+.communities-main-menu-under {
+  margin-top: 15px;
+}
+.create-question {
   display: inline-block;
-  background-color: $highlight;
+  width: 100%;
+  text-align: center;
+  background-color: #078080;
   color: $with-highlight;
-  padding: 7px;
+  padding: 12px 0;
   border-radius: 5px;
-  margin-top: 8px;
+  margin: 10px 0 20px;
   font-size: 18px;
 }
 
 .need-join-message {
-  color: lightcoral;
+  text-align: center;
+  color: red;
+  padding: 8px;
 }
 
 
@@ -44,14 +53,14 @@
     font-size: 15px;
     border: none;
   }
-  .question-submit-btn {
+  .question-submit {
     background-color: $highlight;
     color: $with-highlight;
     display: block;
     width: 100px;
     margin: 30px auto 0;
     padding: 5px 0;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     outline: none;
     font-size: 20px;
@@ -61,12 +70,20 @@
   }
 }
 
+.question-cards {
+  height: 80%;
+  overflow: scroll;
+  border-radius: 5px;
+}
 .question-summary-card {
   width: 100%;
-  margin: 10px auto 20px;
+  margin: 0 auto 20px;
   padding: 15px;
   border-radius: 5px;
   background-color: $card-back-color;
+  &:hover {
+    opacity: 0.9;
+  }
 
   .question-summary-head {
     margin: 0 auto;
@@ -102,11 +119,13 @@
   }
 }
 
-.question {
-  border-bottom: 2px solid $highlight;
-}
 
 /* 質問詳細ページ */
+.question-and-answer-area {
+  height: 90%;
+  overflow: scroll;
+  border-radius: 5px;
+}
 .question-area {
   width: 95%;
   margin: 0 auto;
@@ -114,6 +133,7 @@
   .back-questions-btn {
     display: inline-block;
     color: $sub-text-color;
+    background: $base-color;
     padding: 7px;
     border-radius: 5px;
     margin-top: 8px;
@@ -199,70 +219,11 @@
  background-color: lightskyblue;
 }
 
-/* 質問回答エリア */
-.answer-area {
-  width: 95%;
-  margin: 15px auto 0;
-  padding: 10px;
-  
-  .answer-label {
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  .answer-card {
-  background-color: $card-back-color;
-  border-radius: 5px;
-  height: 75%;
-  padding: 10px;
-  margin-bottom: 15px;
-    .answer-user {
-      display: flex;
-      align-items: center;  
-      margin-bottom: 10px;
-      .user-image {
-        border-radius: 50%;
-        height: 30px;
-        width: 30px;
-        margin-right: 10px;  
-      }
-      .answer-user-name {
-        color:   $sub-text-color;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-
-  .answer-form-area {
-    border-radius: 5px;
-    margin-top: 25px;
-
-    .answer-form-label {
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    .answer-form {
-      height: 100px;
-      width: 100%;
-      border: none;
-      margin-bottom: 7px;
-      outline: none;
-      padding: 10px;
-    }
-    .answer-submit-btn {
-      padding: 5px 8px;
-      border: none;
-      background-color: $highlight;
-      color: $with-highlight;
-      border-radius: 5px;
-      display: block;
-      width: 50px;
-      margin: 0 0 0 auto;
-    }
-  }
-  
+/* 役に立った!知りたい!数 */
+.question-response-count {
+  font-size: 14px;
+  margin-left: 3px;
+  color: $sub-text-color;
 }
 
 

@@ -1,0 +1,18 @@
+<%= form_with model: community, local: true do |f|%>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="community">
+    <span class="community-label">名前 <span class="must">*必須</span></span>
+    <%= f.text_field :name, placeholder: "コミュニティのなまえを入力しよう", class:"community-input" %>
+  </div>
+  <div class="community">
+    <%= f.label "カテゴリー", class:"community-label" %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-box"}) %>
+  </div>
+  <div class="community">
+    <%= f.label "説明", class:"community-label"%>
+    <%= f.text_area :text, placeholder: "コミュニティの内容・目的を入力しよう", class:"community-input text" %>
+  </div>
+  
+  <%= f.submit "登録", class:"community-submit btn" %>
+
+<% end %>

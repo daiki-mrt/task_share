@@ -7,14 +7,26 @@
   <% end %>
 
   <div class="header-right">
-    <ul class="header-menu">
+    <div class="header-menu">
       <% if user_signed_in? %>
-        <li><%= link_to "ユーザー検索", users_path %></li>
-        <li><%= link_to "コミュニティ検索",communities_path %> </li>
-        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-        <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <span class="header-separater">|</span>
+        <%= link_to user_path(current_user), class:"header-current_user" do %>
+          <%= image_tag(current_user.profile.image, class:"header-current_user-image") %>
+          <span class="header-current_user-name"><%= current_user.name %></span>
+        <% end %>
+        <span class="header-separater">|</span>
+        <%= link_to users_path, class:"header-users" do %>
+          <%= image_tag "users.png", class: "header-users-icon" %>
+          <span class="header-users-title">仲間を探す</span>
+        <% end %>
+        <span class="header-separater">|</span>
+        <%= link_to communities_path, class:"header-communities" do %>
+         <%= image_tag "community_white.png", class: "header-communities-icon" %>
+         <span class="header-communities-title">コミュニティを探す</span>
+        <% end %>
       <% end %>
-    </ul>
+    </div>
   </div>
   
 </div>

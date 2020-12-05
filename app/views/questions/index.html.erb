@@ -1,71 +1,51 @@
-<div class="menu-bar">
-  <div class="menu-bar-box">
-    <div class="community-name"><%= @community.name %></div>
-    <div class="community-text"><%= @community.text %></div>
-    <% if current_user.id == @community.user.id %>
-      <%= link_to "編集する", edit_community_path(@community), class:"community-edit-btn" %>
-    <% elsif current_user.already_joined?(@community) %>
-      <%= link_to "脱退する", exit_community_path(@community), method: :delete, class:"community-exit-btn" %>
-    <% else %>
-      <%= link_to "参加する", community_path(@community), method: :post, class:"community-join-btn" %>
-    <% end %>
-    <div class="menu-items">
-      <div class="community-members">
-        参加ユーザー <span><%= @joined_users.count %></span>
-      </div>
-      <div class="community-completed-tasks">
-        参加者の完了タスク <%= @tasks.where(state: true).count %>
-      </div>
-      <div class="question-and-answer">
-        質問 <%= @questions.count%>
-        解決 <%= @questions.where(state: true).count %>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%= render "communities/community_sidebar" %>
   
 <div class="main">
   <div class="community-main-heading">
-    <div class="main-menu">
-      <%= link_to "みんなのタスク", community_path(@community), class:"community-navigation" %>
-      <%= link_to "チャット", community_chats_path(@community), class:"community-navigation" %>
-      <%= link_to "質問", community_questions_path(@community), class:"community-navigation question" %>
+    <div class="community-main-menu">
+      <%= link_to community_path(@community), class:"community-navigation" do %>
+        <%= image_tag "check.png", size: "18x18", class: "task-icon" %><span>みんなのタスク</span>
+      <% end %>
+      <%= link_to community_chats_path(@community), class:"community-navigation" do %>
+        <%= image_tag "chat_man.png", size: "18x18", class: "chat-icon" %><span>チャット</span>
+      <% end %>
+      <%= link_to community_questions_path(@community), class:"community-navigation question" do %>
+        <%= image_tag "question.png", size: "18x18", class: "question-icon" %><span>質問</span>
+      <% end %>
     </div>
   </div>
   <div class="posts">
-    <% if current_user.already_joined?(@community) %>
-      <%= link_to "質問する", new_community_question_path, class:"create-question-btn" %>
-    <% else %>
-      <span class="need-join-message">質問投稿にはコミュニティ参加が必要です</span>
-    <% end %>
-    <% @questions.each do |question| %>
-      <div class="question-summary-card">
-        <div class="question-summary-head">
-          <%= link_to question.title, community_question_path(@community, question), class:"question-title" %>
-          <span class="question-date"><%= l question.created_at, format: :short %></span> 
-        </div>
-        <div class="question-summary-status">
-          <div class="question-summary-response">
-            <span class="question-summary-metoo">知りたい！<%= question.me_toos.count %></span>
-            <span class="question-summary-good">役に立った！<%= question.goods.count %></span>
+    <div class="communities-main-menu-under">
+      <% if current_user.already_joined?(@community) %>
+          <%= link_to "質問する", new_community_question_path, class:"create-question btn" %>
+      <% else %>
+        <p class="need-join-message">質問投稿にはコミュニティ参加が必要です</p>
+      <% end %>
+    </div>
+    <div class="question-cards">
+      <% @questions.each do |question| %>
+        <%= link_to community_question_path(@community, question) do %>
+          <div class="question-summary-card">
+            <div class="question-summary-head">
+              <span class="question-title"><%= question.title %>
+              <span class="question-date"><%= l question.created_at, format: :short %></span> 
+            </div>
+            <div class="question-summary-status">
+              <div class="question-summary-response">
+                <span class="question-summary-metoo">知りたい！<%= question.me_toos.count %></span>
+                <span class="question-summary-good">役に立った！<%= question.goods.count %></span>
+              </div>
+              <% if question.state %>
+                <span class="question-summary-close">解決済み</span>
+              <% else %>
+                <span class="question-summary-open">受付中</span>
+              <% end %>
+            </div>
+            <div class="like-area">
+            </div>
           </div>
-          <% if question.state %>
-            <span class="question-summary-close">解決済み</span>
-          <% else %>
-            <span class="question-summary-open">受付中</span>
-          <% end %>
-        </div>
-        <div class="like-area">
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="right-bar">
-  <div class="right-bar-box">
-  </div>
-  <div class="right-bar-box">
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
