@@ -13,7 +13,7 @@ RSpec.describe 'Communities', type: :system do
     context "コミュニティを作成できるとき" do
       it "正しく情報を入力すると、コミュニティが保存され、コミュニティ詳細ページに遷移する" do
         visit '/communities'
-        click_link '作成する'
+        click_link 'コミュニティを作る'
         # コミュニティ作成ページに遷移したことを確認する
         expect(current_url).to include '/communities/new'
 
@@ -22,7 +22,7 @@ RSpec.describe 'Communities', type: :system do
           # 名前と説明を入力する
           fill_in 'community_name', with: 'コミュニティの名前'
           fill_in 'community_text', with: 'コミュニティの説明'
-          click_on '作成'
+          click_on '登録'
           # コミュニティ詳細ページに遷移することを確認する
           community = Community.find_by(name: 'コミュニティの名前')
           expect(current_url).to include "/communities/#{community.id}"
@@ -32,13 +32,13 @@ RSpec.describe 'Communities', type: :system do
     context "コミュニティを作成できないとき" do
       it "情報が正しくないと、コミュニティが保存されず、新規作成画面に戻る" do
         visit '/communities'
-        click_link '作成する'
+        click_link 'コミュニティを作る'
         # コミュニティ作成ページに遷移したことを確認する
         expect(current_url).to include '/communities/new'
 
         fill_in 'community_name', with: ''
         fill_in 'community_text', with: ''
-        click_on '作成'
+        click_on '登録'
         expect(page).to have_css '.error-message'
       end
     end

@@ -7,8 +7,8 @@ RSpec.describe 'Users', type: :system do
       it "正しく情報を入力すれば、新規登録できて、マイページに遷移する" do
         # ルートパスへ移動する
         visit "/"
-        # 新規登録は「こちら」をクリックして、新規作成ページへ遷移する
-        find('.sign-up-btn').click
+        # 新規登録をクリックして、新規作成ページへ遷移する
+        click_on '新規登録'
         # 必須事項を入力する
         fill_in 'user_name', with: 'ジョン・レノン'
         fill_in 'user_email', with: 'john@john.com'
@@ -31,8 +31,8 @@ RSpec.describe 'Users', type: :system do
       it "情報が正しくなければ、新規登録できず、新規登録画面に戻る" do 
         # ルートパスへ移動する
         visit "/"
-        # 新規登録は「こちら」をクリックして、新規作成ページへ遷移する
-        find('.sign-up-btn').click
+        # 新規登録をクリックして、新規作成ページへ遷移する
+        click_on '新規登録'
         
         expect {
           # 入力せずに、「登録」をクリック
@@ -62,8 +62,8 @@ RSpec.describe 'Users', type: :system do
       it "ゲストログインのボタンをクリックすると、ログインしてマイページへ遷移する" do
         # ルートパスへ移動する
         visit "/"
-        # ゲストは「こちら」をクリックする
-        find('.guest-btn').click
+        # ゲストログインをクリックする
+        click_on 'ゲストログイン'
         # マイページへ遷移する
         user = User.find_by(name: 'ゲスト')
         expect(current_url).to include "/users/#{user.id}"

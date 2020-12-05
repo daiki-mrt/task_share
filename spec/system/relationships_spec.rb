@@ -14,7 +14,7 @@ RSpec.describe 'Relationships', type: :system do
     context "フォローできるとき" do
       it "フォローするボタンをクリックすると、フォローできる" do
         # フォローしたいユーザのページへ遷移
-        click_on 'ユーザー検索'
+        click_on '仲間を探す'
         click_on "#{@followed_user.name}"
         # フォローボタンを押すと、relationshipのレコードが1上がる
         expect {
@@ -28,7 +28,7 @@ RSpec.describe 'Relationships', type: :system do
         # フォロー済みのデータを登録
         Relationship.create(following_id: @following_user.id, follower_id: @followed_user.id)
         
-        click_on 'ユーザー検索'
+        click_on '仲間を探す'
         click_on "#{@followed_user.name}"
         expect(page).to_not have_content 'フォローする'
       end
@@ -49,7 +49,7 @@ RSpec.describe 'Relationships', type: :system do
         # フォロー済みのデータを登録
         Relationship.create(following_id: @following_user.id, follower_id: @followed_user.id)
 
-        click_on 'ユーザー検索'
+        click_on '仲間を探す'
         click_on "#{@followed_user.name}"
         # フォロー解除ボタンを押すと、relationshipのレコードが1下がる
         expect {
@@ -60,7 +60,7 @@ RSpec.describe 'Relationships', type: :system do
     end
     context "フォロー解除できないとき" do
       it "フォローしていないユーザにはフォロー解除ボタンがない" do
-        click_on 'ユーザー検索'
+        click_on '仲間を探す'
         click_on "#{@followed_user.name}"
         expect(page).to_not have_content 'フォロー済み'
       end

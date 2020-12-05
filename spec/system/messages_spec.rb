@@ -14,7 +14,7 @@ RSpec.describe 'Messages', type: :system do
         sign_in_as user
 
         # ユーザ検索ページに移動
-        click_on 'ユーザー検索'
+        click_on '仲間を探す'
         # メッセージ相手用ユーザのリンクをクリック
         click_on "#{another_user.name}"
         # 相手ユーザの詳細ページに遷移したことを確認する
