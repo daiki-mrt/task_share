@@ -154,10 +154,27 @@
 }
 
 /* 完了タスク一覧 */
+.completed-task-heading {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: $card-back-color;
+  width: 70%;
+  margin: 0 auto;
+  padding: 5px 8px;
+}
 .task-index-user-name {
   color: $main-text-color;
   margin-right: 8px;
   &:hover {
     text-decoration: underline;
   }
+}
+.remain-posts-cards {
+  height: 85%;
+  overflow: scroll;
+  border-radius: 5px;
+  margin-top: 20px;
 }

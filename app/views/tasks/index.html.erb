@@ -1,25 +1,20 @@
   <div class="menu-bar">
 
   </div>
-    
+
   <div class="main">
     <div class="main-heading">
-      <%= link_to @user.name, user_path(@user), class:"task-index-user-name" %>の完了タスク
+      <div class="completed-task-heading">
+        <%= link_to @user.name, user_path(@user), class:"task-index-user-name" %>の完了タスク
+      </div>
     </div>
     <div class="posts">
-      <% @tasks.each do |task| %>
-        <div id="task_<%= task.id %>">
-          <%= render partial: "shared/tasks", locals: { task: task} %>
-        </div>
-      <% end %>
+      <div class="remain-posts-cards">
+        <% @tasks.each do |task| %>
+          <div id="task_<%= task.id %>">
+            <%= render partial: "shared/tasks", locals: { task: task} %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
-    </div>
-  </div>
-  
-</div>
