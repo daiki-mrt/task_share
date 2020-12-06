@@ -66,6 +66,7 @@ gem 'image_processing'
 gem 'active_hash'
 gem 'font-awesome-sass'
 gem "aws-sdk-s3", require: false
+gem 'bullet'
 
 group :production, :staging do
   gem 'unicorn'
