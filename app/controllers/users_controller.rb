@@ -3,11 +3,13 @@ class UsersController < ApplicationController
 
   def index
     @search_params = user_search_params
-    @users = User.search(@search_params).includes(:profile)
+    # @users = User.search(@search_params).includes(:profile)
+    @users = User.search(@search_params).includes(profile: { image_attachment: :blob })
   end
 
-  def show    
-    @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
+  def show
+    @tasks = @user.tasks.not_completed.order("created_at DESC")
+    # @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
     @following_users = @user.followings
     @follower_users = @user.followers
     
@@ -25,12 +27,12 @@ class UsersController < ApplicationController
 
   # フォロー数
   def follows
-    @following_users = @user.followings
+    @following_users = @user.followings.includes(profile: { image_attachment: :blob })
   end
 
   # フォロワー数
   def followers
-    @follower_users = @user.followers
+    @follower_users = @user.followers.includes(profile: { image_attachment: :blob })
   end
 
   private

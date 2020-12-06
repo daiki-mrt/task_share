@@ -37,7 +37,7 @@ class ChatsController < ApplicationController
   end
 
   def set_chats
-    @chats = @community.chats.includes(:user)
+    @chats = @community.chats.includes(user: { profile: { image_attachment: :blob } })
   end
 
   def chat_params

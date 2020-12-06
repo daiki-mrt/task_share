@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   before_action :set_answers, only: [:show, :update, :resolve]
 
   def index
-    @questions = @community.questions.includes(:user).order("created_at DESC")
+    @questions = @community.questions.preload(:me_toos, :goods).order("created_at DESC")
     # サイドバー用データ取得
     @joined_users = @community.joined_users
     @tasks = Task.user_is(@joined_users.pluck(:id))
