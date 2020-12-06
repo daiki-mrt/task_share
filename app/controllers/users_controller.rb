@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def index
     @search_params = user_search_params
-    @users = User.search(@search_params).includes(:profile)
+    # @users = User.search(@search_params).includes(:profile)
+    @users = User.search(@search_params).includes(profile: { image_attachment: :blob })
   end
 
   def show
