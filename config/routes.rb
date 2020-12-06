@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get 'follows'
       get 'followers'
+      get 'follow_tasks'
     end
   end
   
