@@ -27,12 +27,12 @@ class UsersController < ApplicationController
 
   # フォロー数
   def follows
-    @following_users = @user.followings
+    @following_users = @user.followings.includes(profile: { image_attachment: :blob })
   end
 
   # フォロワー数
   def followers
-    @follower_users = @user.followers
+    @follower_users = @user.followers.includes(profile: { image_attachment: :blob })
   end
 
   private
