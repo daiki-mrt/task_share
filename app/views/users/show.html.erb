@@ -1,10 +1,16 @@
 <%= render partial: "users/sidebar", locals: { user: @user, profile: @profile, following_users: @following_users, follower_users: @follower_users, room: @room } %>
   
 <div class="main">
-  <div class="posts">
+  <div class="tasks-heading">
     <% if user_signed_in? && (current_user.id == @user.id) %>
+      <div class="tasks-heading-navi-box">
+        <%= link_to "マイタスク", user_path(current_user), class:"tasks-heading-navi my-tasks" %>
+        <%= link_to "仲間のタスク", follow_tasks_user_path(current_user), class:"tasks-heading-navi" %>
+      </div>
       <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
-    <% end %>
+    <% end %>  
+  </div>
+  <div class="posts">
     <span class="task-index-comment">タスク一覧</span>
     <div class="posts-cards">
       <% @tasks.each do |task| %>
