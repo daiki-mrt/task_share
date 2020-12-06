@@ -389,11 +389,22 @@
   }
 }
 
+.following-user-name-heading {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: $card-back-color;
+  width: 70%;
+  margin: 0 auto;
+  padding: 5px 8px;
+}
 .following-user-name {
-  color: $main-text-color;
   margin-right: 5px;
   &:hover {
     text-decoration: underline;
+    opacity: 0.8;
   }
 }
 

@@ -3,17 +3,12 @@
   </div>
     
   <div class="main">
-    <div class="main-heading">
-      <%= link_to @user.name, user_path(@user), class:"following-user-name" %>のフォローユーザー
+    <div class="following-user-name-heading">
+      <%= link_to @user.name, user_path(@user), class:"following-user-name" %>のフォロー
     </div>
     <div class="posts">
-      <%= render partial: "users_index", locals: { users: @following_users  } %>
-    </div>
-  </div>
-  
-  <div class="right-bar">
-    <div class="right-bar-box">
-    </div>
-    <div class="right-bar-box">
+      <div class="user-cards">
+        <%= render partial: "users_index", locals: { users: @following_users  } %>
+      </div>
     </div>
   </div>
