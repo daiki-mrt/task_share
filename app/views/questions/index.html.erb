@@ -32,8 +32,8 @@
             </div>
             <div class="question-summary-status">
               <div class="question-summary-response">
-                <span class="question-summary-metoo">知りたい！<%= question.me_toos.count %></span>
-                <span class="question-summary-good">役に立った！<%= question.goods.count %></span>
+                <span class="question-summary-metoo">知りたい！<%= question.me_toos.length %></span>
+                <span class="question-summary-good">役に立った！<%= question.goods.length %></span>
               </div>
               <% if question.state %>
                 <span class="question-summary-close">解決済み</span>
