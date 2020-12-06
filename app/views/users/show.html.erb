@@ -4,8 +4,8 @@
   <div class="posts">
     <% if user_signed_in? && (current_user.id == @user.id) %>
       <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
-      <span class="task-index-comment">タスク一覧</span>
     <% end %>
+    <span class="task-index-comment">タスク一覧</span>
     <div class="posts-cards">
       <% @tasks.each do |task| %>
         <div id="task_<%= task.id %>">
