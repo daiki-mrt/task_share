@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :follows, :followers]
+  before_action :set_user, only: [:show, :follow_tasks, :follows, :followers]
 
   def index
     @search_params = user_search_params
@@ -23,6 +23,13 @@ class UsersController < ApplicationController
     @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
     # 特定したuser_roomからroom_idを取得する
     @room = @target_user_room.room if @target_user_room.present?
+  end
+
+  def follow_tasks
+    @following_users = @user.followings
+    @follow_user_tasks = Task.where(user_id: @following_users.pluck(:id)).not_completed.order("created_at DESC").includes(user: { profile: { image_attachment: :blob } })
+    @follower_users = @user.followers
+    @task = Task.new
   end
 
   # フォロー数
