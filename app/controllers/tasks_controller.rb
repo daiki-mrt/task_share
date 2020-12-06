@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def index
     set_user
-    @tasks = Task.user_is(params[:user_id]).completed
+    @tasks = @user.tasks.completed
   end
 
   def new
