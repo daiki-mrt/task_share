@@ -4,16 +4,15 @@
   <div class="tasks-heading">
     <% if user_signed_in? && (current_user.id == @user.id) %>
       <div class="tasks-heading-navi-box">
-        <%= link_to "マイタスク", user_path(current_user), class:"tasks-heading-navi my-tasks" %>
-        <%= link_to "仲間のタスク", follow_tasks_user_path(current_user), class:"tasks-heading-navi" %>
+        <%= link_to "マイタスク", user_path(current_user), class:"tasks-heading-navi" %>
+        <%= link_to "仲間のタスク", follow_tasks_user_path(current_user), class:"tasks-heading-navi follow-tasks" %>
       </div>
-      <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
     <% end %>  
   </div>
   <div class="posts">
     <span class="task-index-comment">タスク一覧</span>
-    <div class="posts-cards">
-      <% @tasks.each do |task| %>
+    <div class="follow-posts-cards">
+      <% @follow_user_tasks.each do |task| %>
         <div id="task_<%= task.id %>">
           <%= render partial: "shared/tasks", locals: { task: task } %>
         </div>

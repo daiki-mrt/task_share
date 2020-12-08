@@ -5,19 +5,22 @@
 .task-post-form {
   width: 100%;
   margin: 0 auto 20px;
-  padding: 20px;
+  padding: 15px 20px;
   border-radius: 5px;
   background-color: $card-back-color;
 
   .task-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
     .field_with_errors {
       display: contents;
     }
-    
     .task-label {
-      display: block;
       margin-bottom: 5px;
       font-weight: 500;
+      width: 10%;
+      padding-top: 3px;
     }
     .task-input {
       width: 100%;
@@ -30,7 +33,7 @@
       color: $main-text-color;
 
       &.text {
-        height: 100px;
+        height: 60px;
         color: $sub-text-color;
       }
     }

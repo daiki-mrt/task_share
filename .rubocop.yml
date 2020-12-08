@@ -89,5 +89,6 @@ Style/SymbolArray:
   Enabled: false
 
 # questionsのストロングパラメーター
+# users#showの@follow_user_tasks
 Layout/LineLength:
-  Max: 131
+  Max: 169

@@ -124,6 +124,39 @@
     border-radius: 10px;
   }
 }
+.tasks-heading {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.tasks-heading-navi-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  .tasks-heading-navi {
+    width: 50%;
+    background-color: $base-color;
+    color: $sub-text-color;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;      
+    }
+    &.my-tasks {
+      background-color: #ff9f5a;
+      color: $main-text-color;
+      font-weight: bold;
+    }
+    &.follow-tasks {
+      background-color: #ff9f5a;
+      color: $main-text-color;
+      font-weight: bold;
+    }
+  }
+}
 
 /* 投稿されたタスクエリア */
 .posts {
@@ -133,7 +166,12 @@
   padding: 0 10px 10px;
 }
 .posts-cards {
-  height: 400px;
+  height: 60%;
+  overflow: scroll;
+  border-radius: 5px;
+}
+.follow-posts-cards {
+  height: 85%;
   overflow: scroll;
   border-radius: 5px;
 }
