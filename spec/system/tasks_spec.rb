@@ -124,4 +124,37 @@ RSpec.describe 'Tasks', type: :system do
       }.to change { Task.count }.by(-1)
     end
   end
+
+  describe "タスクの一覧表示" do
+    before do
+      @user = create(:user)
+      user_profile = create(:profile, user_id: @user.id)
+      @user_task = create(:not_completed_task, user_id: @user.id, title: "@userのタスク")
+      sign_in_as @user
+
+      # @userがフォローしたユーザ
+      @followed_user = create(:user)
+      followed_profile = create(:profile, user_id: @followed_user.id)
+      Relationship.create(following_id: @user.id, follower_id: @followed_user.id)
+      @followed_user_task = create(:not_completed_task, user_id: @followed_user.id, title: "@followed_userのタスク")
+    end
+    it "「マイタスク」ナビゲーションでは、投稿フォームと自分が登録したタスクが表示される" do
+      expect(current_url).to include "/users/#{@user.id}"
+      # 投稿フォーム(投稿ボタン)があることを確認
+      expect(page).to have_css '.task-submit'
+      
+      expect(page).to have_content @user_task.title
+      expect(page).to_not have_content @followed_user_task.title
+    end
+
+    it "「仲間のタスク」ナビゲーションでは、フォローしたユーザのタスクが表示される" do
+      visit "/users/#{@user.id}/follow_tasks"
+      # 投稿フォーム(投稿ボタン)が無いことを確認
+      expect(page).to_not have_css '.task-submit'
+
+      expect(page).to have_content @followed_user_task.title
+      expect(page).to_not have_content @user_task.title
+    end
+  end  
+  
 end
