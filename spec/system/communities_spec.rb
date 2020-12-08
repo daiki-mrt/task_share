@@ -63,7 +63,7 @@ RSpec.describe 'Communities', type: :system do
         # 名前を変更するして更新ボタンを押す
         revised_community_name = '編集後のタイトル'
         fill_in 'community_name', with: revised_community_name
-        click_on '更新'
+        click_on '登録'
         expect(page).to have_content revised_community_name
       end
     end
@@ -76,7 +76,7 @@ RSpec.describe 'Communities', type: :system do
         expect(current_url).to include "/communities/#{@community.id}/edit"
         expect(page).to have_content @community.name
         fill_in 'community_name', with: ''
-        click_on '更新'
+        click_on '登録'
         expect(page).to have_css '.error-message'
       end
     end
