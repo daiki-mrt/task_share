@@ -1,15 +1,13 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, except: [:destroy, :done]
   before_action :move_to_index, except: :index
 
   def index
-    set_user
     @tasks = @user.tasks.completed
   end
 
   def new
-    set_user
-    set_profile
     @task = Task.new
     @following_users = @user.followings
     @follower_users = @user.followers
@@ -21,8 +19,6 @@ class TasksController < ApplicationController
       @task.save
       redirect_to user_path(current_user)
     else
-      set_user
-      set_profile
       # サイドバー情報の取得(フォロー)
       @following_users = @user.followings
       @follower_users = @user.followers
@@ -38,8 +34,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    set_user
-    set_profile
     set_task
     @following_users = @user.followings
     @follower_users = @user.followers
@@ -50,8 +44,6 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to user_path(current_user)
     else
-      set_user
-      set_profile
       # サイドバー情報の取得(フォロー)
       @following_users = @user.followings
       @follower_users = @user.followers
@@ -81,9 +73,6 @@ class TasksController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
-  end
-
-  def set_profile
     @profile = @user.profile
   end
 
