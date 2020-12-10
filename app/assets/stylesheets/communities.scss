@@ -205,9 +205,14 @@
   background-color: $highlight;
   color: $with-highlight;
 }
-
+.community-user-tasks {
+  width: 95%;
+  height: 95%;
+  margin: 0 auto;
+  padding: 0 10px 10px;
+}
 .communities-posts-cards {
-  height: 88%;
+  height: 95%;
   overflow: scroll;
   border-radius: 5px;
   margin-top: 25px;
