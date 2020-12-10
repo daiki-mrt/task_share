@@ -175,8 +175,14 @@
     text-decoration: underline;
   }
 }
-.remain-posts-cards {
-  height: 85%;
+.finihed-task-area {
+  width: 95%;
+  height: 95%;
+  margin: 0 auto;
+  padding: 0 10px 10px;
+}
+.finished-posts-cards {
+  height: 100%;
   overflow: scroll;
   border-radius: 5px;
   margin-top: 20px;

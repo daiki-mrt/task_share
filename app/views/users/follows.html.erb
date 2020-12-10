@@ -6,7 +6,7 @@
     <div class="following-user-name-heading">
       <%= link_to @user.name, user_path(@user), class:"following-user-name" %>のフォロー
     </div>
-    <div class="posts">
+    <div class="user-index-area">
       <div class="user-cards">
         <%= render partial: "users_index", locals: { users: @following_users  } %>
       </div>

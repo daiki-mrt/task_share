@@ -1,6 +1,6 @@
 <div class="menu-bar">
   <div class="menu-bar-box">
-    <p class="menu-bar-head">コミュニティ検索</p>
+    <p class="menu-bar-head"><i class="fas fa-search"></i>コミュニティ検索</p>
     <div class="menu-items">
       <%= form_with scope: :search, url: communities_path, method: :get, local: true do |f| %>
         <div class="search-field">
@@ -30,7 +30,7 @@
     </div>
     <%= link_to "コミュニティを作る", new_community_path, class:"community-create btn" %>
   </div>
-  <div class="posts">
+  <div class="community-index-area">
     <div class="community-cards">
       <% @communities.each do |community| %>
         <%= link_to community_path(community) do %>

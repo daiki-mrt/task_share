@@ -143,7 +143,7 @@ a {
   z-index: 0;
   &::before {
     content: '';
-    background: url('back_sign_in.jpeg');
+    background: image-url('back_sign_in.jpeg');
     background-size: cover;
     height: 100%;
     width: 100vw;

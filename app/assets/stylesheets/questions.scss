@@ -29,7 +29,6 @@
   padding: 8px;
 }
 
-
 /* 質問作成ページ */
 .question-post-form {
   background-color: $card-back-color;
@@ -70,8 +69,14 @@
   }
 }
 
+.question-index-area {
+  width: 95%;
+  height: 90%;
+  margin: 0 auto;
+  padding: 0 10px 10px;  
+}
 .question-cards {
-  height: 80%;
+  height: 95%;
   overflow: scroll;
   border-radius: 5px;
 }

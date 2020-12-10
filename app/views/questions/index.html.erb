@@ -14,7 +14,7 @@
       <% end %>
     </div>
   </div>
-  <div class="posts">
+  <div class="question-index-area">
     <div class="communities-main-menu-under">
       <% if current_user.already_joined?(@community) %>
           <%= link_to "質問する", new_community_question_path, class:"create-question btn" %>
