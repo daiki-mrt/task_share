@@ -10,7 +10,7 @@
       <%= render partial: "tasks/task_form", locals: { user: @user, task: @task } %>
     <% end %>  
   </div>
-  <div class="posts">
+  <div class="user-posts">
     <span class="task-index-comment">タスク一覧</span>
     <div class="posts-cards">
       <% @tasks.each do |task| %>
