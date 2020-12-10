@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Relationships', type: :system do
-  include LoginSupport  
+  include LoginSupport
   describe "ユーザをフォローする" do
     before "ユーザ設定とログイン" do
       @following_user = create(:user)
@@ -10,12 +10,12 @@ RSpec.describe 'Relationships', type: :system do
       followed_profile = create(:profile, user_id: @followed_user.id)
       sign_in_as @following_user
     end
-    
+
     context "フォローできるとき" do
       it "フォローするボタンをクリックすると、フォローできる" do
         # フォローしたいユーザのページへ遷移
         click_on '仲間を探す'
-        click_on "#{@followed_user.name}"
+        click_on @followed_user.name
         # フォローボタンを押すと、relationshipのレコードが1上がる
         expect {
           click_on 'フォローする'
@@ -27,9 +27,9 @@ RSpec.describe 'Relationships', type: :system do
       it "フォロー済みのユーザにはフォローするボタンがない" do
         # フォロー済みのデータを登録
         Relationship.create(following_id: @following_user.id, follower_id: @followed_user.id)
-        
+
         click_on '仲間を探す'
-        click_on "#{@followed_user.name}"
+        click_on @followed_user.name
         expect(page).to_not have_content 'フォローする'
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe 'Relationships', type: :system do
         Relationship.create(following_id: @following_user.id, follower_id: @followed_user.id)
 
         click_on '仲間を探す'
-        click_on "#{@followed_user.name}"
+        click_on @followed_user.name
         # フォロー解除ボタンを押すと、relationshipのレコードが1下がる
         expect {
           click_on 'フォロー済み'
@@ -61,7 +61,7 @@ RSpec.describe 'Relationships', type: :system do
     context "フォロー解除できないとき" do
       it "フォローしていないユーザにはフォロー解除ボタンがない" do
         click_on '仲間を探す'
-        click_on "#{@followed_user.name}"
+        click_on @followed_user.name
         expect(page).to_not have_content 'フォロー済み'
       end
     end

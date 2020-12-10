@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     # @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
     @following_users = @user.followings
     @follower_users = @user.followers
-    
+
     # タスク投稿フォーム用
     @task = Task.new
 
@@ -20,9 +20,9 @@ class UsersController < ApplicationController
     # user_roomから自分が含まれるidを取得
     room_ids = current_user.user_rooms.pluck(:room_id)
     # 取得したuser_roomのうち、自分と相手のペアを探す
-    @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
+    target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
     # 特定したuser_roomからroom_idを取得する
-    @room = @target_user_room.room if @target_user_room.present?
+    @room = target_user_room.room if target_user_room.present?
   end
 
   def follow_tasks

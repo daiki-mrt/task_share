@@ -6,14 +6,14 @@ FactoryBot.define do
     association :user
   end
 
-  factory :completed_task, class:"Task" do
+  factory :completed_task, class: "Task" do
     sequence(:title) { |n| "taskのタイトル_#{n}" }
     sequence(:text) { Faker::Quote.matz }
     state { 1 }
     association :user
   end
 
-  factory :not_completed_task, class:"Task" do
+  factory :not_completed_task, class: "Task" do
     sequence(:title) { |n| "taskのタイトル_#{n}" }
     sequence(:text) { Faker::Quote.matz }
     state { 0 }

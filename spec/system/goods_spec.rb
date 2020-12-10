@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Goods', type: :system do
   include LoginSupport
-  
+
   describe "質問に役に立った！する" do
     before "ログインと質問登録" do
       @user = create(:user)
@@ -20,7 +20,7 @@ RSpec.describe 'Goods', type: :system do
         click_link '役に立った!'
         # 非同期通信で反映されるまで待つため
         sleep 1
-      }.to change { Good.count }.by(1)      
+      }.to change { Good.count }.by(1)
     end
     it "役に立った！解除ボタンを押すと、役に立った！を解除して、役に立った！前のアイコンに変わる" do
       already_good_question = create(:question, user_id: @user.id, community_id: @community.id)

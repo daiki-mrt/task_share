@@ -23,7 +23,7 @@ RSpec.describe 'Likes', type: :system do
         expect(page).to have_css '.unlike-btn'
       }.to change { Like.count }.by(1)
     end
-    
+
     it "いいねボタンを押すと、いいねを解除して、いいね前のアイコンに変わる" do
       # いいねを押す
       find('.like-btn').click

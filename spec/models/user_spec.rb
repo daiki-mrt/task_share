@@ -68,7 +68,7 @@ RSpec.describe User, type: :model do
       @user_not_followed_by = create(:user)
       Relationship.create(following_id: @user_following.id, follower_id: @user_followed_by_user_following.id)
     end
-    
+
     context "フォロー済みのとき" do
       it "trueを返す" do
         expect(@user_followed_by_user_following.follow?(@user_following)).to be true
@@ -108,7 +108,7 @@ RSpec.describe User, type: :model do
       @community_not_joined = create(:community)
       UserCommunity.create(user_id: @user.id, community_id: @community_joined.id)
     end
-    
+
     context "参加しているとき" do
       it "trueを返す" do
         expect(@user.already_joined?(@community_joined)).to be true
@@ -175,7 +175,7 @@ RSpec.describe User, type: :model do
       @user_bill = User.create(name: "Bill", email: "bill@bill.com", password: password, password_confirmation: password_confirmation)
       @profile_bill = Profile.create(occupation_id: 1, text: "Microsoft", user_id: @user_bill.id)
     end
-    
+
     context "一致するデータが見つかるとき" do
       it "検索文字列が一致するuserを返すこと" do
         search_params = { text: "Steve" }

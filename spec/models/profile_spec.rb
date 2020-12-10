@@ -33,7 +33,6 @@ RSpec.describe Profile, type: :model do
     end
   end
 
-
   describe "profileの検索" do
     context "一致するデータが見つかるとき" do
       before do
