@@ -62,8 +62,6 @@ class User < ApplicationRecord
     # search_paramsが無かったら実行しない
     return if search_params.blank?
 
-    # userのnameが一致したuser
-    users_name_match = User.where("name LIKE ?", "%#{search_params[:text]}%")
     # profileのtextが一致したuser
     profiles_text_match = Profile.text_like(search_params[:text])
     # profileのoccupationが一致したuser
