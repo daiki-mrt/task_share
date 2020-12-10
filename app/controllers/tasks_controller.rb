@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, except: [:destroy, :done]
+  before_action :set_task, only: [:edit, :update, :destroy, :done]
   # フォロー・フォロワー（サイドバー）
   before_action :set_user_relationships, only: [:new, :create, :edit, :update]
   before_action :move_to_index, except: :index
@@ -31,11 +32,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    set_task
   end
 
   def update
-    set_task
     if @task.update(task_params)
       redirect_to user_path(current_user)
     else
@@ -51,12 +50,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    set_task
     redirect_to user_path(current_user) if @task.destroy
   end
 
   def done
-    set_task
     @task.update(state: 1)
     redirect_to request.referer
   end
