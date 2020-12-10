@@ -16,8 +16,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    if @task.valid?
-      @task.save
+    if @task.save
       redirect_to user_path(current_user)
     else
       # 投稿タスク一覧取得
