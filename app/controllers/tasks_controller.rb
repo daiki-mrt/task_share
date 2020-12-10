@@ -20,7 +20,7 @@ class TasksController < ApplicationController
       redirect_to user_path(current_user)
     else
       # 投稿タスク一覧取得
-      @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
+      @tasks = @user.tasks.not_completed.order("created_at DESC")
 
       render "users/show"
     end
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
       redirect_to user_path(current_user)
     else
       # 投稿タスク一覧取得
-      @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
+      @tasks = @user.tasks.not_completed.order("created_at DESC")
 
       render :edit
     end
