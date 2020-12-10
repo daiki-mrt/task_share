@@ -37,8 +37,8 @@ RSpec.describe Task, type: :model do
   describe "特定のuserのtaskを取得" do
     before do
       @target_user = create(:user)
-      @target_user_task1 = Task.create(user_id: @target_user.id, title:"タスクタイトル1", state: 0)
-      @target_user_task2 = Task.create(user_id: @target_user.id, title:"タスクタイトル2", state: 0)
+      @target_user_task1 = Task.create(user_id: @target_user.id, title: "タスクタイトル1", state: 0)
+      @target_user_task2 = Task.create(user_id: @target_user.id, title: "タスクタイトル2", state: 0)
       @not_target_user = create(:user)
     end
 
