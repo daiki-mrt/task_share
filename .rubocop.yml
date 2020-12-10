@@ -31,9 +31,9 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-# registrations_controller.rb
+# tasks#create
 Metrics/MethodLength:
-  Max: 11
+  Max: 15
 
 # Specify an :inverse_of option.を許可
 Rails/InverseOf:
@@ -92,3 +92,23 @@ Style/SymbolArray:
 # users#showの@follow_user_tasks
 Layout/LineLength:
   Max: 169
+
+# 使用しないメソッドを許可（RSpec）
+Lint/UselessAssignment:
+  Exclude:
+    - 'spec/**/*'
+
+# expect {}.to を許可（RSpec）
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+# 一行が長くなるため、許可
+Style/IfUnlessModifier:
+  Exclude:
+    - 'app/models/profile.rb'
+
+# messages#create
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/messages_controller.rb'
