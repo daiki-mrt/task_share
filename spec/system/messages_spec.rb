@@ -16,7 +16,7 @@ RSpec.describe 'Messages', type: :system do
       # ユーザ検索ページに移動
       click_on '仲間を探す'
       # メッセージ相手用ユーザのリンクをクリック
-      click_on "#{another_user.name}"
+      click_on another_user.name
       # 相手ユーザの詳細ページに遷移したことを確認する
       expect(current_url).to include "users/#{another_user.id}"
       # メッセージを送るボタンをクリック
