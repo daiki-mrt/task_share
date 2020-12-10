@@ -30,7 +30,7 @@
     </div>
     <%= link_to "コミュニティを作る", new_community_path, class:"community-create btn" %>
   </div>
-  <div class="posts">
+  <div class="community-index-area">
     <div class="community-cards">
       <% @communities.each do |community| %>
         <%= link_to community_path(community) do %>
