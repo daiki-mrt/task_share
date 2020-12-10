@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, except: [:destroy, :done]
+  # フォロー・フォロワー（サイドバー）
+  before_action :set_user_relationships, only: [:new, :create, :edit, :update]
   before_action :move_to_index, except: :index
 
   def index
@@ -9,8 +11,6 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @following_users = @user.followings
-    @follower_users = @user.followers
   end
 
   def create
@@ -19,9 +19,6 @@ class TasksController < ApplicationController
       @task.save
       redirect_to user_path(current_user)
     else
-      # サイドバー情報の取得(フォロー)
-      @following_users = @user.followings
-      @follower_users = @user.followers
       # サイドバー情報の取得(メッセージ)
       room_ids = current_user.user_rooms.pluck(:room_id)
       @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
@@ -35,8 +32,6 @@ class TasksController < ApplicationController
 
   def edit
     set_task
-    @following_users = @user.followings
-    @follower_users = @user.followers
   end
 
   def update
@@ -44,9 +39,6 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to user_path(current_user)
     else
-      # サイドバー情報の取得(フォロー)
-      @following_users = @user.followings
-      @follower_users = @user.followers
       # サイドバー情報の取得(メッセージ)
       room_ids = current_user.user_rooms.pluck(:room_id)
       @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
@@ -78,6 +70,11 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def set_user_relationships
+    @following_users = @user.followings
+    @follower_users = @user.followers
   end
 
   def task_params
