@@ -8,5 +8,4 @@ module LoginSupport
     # 「ログイン」をクリック
     click_on 'ログイン'
   end
-
 end
