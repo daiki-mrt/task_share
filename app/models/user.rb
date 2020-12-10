@@ -71,8 +71,8 @@ class User < ApplicationRecord
     
     # nameまたはprofileで取得したuser、かつ、occupationで取得したuser
     where("name LIKE ?", "%#{search_params[:text]}%")
-    .or(where(id: profiles_text_match.pluck(:user_id)))
-    .where(id: profiles_occupation_match.pluck(:user_id))
+      .or(where(id: profiles_text_match.pluck(:user_id)))
+      .where(id: profiles_occupation_match.pluck(:user_id))
   end
 
   # ゲストユーザログイン時に「ゲスト」を検索or作成
