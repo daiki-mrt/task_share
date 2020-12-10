@@ -7,8 +7,7 @@ class MessagesController < ApplicationController
       # "rooms/show"のデータ取得
       @room = Room.find(params[:message][:room_id])
       current_user_room = @room.user_rooms.where.not(user_id: current_user.id).take
-      user_id = current_user_room.user_id
-      @user = User.find(user_id)
+      @user = User.find(current_user_room.user_id)
       @messages = @room.messages.includes(:user)
       @message = Message.new
 
