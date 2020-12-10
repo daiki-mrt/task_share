@@ -25,7 +25,7 @@ class TasksController < ApplicationController
       set_profile
       # サイドバー情報の取得(フォロー)
       @following_users = @user.followings
-      @follower_users = @user.followers  
+      @follower_users = @user.followers
       # サイドバー情報の取得(メッセージ)
       room_ids = current_user.user_rooms.pluck(:room_id)
       @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
       set_profile
       # サイドバー情報の取得(フォロー)
       @following_users = @user.followings
-      @follower_users = @user.followers  
+      @follower_users = @user.followers
       # サイドバー情報の取得(メッセージ)
       room_ids = current_user.user_rooms.pluck(:room_id)
       @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)

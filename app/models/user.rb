@@ -63,12 +63,12 @@ class User < ApplicationRecord
     return if search_params.blank?
 
     # userのnameが一致したuser
-    users_name_match = User.where("name LIKE ?", "%#{search_params[:text]}%")    
+    users_name_match = User.where("name LIKE ?", "%#{search_params[:text]}%")
     # profileのtextが一致したuser
     profiles_text_match = Profile.text_like(search_params[:text])
     # profileのoccupationが一致したuser
     profiles_occupation_match = Profile.occupation_is(search_params[:occupation_id])
-    
+
     # nameまたはprofileで取得したuser、かつ、occupationで取得したuser
     where("name LIKE ?", "%#{search_params[:text]}%")
       .or(where(id: profiles_text_match.pluck(:user_id)))

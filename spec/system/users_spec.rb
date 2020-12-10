@@ -14,7 +14,7 @@ RSpec.describe 'Users', type: :system do
         fill_in 'user_email', with: 'john@john.com'
         fill_in 'user_password', with: 'abc123'
         fill_in 'user_password_confirmation', with: 'abc123'
-        
+
         expect {
           # 「登録」クリック
           click_on '登録'
@@ -28,12 +28,12 @@ RSpec.describe 'Users', type: :system do
       end
     end
     context "新規登録できないとき" do
-      it "情報が正しくなければ、新規登録できず、新規登録画面に戻る" do 
+      it "情報が正しくなければ、新規登録できず、新規登録画面に戻る" do
         # ルートパスへ移動する
         visit "/"
         # 新規登録をクリックして、新規作成ページへ遷移する
         click_on '新規登録'
-        
+
         expect {
           # 入力せずに、「登録」をクリック
           click_on '登録'

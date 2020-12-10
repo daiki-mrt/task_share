@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Community, type: :model do  
+RSpec.describe Community, type: :model do
   describe "communityの登録" do
     before do
       @community = build(:community)
@@ -15,7 +15,7 @@ RSpec.describe Community, type: :model do
         expect(@community).to be_valid
       end
     end
-  
+
     context "communityを保存できない場合" do
       it "nameが無いと保存できない" do
         @community.name = nil
@@ -120,7 +120,7 @@ RSpec.describe Community, type: :model do
         @not_joined_user = create(:user)
         # joined_user1, joined_user2参加
         @community.user_communities.create(user_id: @joined_user1.id)
-        @community.user_communities.create(user_id: @joined_user2.id)  
+        @community.user_communities.create(user_id: @joined_user2.id)
       end
 
       it "所属しているuserを返すこと" do

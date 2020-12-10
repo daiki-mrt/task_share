@@ -9,7 +9,7 @@ RSpec.describe 'Communities', type: :system do
       user_profile = create(:profile, user_id: @user.id)
       sign_in_as @user
     end
-    
+
     context "コミュニティを作成できるとき" do
       it "正しく情報を入力すると、コミュニティが保存され、コミュニティ詳細ページに遷移する" do
         visit '/communities'

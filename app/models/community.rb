@@ -17,7 +17,6 @@ class Community < ApplicationRecord
 
     category_is(search_params[:category_id])
       .text_like(search_params[:text])
-    
   end
   scope :category_is, -> (category_id) { where(category_id: category_id) if category_id.present? }
   scope :text_like, -> (text) { where("text LIKE ?", "%#{text}%").or(where("name LIKE ?", "%#{text}%")) if text.present? }

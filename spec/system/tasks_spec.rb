@@ -48,7 +48,7 @@ RSpec.describe 'Tasks', type: :system do
       user_profile = create(:profile, user_id: @user.id)
       sign_in_as @user
     end
-    
+
     it "完了ボタンをクリックすると、タスクが完了になり、マイページに表示されなくなる" do
       task_title = 'タスクのタイトル'
       fill_in 'task_title', with: task_title
@@ -74,7 +74,7 @@ RSpec.describe 'Tasks', type: :system do
       click_on '登録'
       @task = Task.find_by(title: @task_title)
     end
-    
+
     context "タスクを編集できるとき" do
       it "タイトルを入力すれば、タスクを保存できてマイページに遷移し、タスクがマイページに表示される" do
         # 編集ページヘ遷移する
@@ -142,7 +142,7 @@ RSpec.describe 'Tasks', type: :system do
       expect(current_url).to include "/users/#{@user.id}"
       # 投稿フォーム(投稿ボタン)があることを確認
       expect(page).to have_css '.task-submit'
-      
+
       expect(page).to have_content @user_task.title
       expect(page).to_not have_content @followed_user_task.title
     end
@@ -155,6 +155,5 @@ RSpec.describe 'Tasks', type: :system do
       expect(page).to have_content @followed_user_task.title
       expect(page).to_not have_content @user_task.title
     end
-  end  
-  
+  end
 end

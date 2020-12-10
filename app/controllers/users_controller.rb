@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     # @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
     @following_users = @user.followings
     @follower_users = @user.followers
-    
+
     # タスク投稿フォーム用
     @task = Task.new
 

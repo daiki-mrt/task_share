@@ -11,7 +11,7 @@ RSpec.describe 'Questions', type: :system do
       UserCommunity.create(user_id: @user.id, community_id: @community.id)
       sign_in_as @user
     end
-    
+
     context "質問を投稿できるとき" do
       it "正しく情報を入力すると、保存できて質問詳細ページに遷移する" do
         visit "/communities/#{@community.id}"
@@ -19,7 +19,7 @@ RSpec.describe 'Questions', type: :system do
         expect(current_url).to include "/communities/#{@community.id}/questions"
         click_link '質問する'
         expect(current_url).to include "/communities/#{@community.id}/questions/new"
-        expect { 
+        expect {
           fill_in 'question_title', with: '質問のタイトル'
           fill_in 'question_content', with: '質問の内容'
           click_on '投稿'
@@ -34,7 +34,7 @@ RSpec.describe 'Questions', type: :system do
         expect(current_url).to include "/communities/#{@community.id}/questions"
         click_link '質問する'
         expect(current_url).to include "/communities/#{@community.id}/questions/new"
-        expect { 
+        expect {
           click_on '投稿'
           expect(page).to have_css '.error-message'
         }.to change { Question.count }.by(0)
@@ -118,7 +118,7 @@ RSpec.describe 'Questions', type: :system do
       sign_in_as @user
       @question = create(:question, user_id: @user.id, community_id: @community.id)
     end
-    
+
     context "切り替えできるとき" do
       it "受付中ボタンを押すと、解決済みに切り替わる" do
         visit "/communities/#{@community.id}/questions/#{@question.id}"
@@ -147,7 +147,7 @@ RSpec.describe 'Questions', type: :system do
         other_user_profile = create(:profile, user_id: other_user.id)
         UserCommunity.create(user_id: other_user.id, community_id: @community.id)
         other_user_question = create(:question, user_id: other_user.id, community_id: @community.id)
-        
+
         visit "/communities/#{@community.id}/questions/#{other_user_question.id}"
         expect(page).to have_content other_user_question.title
         # @userが受付中ボタンを押す

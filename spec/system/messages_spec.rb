@@ -24,7 +24,7 @@ RSpec.describe 'Messages', type: :system do
       # メッセージページに遷移したことを確認する
       expect(current_url).to include "/rooms/"
     end
-    
+
     context "メッセージを送れるとき" do
       it "テキストを入力すれば、送信できて、テキストが表示される" do
         message_text = 'メッセージのテキスト'
