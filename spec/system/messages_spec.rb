@@ -4,25 +4,25 @@ RSpec.describe 'Messages', type: :system do
   include LoginSupport
   describe "ユーザにメッセージを送る" do
     before "ユーザ登録とログインを行い、メッセージページまで遷移する" do
-        # ユーザ登録
-        user = create(:user)
-        profile_user = create(:profile, user_id: user.id)
-        # メッセージ相手用のユーザを登録
-        another_user = create(:user)
-        profile_another_user = create(:profile, user_id: another_user.id)
-        # ログインする
-        sign_in_as user
+      # ユーザ登録
+      user = create(:user)
+      profile_user = create(:profile, user_id: user.id)
+      # メッセージ相手用のユーザを登録
+      another_user = create(:user)
+      profile_another_user = create(:profile, user_id: another_user.id)
+      # ログインする
+      sign_in_as user
 
-        # ユーザ検索ページに移動
-        click_on '仲間を探す'
-        # メッセージ相手用ユーザのリンクをクリック
-        click_on "#{another_user.name}"
-        # 相手ユーザの詳細ページに遷移したことを確認する
-        expect(current_url).to include "users/#{another_user.id}"
-        # メッセージを送るボタンをクリック
-        click_on 'メッセージを送る'
-        # メッセージページに遷移したことを確認する
-        expect(current_url).to include "/rooms/"
+      # ユーザ検索ページに移動
+      click_on '仲間を探す'
+      # メッセージ相手用ユーザのリンクをクリック
+      click_on "#{another_user.name}"
+      # 相手ユーザの詳細ページに遷移したことを確認する
+      expect(current_url).to include "users/#{another_user.id}"
+      # メッセージを送るボタンをクリック
+      click_on 'メッセージを送る'
+      # メッセージページに遷移したことを確認する
+      expect(current_url).to include "/rooms/"
     end
     
     context "メッセージを送れるとき" do
