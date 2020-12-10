@@ -20,10 +20,6 @@ class TasksController < ApplicationController
       @task.save
       redirect_to user_path(current_user)
     else
-      # サイドバー情報の取得(メッセージ)
-      room_ids = current_user.user_rooms.pluck(:room_id)
-      @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
-      @room = @target_user_room.room if @target_user_roo
       # 投稿タスク一覧取得
       @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
 
@@ -38,10 +34,6 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to user_path(current_user)
     else
-      # サイドバー情報の取得(メッセージ)
-      room_ids = current_user.user_rooms.pluck(:room_id)
-      @target_user_room = UserRoom.find_by(room_id: room_ids, user_id: @user.id)
-      @room = @target_user_room.room if @target_user_roo
       # 投稿タスク一覧取得
       @tasks = Task.user_is(@user.id).not_completed.order("created_at DESC")
 
