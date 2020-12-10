@@ -8,8 +8,8 @@
         <%= link_to @user.name, user_path(@user), class:"task-index-user-name" %>の完了タスク
       </div>
     </div>
-    <div class="posts">
-      <div class="remain-posts-cards">
+    <div class="finihed-task-area">
+      <div class="finished-posts-cards">
         <% @tasks.each do |task| %>
           <div id="task_<%= task.id %>">
             <%= render partial: "shared/tasks", locals: { task: task} %>
