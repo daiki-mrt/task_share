@@ -328,9 +328,14 @@
     font-weight: bold;
   }
 }
-
+.user-index-area {
+  width: 95%;
+  height: 95%;
+  margin: 0 auto;
+  padding: 0 10px;
+}
 .user-cards {
-  height: 90%;
+  height: 95%;
   overflow: scroll;
   border-radius: 5px;
   margin-top: 20px;
