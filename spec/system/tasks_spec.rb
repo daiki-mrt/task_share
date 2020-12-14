@@ -13,7 +13,7 @@ RSpec.describe 'Tasks', type: :system do
     context "タスクを投稿できるとき" do
       it "タイトルを入力すれば、タスクを保存できて、マイページに表示される" do
         task_title = 'タスクのタイトル'
-        fill_in 'task_title', with: task_title
+        fill_in 'taskTitle', with: task_title
         expect {
           click_on '登録'
           expect(page).to have_content task_title
@@ -33,7 +33,7 @@ RSpec.describe 'Tasks', type: :system do
         expect(current_url).to include "/users/#{@user.id}"
 
         task_title = 'タスクのタイトル'
-        fill_in 'task_title', with: task_title
+        fill_in 'taskTitle', with: task_title
         expect {
           click_on '登録'
           expect(page).to have_content task_title
@@ -51,7 +51,7 @@ RSpec.describe 'Tasks', type: :system do
 
     it "完了ボタンをクリックすると、タスクが完了になり、マイページに表示されなくなる" do
       task_title = 'タスクのタイトル'
-      fill_in 'task_title', with: task_title
+      fill_in 'taskTitle', with: task_title
       click_on '登録'
       expect(page).to have_content task_title
       # 完了ボタンを押すと、そのタスクは表示されなくなり、stateカラムがtrueになる
@@ -70,8 +70,9 @@ RSpec.describe 'Tasks', type: :system do
 
       # タスクを投稿
       @task_title = 'タスクのタイトル'
-      fill_in 'task_title', with: @task_title
+      fill_in 'taskTitle', with: @task_title
       click_on '登録'
+      sleep 1
       @task = Task.find_by(title: @task_title)
     end
 
@@ -81,7 +82,7 @@ RSpec.describe 'Tasks', type: :system do
         click_link '編集', href: "/users/#{@user.id}/tasks/#{@task.id}/edit"
         expect(current_url).to include "/tasks/#{@task.id}/edit"
         revised_task_title = '編集後のタイトル'
-        fill_in 'task_title', with: revised_task_title
+        fill_in 'taskTitle', with: revised_task_title
         click_on '登録'
         # マイページに遷移し、投稿したタスクがあることを確認する
         expect(page).to have_content revised_task_title
@@ -93,7 +94,7 @@ RSpec.describe 'Tasks', type: :system do
         # 編集ページへ遷移
         click_link '編集', href: "/users/#{@user.id}/tasks/#{@task.id}/edit"
         expect(current_url).to include "/tasks/#{@task.id}/edit"
-        find('#task_title').set ''
+        find('#taskTitle').set ''
         click_on '登録'
         # 保存されず、編集ページに戻ることを確認する
         expect(current_url).to include "/tasks/#{@task.id}"
@@ -111,13 +112,14 @@ RSpec.describe 'Tasks', type: :system do
 
       # タスクを投稿
       @task_title = 'タスクのタイトル'
-      fill_in 'task_title', with: @task_title
+      fill_in 'taskTitle', with: @task_title
       click_on '登録'
       @task = Task.find_by(title: @task_title)
     end
 
     it "削除ボタンをクリックするとタスクが削除され、マイページに表示されなくなる" do
       # 削除ボタンクリックで、Taskのレコードが1減ることを確認
+      sleep 1
       expect {
         # 削除ボタンをクリック
         find('.delete-btn').click
