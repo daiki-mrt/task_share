@@ -1,0 +1,7 @@
+document.getElementById('postCards').insertAdjacentHTML("afterbegin", `
+  <div id='task_<%= @task.id %>'>
+    <%= escape_javascript(render "shared/tasks", task: @task) %>
+  </div>  
+  `)
+document.getElementById('taskTitle').value = ""
+document.getElementById('taskText').value = ""
