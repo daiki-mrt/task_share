@@ -12,7 +12,7 @@
   </div>
   <div class="user-posts">
     <span class="task-index-comment">タスク一覧</span>
-    <div class="posts-cards">
+    <div class="posts-cards", id="postCards">
       <% @tasks.each do |task| %>
         <div id="task_<%= task.id %>">
           <%= render partial: "shared/tasks", locals: { task: task } %>

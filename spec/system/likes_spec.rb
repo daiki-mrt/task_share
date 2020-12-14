@@ -12,7 +12,7 @@ RSpec.describe 'Likes', type: :system do
 
       # タスクを投稿
       @task_title = 'タスクのタイトル'
-      fill_in 'task_title', with: @task_title
+      fill_in 'taskTitle', with: @task_title
       click_on '登録'
       @task = Task.find_by(title: @task_title)
     end
