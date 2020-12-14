@@ -16,12 +16,9 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    if @task.save
-      redirect_to user_path(current_user)
-    else
+    unless @task.save
       # 投稿タスク一覧取得
       @tasks = @user.tasks.not_completed.order("created_at DESC")
-
       render "users/show"
     end
   end
